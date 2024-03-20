@@ -38,6 +38,7 @@ function Principal() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <h1 className="text-xl font-bold mb-4 shadow1 text-zinc-200">Una experiencia única que te hará sentirlo todo. </h1>
     </>
   )
 }
