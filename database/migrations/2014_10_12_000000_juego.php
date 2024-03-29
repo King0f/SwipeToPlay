@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('juego', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
+            $table->string('nombre');
             $table->string('rangos');
         });
     }
