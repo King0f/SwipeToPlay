@@ -1,26 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Link} from "react-router-dom";
-import reactLogo from '../../assets/react.svg'
 import './App.css'
 
 function Reservas() {
   const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    fetch('/api/prueba')
-    .then(respuesta => respuesta.json())
-    .then(resultado => console.log(resultado))
-    .catch(error => console.log(error))
-  
-  }, [])
-  
 
   return (
     <>
       <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
       </div>
       <h1>Reservas</h1>
       <div className="card">
