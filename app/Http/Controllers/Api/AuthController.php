@@ -58,7 +58,12 @@ class AuthController extends Controller
             ], 500);
         }
     }
-
+    public function subirImagen(Request $request){
+        $request->validate([
+            'file' => 'required|image|max:2048'
+        ]);
+        return $request->file('file')->store('public/imagenes');
+    }
     /**
      * Login The User
      * @param Request $request

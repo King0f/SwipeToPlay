@@ -7,8 +7,7 @@ const SubirImg = () => {
   está usando el gancho `useState` en React para crear una variable de estado llamada `formData` y
   una función llamada ` setFormData` para actualizar el estado. */
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    file: '',
   });
 
   /**
@@ -26,24 +25,23 @@ const SubirImg = () => {
    * La función handleSubmit envía una solicitud POST a un punto final de API de inicio de sesión con
    * credenciales de usuario y registra el token resultante.
    */
-  /* const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = {
-      email:formData.username,
-      password:formData.password
+    const imagen = {
+      file:formData.file
     }
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(user),
+      body: JSON.stringify(imagen),
     };
 
-    const url = '/api/loginUser';
+    const url = '/api/subirImagen';
     const response = await fetch(url, options);
     const data = await response.json();
     localStorage.setItem('token', data.token);
     window.location.href = '/restaurante/';
-  }; */
+  };
 
 
   return (
