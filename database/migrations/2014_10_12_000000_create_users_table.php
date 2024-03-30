@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('lvl_premium');
             $table->integer('desplazamientos');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
