@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import {Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Principal from './Principal.jsx'
 import Reservas from './Reservas.jsx'
 
@@ -17,15 +17,15 @@ function App() {
 
   }, []) */
 
-  const path = 'restaurante'
-
   return (
     <>
+    <Router basename="/SwipeToPlay/public">
       <Routes>
-        <Route path={path} element={<Principal />}></Route>
-        <Route path={path +'/reservas' } element={<Reservas />}></Route>
-        <Route path={path +'/selImg' } element={<SelecImg />}></Route>
+        <Route path='/' element={<Principal />}></Route>
+        <Route path='/reservas' element={<Reservas />}></Route>
+        <Route path='/selImg' element={<SelecImg />}></Route>
       </Routes>
+      </Router>
     </>
   )
 }

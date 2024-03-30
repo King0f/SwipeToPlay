@@ -9,8 +9,7 @@ export default defineConfig({
             input: [
             'resources/css/app.css',
             'resources/js/app.js',
-            'resources/js/restaurante/main.jsx',
-            'resources/js/cine/main.jsx',
+            'resources/js/swipetoplay/main.jsx',
             ],
             refresh: true,
         }),

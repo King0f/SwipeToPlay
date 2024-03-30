@@ -1,27 +1,19 @@
 import { useState, useEffect } from 'react'
-import reactLogo from '../../assets/react.svg'
+import { Link} from "react-router-dom";
 import './App.css'
 
-function App() {
+function Reservas() {
   const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    fetch('api/prueba')
-    .then(respuesta => respuesta.json())
-    .then(resultado => console.log(resultado))
-    .catch(error => console.log(error))
-
-  }, [])
 
 
   return (
     <>
       <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
       </div>
-      <h1>Cine </h1>
+      <h1>Reservas</h1>
+      <div className="card">
+          <Link to='/'>Restaurante</Link>
+      </div>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -37,4 +29,4 @@ function App() {
   )
 }
 
-export default App
+export default Reservas

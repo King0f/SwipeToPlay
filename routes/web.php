@@ -17,16 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('swipetoplay');
 });
-
-Route::get('/restaurante', function () {
-    return view('restaurante');
-})->name('restaurante');
-
-Route::get('/cine', function () {
-    return view('cine');
-})->name('cine');
 
 Route::get('/enviarCorreo', function () {
     $destinatario = 'javier.ruiz@doc.medac.es';

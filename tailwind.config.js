@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    './resources/js/restaurante/*.jsx',
-    './resources/js/restaurante/**/*.jsx',
+    './resources/js/swipetoplay/*.jsx',
+    './resources/js/swipetoplay/**/*.jsx',
   ],
   theme: {
     extend: {},
