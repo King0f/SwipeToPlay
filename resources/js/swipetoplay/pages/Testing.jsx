@@ -4,8 +4,8 @@ import '../styles/App.css'
 function Testing(){
     return ( 
         <div className="text-white text-2xl">
-            <Link to="/LoginTesting" className='text-white'>
-                <button>Login Testing</button>
+            <Link to="/RegisterTesting" className='text-white'>
+                <button>Register Testing</button>
             </Link>
         </div>
     )
