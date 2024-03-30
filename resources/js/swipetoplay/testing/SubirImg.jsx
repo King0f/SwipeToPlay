@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/App.css'
 
-const SelecImg = () => {
+const SubirImg = () => {
   /* La línea `const [formData, setFormData] = useState({ nombre de usuario: '', contraseña: '', });`
   está usando el gancho `useState` en React para crear una variable de estado llamada `formData` y
   una función llamada ` setFormData` para actualizar el estado. */
@@ -47,14 +48,16 @@ const SelecImg = () => {
 
   return (
     <>
-        <form onSubmit={handleSubmit}>
-            <input type="file" name='file' id='file'/>
-          <button type="submit">
-            Subir Imagen
-          </button>
-        </form>
+        <div className='text-white'>
+            <form  className='text-white mt-20' encType='multipart/form-data'>
+                <input type="file" name='file' id='file' accept='image/*'/><br />
+            <button type="submit">
+                Subir Imagen
+            </button>
+            </form>
+        </div>
     </>
   );
 };
 
-export default SelecImg;
+export default SubirImg;

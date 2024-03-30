@@ -4,7 +4,7 @@ import Principal from './pages/Principal.jsx'
 import Testing from './pages/Testing.jsx'
 
 import './styles/App.css'
-import SelecImg from './pages/SelecImg.jsx';
+import SubirImg from './testing/SubirImg.jsx';
 import LoginTesting from './testing/LoginTesting.jsx';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<Principal />}></Route>
         <Route path='/Testing' element={<Testing />}></Route>
         <Route path='/LoginTesting' element={<LoginTesting />}></Route>
-        <Route path='/selImg' element={<SelecImg />}></Route>
+        <Route path='/SubirImg' element={<SubirImg />}></Route>
       </Routes>
     </Router>
     </>
