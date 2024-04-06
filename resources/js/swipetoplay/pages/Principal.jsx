@@ -12,7 +12,7 @@ function Principal() {
     <>
     <Header />
     <div className="App">
-      <header className="App-header text-2xl text-white mt-20">
+    <header className="App-header text-2xl text-white mt-20">
         <h1>Swipe to Play</h1>
         <p>Click on the button to start the game</p>
       </header>
