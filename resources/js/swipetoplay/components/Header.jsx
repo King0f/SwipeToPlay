@@ -50,7 +50,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex bg-slate-950 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center">
+        <div className="flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center">
           <p className='text-white font-Swipe'>Start Swiping</p>
         </div>
 
