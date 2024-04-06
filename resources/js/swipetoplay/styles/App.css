@@ -76,9 +76,16 @@ a {
 }
 
 .clearNav {
-  backdrop-filter: saturate(180%) blur(5px) !important;
-  background-color: rgba(190, 138, 185, 0.7) !important;
-}
+    backdrop-filter: saturate(180%) blur(5px) !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+
+  .nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Cambia el color de fondo al pasar el mouse sobre el enlace */
+    border-radius: 8px; /* Añade bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el enlace */
+  }
+
 
 .fsac4 {
   display: grid;

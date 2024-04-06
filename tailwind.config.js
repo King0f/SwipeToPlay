@@ -478,7 +478,7 @@ export default {
         },
       },
       fontFamily: {
-        'Audiense': ['Poppins', 'sans-serif'],
+        'Swipe': ['Poppins', 'sans-serif'],
       },
       fontWeight: {
         'audienseBold': 'bold',
