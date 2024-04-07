@@ -3,10 +3,9 @@ import { Link, useNavigate} from "react-router-dom";
 
 
 
-function RegisterTesting() {
+function LoginTesting() {
 
     const [formData, setFormData] = useState({
-    username: "",
     email: "",
     password: "",
     });
@@ -28,7 +27,6 @@ function RegisterTesting() {
   
      //Creando el objeto usuario con los datos del formulario
       const user = {
-        username: formData.username,
         email: formData.email,
         password: formData.password,
       };
@@ -43,10 +41,7 @@ function RegisterTesting() {
         body: JSON.stringify(user),
       };
   
-     /* La variable `const url` almacena el punto final de la URL al que se enviarán los datos de
-     registro. En este caso, se establece en "http://localhost/TareaRestaurante2/public/api/register". 
-     Esta URL se utiliza en la función `fetch` para realizar una solicitud POST al servidor y registrar un nuevo usuario. */
-      const url = "http://localhost/SwipeToPlay/public/api/register";
+      const url = "http://localhost/SwipeToPlay/public/api/login";
   
       /* El código está realizando una solicitud POST a la URL especificada con las opciones proporcionadas. */
       fetch(url, options)
@@ -64,19 +59,8 @@ function RegisterTesting() {
       <>
         <div className="relative h-screen bg-cover bg-center flex items-center justify-center bg-gray-900">
           <div className="relative z-10 bg-gray-800 bg-opacity-90 p-8 rounded-md shadow-md w-96">
-            <h2 className="text-2xl font-bold mb-4 text-white ml-28">Registro</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white ml-28">Inicio sesión</h2>
             <form onSubmit={handleLogin}>
-            <div className="mb-4">
-                <label htmlFor="username" className="block text-white text-sm font-medium mb-2">Username:</label>
-                <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border bg-gray-700 rounded-md text-white"
-                />
-              </div>
               <div className="mb-4">
                 <label htmlFor="email" className="block text-white text-sm font-medium mb-2">Email:</label>
                 <input
@@ -100,11 +84,11 @@ function RegisterTesting() {
                 />
               </div>
               <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
-                Registrarse
+                Iniciar sesión
               </button>
             </form>
             <div className="mt-4 text-white text-center">
-              ¿Ya tienes cuenta? <Link to="/LoginTesting" className="text-blue-500">Inicia sesión aquí.</Link>
+              ¿Aún no tienes cuenta? <Link to="/RegisterTesting" className="text-blue-500">Registrate aquí.</Link>
             </div>
           </div>
         </div>
@@ -112,4 +96,4 @@ function RegisterTesting() {
     );
   }
 
-export default RegisterTesting
+export default LoginTesting

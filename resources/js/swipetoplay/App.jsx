@@ -5,6 +5,7 @@ import Testing from './pages/Testing.jsx'
 import './styles/App.css'
 import SubirImg from './testing/SubirImg.jsx';
 import RegisterTesting from './testing/RegisterTesting.jsx';
+import LoginTesting from './testing/LoginTesting.jsx';
 import Swipe from './pages/Swipe.jsx';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/Testing' element={<Testing />}></Route>
         <Route path='/SubirImg' element={<SubirImg />}></Route>
         <Route path='/RegisterTesting' element={<RegisterTesting />}></Route>
+        <Route path='/LoginTesting' element={<LoginTesting />}></Route>
         <Route path='/Swipe' element={<Swipe />}></Route>
       </Routes>
     </Router>
