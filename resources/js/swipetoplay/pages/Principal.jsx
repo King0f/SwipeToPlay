@@ -12,12 +12,14 @@ function Principal() {
     <>
     <Header />
     <div className="App">
-    <header className="App-header text-2xl text-white mt-20">
-        <h1>Swipe to Play</h1>
-        <p>Click on the button to start the game</p>
-      </header>
-      <Link to={`/Testing`} className='text-white'>
+        <h1 className='text-white'>Swipe to Play</h1>
+        <p className='text-white'>Click on the button to start the game</p>
+        <Link to={`/Testing`} className='text-white'>
         <button>Paginas de testeo</button>
+      </Link>
+      <br/>
+      <Link to={`/Swipe`} className='text-white'>
+        <button>Paginas de tinder</button>
       </Link>
     </div>
     </>

@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Importa Link si estás utilizando react-router-dom
+import { Link, useNavigate } from "react-router-dom";
 import imagenEjemplo from '../../../assets/textoLogo.png';
 
 export default function Header() {
   // Estado para almacenar la página actual
   const [currentPage, setCurrentPage] = useState("Home");
-
+  const navigate = useNavigate();
+  const redToSwipe = () => {
+    navigate('/Swipe');
+  };
   return (
-    <div className="flex justify-center bg-black-300 bg-opacity-75">
+    <div className="w-full flex justify-center h-16 bg-black-300 bg-opacity-75 mb-5">
       <header className="fixed top-0 w-4/5 h-16 mt-5 clearNav z-50 border-0 rounded-full flex items-center justify-between bg-opacity-35">
 
         <div className="mx-5 align-self-lg-start w-1/3">
@@ -50,7 +53,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center">
+        <div className="flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center" onClick={redToSwipe}>
           <p className='text-white font-Swipe'>Start Swiping</p>
         </div>
 
