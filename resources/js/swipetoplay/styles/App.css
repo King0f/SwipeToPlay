@@ -82,7 +82,7 @@ a {
 
   .nav-link:hover {
     background-color: rgba(0, 0, 0, 0.1); /* Cambia el color de fondo al pasar el mouse sobre el enlace */
-    border-radius: 8px; /* Añade bordes redondeados */
+    border-radius: 8px; /* AÃ±ade bordes redondeados */
     cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el enlace */
   }
 
@@ -107,5 +107,65 @@ a {
 
 .fkrr1 {
   font-family: "Inter", sans-serif;
+}
+
+/* ProfileComp */
+.username-container{
+  background-color: #16161a;
+  width: auto;
+  display: flex;
+  border-radius: 50px;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.profile-container{
+  display: flex;
+  gap: 0.5em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-description{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.profile-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-title{
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.username {
+  color: #4c4c55;
+}
+
+.menu-bar{
+  display: flex;
+  align-items: center;
+}
+
+.menu-bar i{
+  font-size: 25px;
+  color: white;
+}
+
+.menu-bar i:hover{
+  cursor: pointer;
 }
 
