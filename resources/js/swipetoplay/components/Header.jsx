@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import imagenEjemplo from '../../../assets/textoLogo.png';
+import '../styles/App.css'
+import ProfileComp from './ProfileComp';
 
 export default function Header() {
-  // Estado para almacenar la página actual
+  const token = !!localStorage.getItem('token');
+  // Estado para almacenar la pÃ¡gina actual
   const [currentPage, setCurrentPage] = useState("Home");
   const navigate = useNavigate();
   const redToSwipe = () => {
@@ -22,7 +25,7 @@ export default function Header() {
             onClick={() => setCurrentPage("Home")}
             className={`text-white font-Swipe ${currentPage === "Home" ? "font-bold" : ""} nav-link`}
           >
-            <Link to="/">Home</Link>
+            <Link to="/">Inicio</Link>
           </div>
         </div>
 
@@ -31,7 +34,7 @@ export default function Header() {
             onClick={() => setCurrentPage("Profile")}
             className={`text-white font-Swipe ${currentPage === "Profile" ? "font-bold" : ""} nav-link`}
           >
-            <Link to="/profile">Profile</Link>
+            <Link to="/Swipe">Start Swiping</Link>
           </div>
         </div>
 
@@ -53,10 +56,12 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center" onClick={redToSwipe}>
-          <p className='text-white font-Swipe'>Start Swiping</p>
-        </div>
+        {/* <div className="flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center" onClick={redToSwipe}>
 
+          <p className='text-white font-Swipe'>Start Swiping</p>
+        </div> */}
+
+      <ProfileComp />
       </header>
     </div>
   );

@@ -21,16 +21,16 @@ function LoginTesting() {
         [e.target.name]: e.target.value,
       });
     };
-  
+
     const handleLogin = (e) => {
       e.preventDefault();
-  
+
      //Creando el objeto usuario con los datos del formulario
       const user = {
         email: formData.email,
         password: formData.password,
       };
-  
+
       /* El objeto `const options` se utiliza para configurar la solicitud HTTP que se enviará al
       servidor al registrar un usuario. */
       const options = {
@@ -40,9 +40,9 @@ function LoginTesting() {
         },
         body: JSON.stringify(user),
       };
-  
+
       const url = "http://localhost/SwipeToPlay/public/api/login";
-  
+
       /* El código está realizando una solicitud POST a la URL especificada con las opciones proporcionadas. */
       fetch(url, options)
       .then(response => response.json())
@@ -54,10 +54,10 @@ function LoginTesting() {
       })
       .catch(err => console.log(err));
     };
-  
+
     return (
       <>
-        <div className="relative h-screen bg-cover bg-center flex items-center justify-center bg-gray-900">
+        <div className="relative h-screen bg-cover bg-center flex items-center justify-center">
           <div className="relative z-10 bg-gray-800 bg-opacity-90 p-8 rounded-md shadow-md w-96">
             <h2 className="text-2xl font-bold mb-4 text-white ml-28">Inicio sesión</h2>
             <form onSubmit={handleLogin}>
