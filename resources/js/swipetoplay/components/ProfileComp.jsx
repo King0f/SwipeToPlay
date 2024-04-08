@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/App.css'
 
@@ -19,14 +19,14 @@ export default function ProfileComp() {
   return (
     <>
       {token ? (<Link to="/profile">
-                <div class="username-container">
+                <div class="username-container h-16 flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center">
                     <div class="profile-container">
                         <div class="profile-img">
                             <img src="https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png" alt="Profile Picture" />
                         </div>
                         <div class="profile-description">
-                            <p class="user-title">{usuario?.username}</p>
-                            <p class="username">@{usuario?.username}</p>
+                        <p className="user-title">{usuario?.username || "SwipeToPlay"}</p>
+                <p className="username">@{usuario?.username || "SwipeToPlay"}</p>
                         </div>
                     </div>
                     <div class="menu-bar">
@@ -40,7 +40,7 @@ export default function ProfileComp() {
                         <img src="https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png" alt="Profile Picture" />
                     </div>
                     <div class="profile-description">
-                        <p class="user-title">Iniciar sesiÃ³n</p>
+                        <p class="user-title">Iniciar sesion</p>
                     </div>
                 </div>
                 <div class="menu-bar">

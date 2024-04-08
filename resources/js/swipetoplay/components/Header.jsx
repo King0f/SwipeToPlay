@@ -56,12 +56,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* <div className="flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center" onClick={redToSwipe}>
-
-          <p className='text-white font-Swipe'>Start Swiping</p>
-        </div> */}
-
-      <ProfileComp />
+      <ProfileComp/>
       </header>
     </div>
   );
