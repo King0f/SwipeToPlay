@@ -7,6 +7,7 @@ import SubirImg from './testing/SubirImg.jsx';
 import RegisterTesting from './testing/RegisterTesting.jsx';
 import LoginTesting from './testing/LoginTesting.jsx';
 import Swipe from './pages/Swipe.jsx';
+import Profile from './pages/Profile.jsx';	
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/RegisterTesting' element={<RegisterTesting />}></Route>
         <Route path='/LoginTesting' element={<LoginTesting />}></Route>
         <Route path='/Swipe' element={<Swipe />}></Route>
+        <Route path='/Profile' element={<Profile />}></Route>
       </Routes>
     </Router>
     </>

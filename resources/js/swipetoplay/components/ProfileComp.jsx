@@ -18,15 +18,15 @@ export default function ProfileComp() {
   }
   return (
     <>
-      {token ? (<Link to="/profile">
-                <div class="username-container h-16 flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center">
+      {token ? (<Link to="/Profile">
+                <div class="username-container flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center">
                     <div class="profile-container">
                         <div class="profile-img">
                             <img src="https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png" alt="Profile Picture" />
                         </div>
                         <div class="profile-description">
-                        <p className="user-title">{usuario?.username || "SwipeToPlay"}</p>
-                <p className="username">@{usuario?.username || "SwipeToPlay"}</p>
+                        <p className="user-title">{usuario?.username || "username"}</p>
+                <p className="username">@{usuario?.username || "username"}</p>
                         </div>
                     </div>
                     <div class="menu-bar">
