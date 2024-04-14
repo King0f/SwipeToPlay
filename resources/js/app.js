@@ -3,7 +3,7 @@ import './bootstrap';
 const API_KEY = 'RGAPI-4054863a-f547-4dff-b39f-90cae10b866e';
 
 async function obtenerDatosInvocador(nombreInvocador, region) {
-    const summonerUrl = `https://${region}.api.riotgames.com/riot/account/v1/accountss/by-riot-id/${nombreInvocador}`;
+    const summonerUrl = `https://${region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${nombreInvocador}`;
     const params = {
         api_key: API_KEY
     };
