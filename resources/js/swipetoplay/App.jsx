@@ -8,6 +8,7 @@ import RegisterTesting from './testing/RegisterTesting.jsx';
 import LoginTesting from './testing/LoginTesting.jsx';
 import Swipe from './pages/Swipe.jsx';
 import Profile from './pages/Profile.jsx';	
+import RiotUser from './pages/RiotUser.jsx';
 
 function App() {
   return (
@@ -17,10 +18,11 @@ function App() {
         <Route path='/' element={<Principal />}></Route>
         <Route path='/Testing' element={<Testing />}></Route>
         <Route path='/SubirImg' element={<SubirImg />}></Route>
-        <Route path='/RegisterTesting' element={<RegisterTesting />}></Route>
-        <Route path='/LoginTesting' element={<LoginTesting />}></Route>
+        <Route path='/Register' element={<RegisterTesting />}></Route>
+        <Route path='/Login' element={<LoginTesting />}></Route>
         <Route path='/Swipe' element={<Swipe />}></Route>
         <Route path='/Profile' element={<Profile />}></Route>
+        <Route path='/RiotUser' element={<RiotUser />}></Route>
       </Routes>
     </Router>
     </>

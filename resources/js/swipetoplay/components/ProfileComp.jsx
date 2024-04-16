@@ -42,7 +42,7 @@ export default function ProfileComp() {
                         <i class="bi bi-three-dots"></i>
                     </div>
                 </div>
-            </Link>): (<Link to="/LoginTesting">
+            </Link>): (<Link to="/Login">
             <div class="username-container">
                 <div class="profile-container">
                     <div class="profile-img">

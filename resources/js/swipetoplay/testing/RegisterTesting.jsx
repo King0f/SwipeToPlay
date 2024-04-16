@@ -55,7 +55,7 @@ function RegisterTesting() {
         if(resultado.token) {
           localStorage.setItem('token', resultado.token); // Guarda el token en localStorage
           localStorage.setItem('username', 0);
-           navigate('/'); // Redirige al inicio usando navigate
+           navigate('/RiotUser'); // Redirige al inicio usando navigate
         }
       })
       .catch(err => console.log(err));
@@ -105,7 +105,7 @@ function RegisterTesting() {
               </button>
             </form>
             <div className="mt-4 text-white text-center">
-              ¿Ya tienes cuenta? <Link to="/LoginTesting" className="text-blue-500">Inicia sesión aquí.</Link>
+              ¿Ya tienes cuenta? <Link to="/Login" className="text-blue-500">Inicia sesión aquí.</Link>
             </div>
           </div>
         </div>

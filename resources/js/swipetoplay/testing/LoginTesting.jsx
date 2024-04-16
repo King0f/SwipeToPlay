@@ -50,7 +50,7 @@ function LoginTesting() {
         if(resultado.token) {
           localStorage.setItem('token', resultado.token); // Guarda el token en localStorage
           localStorage.setItem('username', 0);
-          navigate('/'); // Redirige al inicio usando navigate
+          navigate('/RiotUser'); // Redirige al inicio usando navigate
         }
       })
       .catch(err => console.log(err));
@@ -89,7 +89,7 @@ function LoginTesting() {
               </button>
             </form>
             <div className="mt-4 text-white text-center">
-              ¿Aún no tienes cuenta? <Link to="/RegisterTesting" className="text-blue-500">Registrate aquí.</Link>
+              ¿Aún no tienes cuenta? <Link to="/Register" className="text-blue-500">Registrate aquí.</Link>
             </div>
           </div>
         </div>
