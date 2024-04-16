@@ -22,3 +22,4 @@ Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
 Route::get('/user', [Controller::class, 'obtenerUsuario'])->middleware('auth:sanctum');
 Route::post('/subirImagen', [AuthController::class, 'subirImagen']);
+Route::post('/riotUser', [Controller::class, 'crearConexionRiotUsuario'])->middleware('auth:sanctum');
