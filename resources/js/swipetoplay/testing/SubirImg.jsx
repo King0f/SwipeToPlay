@@ -1,59 +1,46 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/App.css'
+import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 
 const SubirImg = () => {
-  /* La línea `const [formData, setFormData] = useState({ nombre de usuario: '', contraseña: '', });`
-  está usando el gancho `useState` en React para crear una variable de estado llamada `formData` y
-  una función llamada ` setFormData` para actualizar el estado. */
+  debugger
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    file: '',
+    file: null, // Cambia '' a null para almacenar el archivo
   });
 
-  /**
-   * La función handleChange actualiza el estado de formData estableciendo el valor del campo de
-   * entrada de destino en la propiedad correspondiente en el objeto formData.
-   */
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      file: e.target.files[0], // Accede al archivo seleccionado
     });
   };
 
-  /**
-   * La función handleSubmit envía una solicitud POST a un punto final de API de inicio de sesión con
-   * credenciales de usuario y registra el token resultante.
-   */
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const imagen = {
-      file:formData.file
-    }
+    
     const options = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(imagen),
+      body: formData.file, // Utiliza el archivo directamente como cuerpo de la solicitud
     };
 
-    const url = '/api/subirImagen';
+    const url = 'http://localhost/SwipeToPlay/public/api/subirImagen';
     const response = await fetch(url, options);
     const data = await response.json();
-    localStorage.setItem('token', data.token);
-    window.location.href = '/restaurante/';
+    navigate('/'); // Redirige al inicio usando navigate
   };
-
 
   return (
     <>
-        <div className='text-white'>
-            <form  className='text-white mt-20' encType='multipart/form-data'>
-                <input type="file" name='file' id='file' accept='image/*'/><br />
-            <button type="submit">
-                Subir Imagen
-            </button>
-            </form>
-        </div>
+      <Header />
+      <div className='text-white'>
+        <form className='text-white mt-20' encType='multipart/form-data' onSubmit={handleSubmit}>
+          <input type="file" name='file' id='file' accept='image/*' onChange={handleChange} /><br />
+          <button type="submit">
+            Subir Imagen
+          </button>
+        </form>
+      </div>
     </>
   );
 };
