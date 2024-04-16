@@ -49,7 +49,8 @@ function LoginTesting() {
       .then(resultado => {
         if(resultado.token) {
           localStorage.setItem('token', resultado.token); // Guarda el token en localStorage
-           navigate('/'); // Redirige al inicio usando navigate
+          localStorage.setItem('username', 0);
+          navigate('/'); // Redirige al inicio usando navigate
         }
       })
       .catch(err => console.log(err));

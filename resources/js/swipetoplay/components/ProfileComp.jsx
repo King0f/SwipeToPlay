@@ -4,17 +4,26 @@ import '../styles/App.css'
 
 export default function ProfileComp() {
   const token = !!localStorage.getItem('token');
+  /* debugger; */
+  const LSusername = localStorage.getItem('username');
   const [usuario, setUsuario] = useState();
-  if (token) {
-    const obtener = async () => {
-      const token = localStorage.getItem('token');
-      const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
-      const response = await fetch('http://localhost/SwipeToPlay/public/api/user', { method: 'GET', headers: headers })
-      const data = await response.json();
-      return data;
+  const [nick, setNick] = useState();
+  if (LSusername == nick || LSusername == "0") {
+    if (token) {
+      const obtener = async () => {
+        const token = localStorage.getItem('token');
+        const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
+        const response = await fetch('http://localhost/SwipeToPlay/public/api/user', { method: 'GET', headers: headers })
+        const data = await response.json();
+        return data;
+      }
+      obtener().then(data => { setUsuario(data);  
+        localStorage.setItem('username', usuario?.username);
+        setNick(localStorage.getItem('username')); }
+      ).catch(err => { console.log(err) });
     }
-    obtener().then(data => { setUsuario(data) }).catch(err => { console.log(err) });
-    console.log(usuario);
+  } else {
+    setNick(localStorage.getItem('username'));
   }
   return (
     <>
@@ -25,8 +34,8 @@ export default function ProfileComp() {
                             <img src="https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png" alt="Profile Picture" />
                         </div>
                         <div class="profile-description">
-                        <p className="user-title">{usuario?.username || "username"}</p>
-                <p className="username">@{usuario?.username || "username"}</p>
+                        <p className="user-title">{nick }</p>
+                <p className="username">@{nick }</p>
                         </div>
                     </div>
                     <div class="menu-bar">
