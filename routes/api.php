@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
 Route::get('/user', [Controller::class, 'obtenerUsuario'])->middleware('auth:sanctum');
+Route::post('/subirImagen', [AuthController::class, 'subirImagen']);
