@@ -13,17 +13,16 @@ export default function Header() {
     navigate('/Swipe');
   };
   return (
-    <div className="w-full flex justify-center h-16 bg-black-300 bg-opacity-75 mb-5">
-      <header className="fixed top-0 w-4/5 h-16 mt-5 clearNav z-50 border-0 rounded-full flex items-center justify-between bg-opacity-35">
-
-        <div className="mx-5 align-self-lg-start w-1/3">
+    <div className="w-full flex justify-center h-16 bg-black-300 bg-opacity-75">
+      <header className="fixed top-0 w-full h-20 clearNav z-50 flex items-center justify-around bg-opacity-35">
+        <div className="mx-5 w-1/3">
           <img src={imagenEjemplo} alt="TextoLogo" className=""/>
         </div>
 
         <div className="">
           <div
             onClick={() => setCurrentPage("Home")}
-            className={`text-white font-Swipe ${currentPage === "Home" ? "font-bold" : ""} nav-link`}
+            className={`text-black font-Swipe ${currentPage === "Home" ? "font-bold" : ""} nav-link`}
           >
             <Link to="/">Inicio</Link>
           </div>
@@ -32,7 +31,7 @@ export default function Header() {
         <div className="">
           <div
             onClick={() => setCurrentPage("Profile")}
-            className={`text-white font-Swipe ${currentPage === "Profile" ? "font-bold" : ""} nav-link`}
+            className={`text-black font-Swipe ${currentPage === "Profile" ? "font-bold" : ""} nav-link`}
           >
             <Link to="/Swipe">Start Swiping</Link>
           </div>
@@ -41,7 +40,7 @@ export default function Header() {
         <div className="">
           <div
             onClick={() => setCurrentPage("Games")}
-            className={`text-white font-Swipe ${currentPage === "Games" ? "font-bold" : ""} nav-link`}
+            className={`text-black font-Swipe ${currentPage === "Games" ? "font-bold" : ""} nav-link`}
           >
             <Link to="/games">Games</Link>
           </div>
@@ -50,7 +49,7 @@ export default function Header() {
         <div className="">
           <div
             onClick={() => setCurrentPage("Blablabla")}
-            className={`text-white font-Swipe ${currentPage === "Blablabla" ? "font-bold" : ""} nav-link`}
+            className={`text-black font-Swipe ${currentPage === "Blablabla" ? "font-bold" : ""} nav-link`}
           >
             <Link to="/blablabla">Blablabla</Link>
           </div>

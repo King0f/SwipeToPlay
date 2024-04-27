@@ -4,15 +4,14 @@ import Header from "../components/Header";
 
 function Testing(){
     return (
-        <div className="text-white">
+        <div className="text-white mt-10">
             <Header/>
-            
-            <h1>Prueba</h1>
+            <h1 className="text-black">Prueba</h1>
             <Link to="/SubirImg">
-            <button>Prueba subir imagen</button>
+            <button className="text-black">Prueba subir imagen</button>
             </Link><br />
-            <Link to="/RegisterTesting" className='text-white'>
-                <button>Register Testing</button>
+            <Link to="/Register" className='text-black'>
+                <button className="text-black">Register Testing</button>
             </Link>
         </div>
     )

@@ -9,7 +9,7 @@ export const usuarioStore = create((set) => ({
         try {
           const token = localStorage.getItem('token');
           if (!token) throw new Error('No token found');
-    
+
           const headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
@@ -19,7 +19,7 @@ export const usuarioStore = create((set) => ({
             headers: headers
           });
           if (!response.ok) throw new Error('Network response was not ok');
-    
+
           const data = await response.json();
           set({ usuario: data }); // Actualizamos el estado directamente aquí
         } catch (err) {
