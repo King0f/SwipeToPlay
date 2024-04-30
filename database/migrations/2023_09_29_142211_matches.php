@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->id()->primaryKey();
-            $table->date('fecha');
+            $table->timestamps();
             $table->unsignedBigInteger('id_user1');
             $table->foreign('id_user1')->references('id')->on('users');
             $table->unsignedBigInteger('id_user2');

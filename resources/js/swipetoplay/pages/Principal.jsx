@@ -21,6 +21,10 @@ function Principal() {
       <Link to={`/Swipe`} className='text-black'>
         <button>Paginas de tinder</button>
       </Link>
+      <br/>
+      <Link to={'/Chat'} className='text-black'>
+        <button>Chats</button>
+      </Link>
     </div>
     </>
   )

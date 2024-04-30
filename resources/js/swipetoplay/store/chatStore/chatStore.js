@@ -1,0 +1,65 @@
+import { create } from "zustand";
+
+export const chatStore = create((set,get) => ({
+    mensajes: [],
+    chats: [],
+    setMensaje: (mensaje) =>{
+        set(() => ({ mensajes: [...mensaje] }))
+    },
+    getMensajes: async (idChat, msgs) => {
+        try{
+            const token = localStorage.getItem('token');
+            if (!token) throw new Error('No token found');
+  
+            const headers = new Headers({
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            });
+            const response = await fetch(`http://localhost/SwipeToPlay/public/api/obtenerMensajes/${idChat}`, {
+              method: 'GET',
+              headers: headers
+            });
+            if (!response.ok) throw new Error('Network response was not ok');
+  
+            const data = await response.json();
+            const currentState = get().mensajes
+            if (JSON.stringify(currentState) !== JSON.stringify(data)) {
+                set({ mensajes: data });
+            }
+        }catch(err){
+            console.error(err)
+        }
+    },
+    guardarMensaje: async (chat,id_usuario,mensaje) => {
+        const token = localStorage.getItem('token');
+            if (!token) throw new Error('No token found');
+  
+        const url = "http://localhost/SwipeToPlay/public/api/guardarMensaje";  
+        const payload = {
+            id_chat: chat,
+            id_usuario: id_usuario,
+            mensaje: mensaje
+        };
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(payload)
+        };
+
+        fetch(url, options)
+            .then(response => {
+                if (response.ok) { // Verifica si la respuesta del servidor es 200-299
+                    console.log("Respuesta del servidor: OK");
+                } else {
+                    throw new Error('Algo salió mal en la solicitud al servidor'); // Lanza un error si la respuesta no es satisfactoria
+                }
+            })
+            .catch(error => {
+                console.error("Error al guardar mensaje en la base de datos:", error);
+            });
+    }
+}) )

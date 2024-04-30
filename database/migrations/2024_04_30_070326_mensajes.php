@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chat', function (Blueprint $table) {
+        Schema::create('mensajes', function (Blueprint $table) {
             $table->id()->primaryKey();
-            $table->unsignedBigInteger('id_match');
-            $table->timestamps();
-            $table->foreign('id_match')->references('id')->on('matches');
+            $table->unsignedBigInteger('id_chat');
+            $table->unsignedBigInteger('id_usuario');
+            $table->string('mensaje');
+            $table->timestamps(); 
+            $table->foreign('id_chat')->references('id')->on('chat');
+            $table->foreign('id_usuario')->references('id')->on('users');
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chat');
+        //
     }
 };

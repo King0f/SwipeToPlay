@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
 Route::get('/user', [Controller::class, 'obtenerUsuario'])->middleware('auth:sanctum');
+Route::get('/user/{id}', [Controller::class, 'obtenerUsuarioByID']);
 Route::post('/subirImagen', [AuthController::class, 'subirImagen']);
 Route::post('/riotUser', [Controller::class, 'crearConexionRiotUsuario'])->middleware('auth:sanctum');
+Route::get('/obtenerMensajes/{idChat}', [ChatController::class, 'obtenerMensajes']);
+Route::post('/guardarMensaje', [ChatController::class, 'guardarMensaje']);

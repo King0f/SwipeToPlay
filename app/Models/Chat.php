@@ -14,10 +14,10 @@ class Chat extends Model
 
     protected $primaryKey = 'id';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     //campos
 
     protected $fillable = [
-        'id_match'];
+        'id_match',];
 }

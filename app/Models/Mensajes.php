@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Matches extends Model
+class Mensajes extends Model
 {
     use HasFactory;
-    protected $table = 'matches';
+    protected $table = 'mensajes';
 
     //Primary key
 
@@ -19,7 +19,7 @@ class Matches extends Model
     //campos
 
     protected $fillable = [
-        'id_user1',
-        'id_user2',
-        'id_juego'];
+        'id_chat',
+        'id_usuario',
+        'mensaje'];
 }
