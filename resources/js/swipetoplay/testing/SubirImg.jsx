@@ -18,7 +18,7 @@ const SubirImg = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const options = {
       method: 'POST',
       body: formData.file, // Utiliza el archivo directamente como cuerpo de la solicitud
@@ -33,11 +33,10 @@ const SubirImg = () => {
   return (
     <>
       <Header />
-      <div className='text-white'>
-        <form className='text-white mt-20' encType='multipart/form-data' onSubmit={handleSubmit}>
+      <div className='font-bold font-Swipe '>
+        <form className='text-red-400 mt-20' encType='multipart/form-data' onSubmit={handleSubmit}>
           <input type="file" name='file' id='file' accept='image/*' onChange={handleChange} /><br />
           <button type="submit">
-            Subir Imagen
           </button>
         </form>
       </div>

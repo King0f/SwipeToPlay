@@ -59,8 +59,8 @@ function LoginTesting() {
     return (
       <>
         <div className="relative h-screen bg-cover bg-center flex items-center justify-center">
-          <div className="relative z-10 bg-gray-800 bg-opacity-90 p-8 rounded-md shadow-md w-96">
-            <h2 className="text-2xl font-bold mb-4 text-white ml-28">Inicio sesión</h2>
+          <div className="relative z-10 bg-gray-600 bg-opacity-90 p-8 rounded-md shadow-md w-96">
+            <h2 className="text-2xl font-bold mb-4 text-white text-center">Inicio sesión</h2>
             <form onSubmit={handleLogin}>
               <div className="mb-4">
                 <label htmlFor="email" className="block text-white text-sm font-medium mb-2">Email:</label>
@@ -84,12 +84,12 @@ function LoginTesting() {
                   className="w-full px-3 py-2 border bg-gray-700 rounded-md text-white"
                 />
               </div>
-              <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+              <button type="submit" className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300">
                 Iniciar sesión
               </button>
             </form>
             <div className="mt-4 text-white text-center">
-              ¿Aún no tienes cuenta? <Link to="/Register" className="text-blue-500">Registrate aquí.</Link>
+              ¿Aún no tienes cuenta? <Link to="/Register" className="text-red-500 font-bold underline">Registrate aquí.</Link>
             </div>
           </div>
         </div>
