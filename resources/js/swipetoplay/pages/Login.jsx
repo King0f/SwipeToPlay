@@ -3,7 +3,7 @@ import { Link, useNavigate} from "react-router-dom";
 
 
 
-function LoginTesting() {
+function Login() {
 
     const [formData, setFormData] = useState({
     email: "",
@@ -97,4 +97,4 @@ function LoginTesting() {
     );
   }
 
-export default LoginTesting
+export default Login

@@ -3,7 +3,7 @@ import { Link, useNavigate} from "react-router-dom";
 
 
 
-function RegisterTesting() {
+function Register() {
 
     const [formData, setFormData] = useState({
     username: "",
@@ -64,7 +64,7 @@ function RegisterTesting() {
     return (
       <>
         <div className="relative h-screen bg-cover bg-center flex items-center justify-center bg-white">
-          <div className="relative z-10 bg-gray-600 p-8 rounded-md shadow-md w-96">
+          <div className="relative z-10 bg-gray-600 p-8 rounded-md shadow-md w-96 text-white">
             <h2 className="text-2xl font-bold mb-4 text-white ml-28">Registro</h2>
             <form onSubmit={handleLogin}>
             <div className="mb-4">
@@ -113,4 +113,4 @@ function RegisterTesting() {
     );
   }
 
-export default RegisterTesting
+export default Register

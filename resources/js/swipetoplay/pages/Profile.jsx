@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { usuarioStore } from "../store/userStore/usuarioStore";
 import Header from '../components/Header'
 import imagenEjemplo from '../../../assets/textoLogo.png'
 import imagenUser from '../../../assets/profile.jpg'
@@ -9,6 +10,13 @@ import {useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const navigate = useNavigate();
+    const {usuario, obtenerUsuario} = usuarioStore((state) => ({
+      usuario: state.usuario,
+      obtenerUsuario: state.obtenerUsuario,
+    }))
+    useEffect(() => {
+      obtenerUsuario();
+    }, []);
     const home = () => {
         navigate('/');
     };
@@ -20,11 +28,13 @@ const Profile = () => {
 
         <div className=' flex flex-col w-1/3'>
             <img src={imagenUser} className='w-1/2 m-auto rounded-full'/>
-            <p className='text-center font-Swipe text-red-400 font-bold'>Username</p>
+            <p className='text-center font-Swipe text-red-400 font-bold'>{usuario.username}</p>
         </div>
 
         <div className=' flex-col w-2/3 m-auto'>
         <p className='text-center font-Swipe text-red-500 text-xl font-extrabold mt-10'>Información del Usuario</p>
+        <div className='w-72 h-4 my-5 m-auto'><b>Email: </b>{usuario.email}</div>
+        <div className='w-72 h-4 my-5 m-auto'><b>Membresia: </b>{usuario.lvl_premium}</div>
         <div className='w-72 h-16 bg-black my-5 m-auto'><img src={conectarLol}/></div>
         <div className='w-72 h-16 bg-black my-5 m-auto'><img src={conectarValo}/></div>
         <div className='w-72 h-16 bg-black my-5 m-auto'><img src={conectarDiscord}/></div>
