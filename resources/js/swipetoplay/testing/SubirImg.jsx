@@ -26,7 +26,7 @@ const SubirImg = () => {
 
     const url = 'http://localhost/SwipeToPlay/public/api/subirImagen';
     const response = await fetch(url, options);
-    const data = await response.json();
+    /* const data = await response.json(); */
     navigate('/'); // Redirige al inicio usando navigate
   };
 
@@ -36,8 +36,7 @@ const SubirImg = () => {
       <div className='font-bold font-Swipe '>
         <form className='text-red-400 mt-20' encType='multipart/form-data' onSubmit={handleSubmit}>
           <input type="file" name='file' id='file' accept='image/*' onChange={handleChange} /><br />
-          <button type="submit">
-          </button>
+          <button type="submit">Subir imagen</button>
         </form>
       </div>
     </>

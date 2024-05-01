@@ -59,9 +59,11 @@ class AuthController extends Controller
         }
     }
     public function subirImagen(Request $request){
+        $user = $request->user();
         $request->validate([
             'file' => 'required|image|max:2048'
         ]);
+        $user->id;
         return $request->file('file')->store('public/imagenes');
     }
     /**
