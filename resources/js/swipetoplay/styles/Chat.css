@@ -46,7 +46,7 @@
   padding: 10px;
   position: relative;
   bottom: 0;
-  background-color: rgb(18, 2, 2);
+  background-color: rgb(52, 13, 13);
   display: flex;
   font-size: 1.5rem;
 }
@@ -69,7 +69,7 @@
 }
 
 .chatbutton {
-  background-color: #342828; /* Green */
+  background-color: #342828;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -153,13 +153,13 @@ padding-bottom: 0.8rem; /* Espacio debajo de cada mensaje */
   justify-content: space-between; /* Espacia el mensaje y la hora */
 }
 .sent .chatp {
-background: #0b93f6;
+background: #176ba7;
 color: white;
 }
 .received p {
   background: #e5e5ea;
-  color: rgb(200, 17, 17);
-  
+  color: rgb(44, 136, 38);
+
 }
 
 .chatimg {

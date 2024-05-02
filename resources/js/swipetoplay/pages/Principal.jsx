@@ -2,10 +2,16 @@ import { useState, useEffect } from 'react'
 import { Link} from "react-router-dom";
 import '../styles/App.css'
 import Header from '../components/Header';
+import { riotStore } from '../store/riotStore/riotStore';
 
-function Principal() {
-  const [count, setCount] = useState(0)
-
+    function Principal() {
+    const {summoner, obtenerDatosInvocador} = riotStore((state) => ({
+        summoner: state.summoner,
+        obtenerDatosInvocador: state.obtenerDatosInvocador,
+    }))
+    useEffect(() => {
+        obtenerDatosInvocador("SalmorejoKing/EUW", "europe");
+      }, []);
 
 
   return (
@@ -26,6 +32,9 @@ function Principal() {
         <button>Chats</button>
       </Link>
     </div>
+    {summoner && summoner.map((sum, index) => (
+            <p>{sum[index]}</p>
+        ))}
     </>
   )
 }
