@@ -1,129 +1,187 @@
 .chatbody {
-    background-color: #c86d5bb3;
-  }
+  background-color: #c86d5bb3;
+}
 
-  .chatApp {
-    text-align: center;
-    max-width: 728px;
-    margin: 0 auto;
-  }
-
-
-
-  .chatApp section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: rgba(135, 17, 17, 0.706);
-  }
-
-  .chatmain {
-    padding: 10px;
-    height: 80vh;
-    margin: 10vh 0 10vh;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .chatmain::-webkit-scrollbar {
-    width: 0.25rem;
-  }
-
-  .chatmain::-webkit-scrollbar-track {
-    background: #3b1616;
-  }
-
-  .chatmain::-webkit-scrollbar-thumb {
-    background: #451818;
-  }
-
-  .chatform {
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-    background-color: rgb(18, 2, 2);
-    width: 100%;
-    max-width: 728px;
-    display: flex;
-    font-size: 1.5rem;
-  }
-
-  .chatform button {
-    width: 20%;
-    background-color: rgb(62, 19, 19);
-  }
+.chatApp {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Asegura que ocupe todo el alto disponible */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  background-color: rgba(135, 17, 17, 0.706); /* Fondo del componente */
+  color: white; /* Color del texto */
+}
 
 
-  .chatinput {
-    line-height: 1.5;
-    width: 100%;
-    font-size: 1.5rem;
-    background: rgb(166, 107, 107);
-    color: white;
-    outline: none;
-    border: none;
-    padding: 0 10px;
-  }
 
-  .chatbutton {
-    background-color: #342828; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 1.25rem;
-  }
+.chatApp section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgba(135, 17, 17, 0.706);
+}
 
-  .chatbutton:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+.chatmain {
+  flex: 1; /* Toma todo el espacio disponible que no ocupan otros elementos */
+  padding: 0.6rem;
+  overflow-y: auto; /* Permite desplazamiento si el contenido es muy largo */
+  display: flex;
+  flex-direction: column;
+}
 
-  .chatul, .chatli {
-    text-align: left;
-    list-style: none;
-  }
+.chatmain::-webkit-scrollbar {
+  width: 0.25rem;
+}
 
-  .chatp {
-    max-width: 500px;
-    margin-bottom: 12px;
-    line-height: 24px;
-    padding: 10px 20px;
-    border-radius: 25px;
-    position: relative;
-    color: white;
-    text-align: center;
-  }
+.chatmain::-webkit-scrollbar-track {
+  background: #3b1616;
+}
 
-  .message {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.chatmain::-webkit-scrollbar-thumb {
+  background: #451818;
+}
+
+.chatform {
+  width: 100%; /* Ajusta el ancho para compensar el padding */
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  background-color: rgb(18, 2, 2);
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.chatform button {
+  width: 20%;
+  background-color: rgb(62, 19, 19);
+}
 
 
-  .sent {
-    flex-direction: row-reverse;
-  }
+.chatinput {
+  line-height: 1.5;
+  width: 100%;
+  font-size: 1.5rem;
+  background: rgb(166, 107, 107);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
 
-  .sent p {
-    color: white;
-    background: #0b93f6;
-    align-self: flex-end;
-  }
-  .received p {
-    background: #e5e5ea;
-    color: rgb(200, 17, 17);
-  }
+.chatbutton {
+  background-color: #342828; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
 
-  .chatimg {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin: 2px 5px;
-  }
+.chatbutton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chatul, .chatli {
+  text-align: left;
+  list-style: none;
+}
+
+.chatp {
+  background: #e5e5ea;
+  color: rgb(200, 17, 17);
+  padding: 10px 20px;
+  border-radius: 25px;
+  max-width: 80%; /* Restringe el ancho para hacer espacio para la imagen */
+  word-wrap: break-word;
+  margin: 0; /* Elimina márgenes por defecto */
+  font-family: cursive;
+}
+@media (min-width: 400px) { /* Tablets y desktops pequeños */
+.chatp {
+    max-width: 12rem;
+}
+.chatbutton {
+  width: 10%;
+  background-color: rgb(62, 19, 19);
+  font-size: 1rem;
+
+}
+}
+@media (min-width: 768px) { /* Tablets y desktops pequeños */
+.chatp {
+    max-width: 15rem;
+}
+}
+
+@media (min-width: 992px) { /* Desktops medianos */
+.chatp {
+    max-width: 30rem;
+}
+}
+
+@media (min-width: 1200px) { /* Desktops grandes */
+.chatp {
+    max-width: 50rem; /* Se puede mantener en unidades absolutas si se prefiere */
+}
+}
+
+.message {
+display: flex;
+align-items: flex-end; /* Alinea elementos verticalmente al final */
+padding-bottom: 0.8rem; /* Espacio debajo de cada mensaje */
+}
+
+.sent, .received {
+  width: 100%;
+}
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.received {
+  flex-direction: row;
+}
+
+.message-info { /* Ocupa el espacio restante después de la imagen */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Espacia el mensaje y la hora */
+}
+.sent .chatp {
+background: #0b93f6;
+color: white;
+}
+.received p {
+  background: #e5e5ea;
+  color: rgb(200, 17, 17);
+  
+}
+
+.chatimg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 10px; /* Asegura un espacio entre la imagen y el mensaje */
+}
+.message-info > p:last-child {
+color: lightgray;
+font-size: 0.8rem;
+text-align: right;
+margin-top: 5px; /* Espacio entre el mensaje y la hora */
+}
+
+.sent .message-info > p:last-child {
+margin-right: 7px; /* Empuja la hora a la derecha en mensajes enviados */
+text-align: right; /* Alinea el texto a la derecha */
+}
+
+.received .message-info > p:last-child {
+background-color: transparent;
+margin-left: 7px; /* Empuja la hora a la izquierda en mensajes recibidos */
+text-align: left; /* Alinea el texto a la izquierda */
+}

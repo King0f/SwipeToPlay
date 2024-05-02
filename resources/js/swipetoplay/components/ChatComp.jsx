@@ -3,10 +3,10 @@ import { usuarioStore } from "../store/userStore/usuarioStore"
 import "../styles/Chat.css"
 import { useState, useEffect, useRef } from "react"
 import MensajeComp from "./MensajeComp"
-const ChatComp = (props) => {
+const ChatComp = ({ chatId }) => {
     const dummy = useRef()
     const [formValue, setFormValue] = useState('');
-    const chat = 1
+    const chat = chatId
     const {mensajes, getMensajes, guardarMensaje} = chatStore((state) => ({
         mensajes: state.mensajes,
         getMensajes: state.getMensajes,
@@ -15,6 +15,7 @@ const ChatComp = (props) => {
     const {usuario} = usuarioStore((state) => ({
         usuario: state.usuario,
     }))
+    const photoURL = 'https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png'
     useEffect(() => {
         const fetchMessages = () => {
             getMensajes(chat, mensajes);
@@ -42,7 +43,7 @@ const ChatComp = (props) => {
         };
         
         
-    }, [getMensajes, chat])
+    }, [getMensajes, chat, chatId])
     useEffect(() => {
         dummy.current.scrollIntoView({behavior: 'smooth'});
     },[mensajes])
@@ -50,7 +51,7 @@ const ChatComp = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (formValue.trim()) {
-            await guardarMensaje(chat, usuario.id, formValue);
+            await guardarMensaje(chat, usuario.id, formValue, usuario.username);
             await getMensajes(chat);
             setFormValue('');
             dummy.current.scrollIntoView({behavior: 'smooth'});
@@ -61,13 +62,13 @@ const ChatComp = (props) => {
         <section>
         <main className="chatmain">
         {mensajes && mensajes.map((msg, index) => (
-            <MensajeComp key={msg.id || index} mensaje={msg} User ={usuario}/>
+            <MensajeComp key={msg.id || index} mensaje={msg} User ={usuario} photoURL={photoURL}/>
         ))} 
         <div ref={dummy}></div>
         </main>
         <form onSubmit={handleSubmit} className="chatform">
             <input value={formValue} onChange={(e) => setFormValue(e.target.value)} className="chatinput"></input> 
-            <button type="submit" className="chatbutton"> enviar </button>
+            <button type="submit" className="chatbutton"> 📩 </button>
         </form>
         </section>
         </div>

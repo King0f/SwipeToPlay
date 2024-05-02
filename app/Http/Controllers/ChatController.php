@@ -18,8 +18,21 @@ class ChatController extends Controller
         $mensaje->id_chat = $request->id_chat;
         $mensaje->id_usuario = $request->id_usuario;
         $mensaje->mensaje = $request->mensaje;
+        $mensaje->username = $request->username;
         $mensaje->save();
         return response("ok",200);
+    }
+
+    function obtenerChats(Request $request){
+        $matches = Matches::where('id_user1', $request->user()->id)
+                      ->orWhere('id_user2', $request->user()->id)
+                      ->get();
+        $chats = [];
+        foreach($matches as $match){
+            $chat = Chat::where("id_match", $match->id)->first();
+            $chats [] = $chat;
+        }
+        return response()->json($chats);   
     }
 
 }

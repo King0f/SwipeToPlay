@@ -9,7 +9,7 @@ import Login from './pages/Login.jsx';
 import Swipe from './pages/Swipe.jsx';
 import Profile from './pages/Profile.jsx';	
 import RiotUser from './pages/RiotUser.jsx';
-import ChatComp from './components/ChatComp.jsx';
+import Chats from './pages/Chats.jsx';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <Route path='/Swipe' element={<Swipe />}></Route>
         <Route path='/Profile' element={<Profile />}></Route>
         <Route path='/RiotUser' element={<RiotUser />}></Route>
-        <Route path='/Chat' element={<ChatComp />}></Route>
+        <Route path='/Chat' element={<Chats />}></Route>
       </Routes>
     </Router>
     </>

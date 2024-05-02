@@ -3,10 +3,32 @@ import { create } from "zustand";
 export const chatStore = create((set,get) => ({
     mensajes: [],
     chats: [],
+    getChats: async () =>{
+        try{
+            const token = localStorage.getItem('token');
+            if (!token) throw new Error('No token found');
+  
+            const headers = new Headers({
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            });
+            const response = await fetch(`http://localhost/SwipeToPlay/public/api/obtenerChats`, {
+              method: 'GET',
+              headers: headers
+            });
+            if (!response.ok) throw new Error('Network response was not ok');
+  
+            const data = await response.json();
+            set({ chats: data });
+            
+        }catch(err){
+            console.error(err)
+        }
+    },
     setMensaje: (mensaje) =>{
         set(() => ({ mensajes: [...mensaje] }))
     },
-    getMensajes: async (idChat, msgs) => {
+    getMensajes: async (idChat) => {
         try{
             const token = localStorage.getItem('token');
             if (!token) throw new Error('No token found');
@@ -30,7 +52,7 @@ export const chatStore = create((set,get) => ({
             console.error(err)
         }
     },
-    guardarMensaje: async (chat,id_usuario,mensaje) => {
+    guardarMensaje: async (chat,id_usuario,mensaje, username) => {
         const token = localStorage.getItem('token');
             if (!token) throw new Error('No token found');
   
@@ -38,7 +60,8 @@ export const chatStore = create((set,get) => ({
         const payload = {
             id_chat: chat,
             id_usuario: id_usuario,
-            mensaje: mensaje
+            mensaje: mensaje,
+            username: username
         };
 
         const options = {
