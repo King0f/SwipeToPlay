@@ -50,7 +50,7 @@ function Login() {
         if(resultado.token) {
           localStorage.setItem('token', resultado.token); // Guarda el token en localStorage
           localStorage.setItem('username', 0);
-          navigate('/RiotUser'); // Redirige al inicio usando navigate
+          navigate('/'); // Redirige al inicio usando navigate
         }
       })
       .catch(err => console.log(err));
