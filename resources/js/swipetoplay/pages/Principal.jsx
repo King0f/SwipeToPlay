@@ -5,13 +5,13 @@ import Header from '../components/Header';
 import { riotStore } from '../store/riotStore/riotStore';
 
     function Principal() {
-    const {summoner, obtenerDatosInvocador} = riotStore((state) => ({
+    /* const {summoner, obtenerDatosInvocador} = riotStore((state) => ({
         summoner: state.summoner,
         obtenerDatosInvocador: state.obtenerDatosInvocador,
     }))
     useEffect(() => {
         obtenerDatosInvocador("SalmorejoKing/EUW", "europe");
-      }, []);
+      }, []); */
 
 
   return (
@@ -32,10 +32,9 @@ import { riotStore } from '../store/riotStore/riotStore';
         <button>Chats</button>
       </Link>
     </div>
-    {summoner && summoner.map((sum, index) => (
+    {/* {summoner && summoner.map((sum, index) => (
             <p>{sum[index]}</p>
-        ))}
-    {console.log(process.env.AUTOPREFIXER_GRID)}
+        ))} */}
     </>
   )
 }

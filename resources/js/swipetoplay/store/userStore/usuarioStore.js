@@ -1,8 +1,5 @@
 import { create } from "zustand";
 import { apiStore } from "../apiStore/apiStore";
-const {localhost} = apiStore((state) => ({
-    localhost: state.localhost,
-}))
 export const usuarioStore = create((set) => ({
     usuario: [],
     usuarioID: [],
@@ -11,6 +8,7 @@ export const usuarioStore = create((set) => ({
     },
     obtenerUsuarioById: async (id) => {
       try {
+        const localhost = apiStore.getState().localhost;
         const token = localStorage.getItem('token');
         if (!token) throw new Error('No token found');
   
@@ -34,6 +32,7 @@ export const usuarioStore = create((set) => ({
     },
     obtenerUsuario: async () => {
         try {
+          const localhost = apiStore.getState().localhost;
           const token = localStorage.getItem('token');
           if (!token) throw new Error('No token found');
 

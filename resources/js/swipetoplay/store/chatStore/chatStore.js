@@ -1,13 +1,12 @@
 import { create } from "zustand";
 import { apiStore } from "../apiStore/apiStore";
-const {localhost} = apiStore((state) => ({
-    localhost: state.localhost,
-}))
+
 export const chatStore = create((set,get) => ({
     mensajes: [],
     chats: [],
     getChats: async () =>{
         try{
+            const localhost = apiStore.getState().localhost;
             const token = localStorage.getItem('token');
             if (!token) throw new Error('No token found');
   
@@ -33,6 +32,7 @@ export const chatStore = create((set,get) => ({
     },
     getMensajes: async (idChat) => {
         try{
+            const localhost = apiStore.getState().localhost;
             const token = localStorage.getItem('token');
             if (!token) throw new Error('No token found');
   
@@ -56,6 +56,7 @@ export const chatStore = create((set,get) => ({
         }
     },
     guardarMensaje: async (chat,id_usuario,mensaje, username) => {
+        const localhost = apiStore.getState().localhost;
         const token = localStorage.getItem('token');
             if (!token) throw new Error('No token found');
   

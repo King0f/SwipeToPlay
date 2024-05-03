@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
-import { apiStore } from "../apiStore/apiStore";
+import { apiStore } from "../store/apiStore/apiStore";
 
 function Register() {
 
