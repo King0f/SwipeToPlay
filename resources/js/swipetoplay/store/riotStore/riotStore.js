@@ -1,6 +1,5 @@
 import { create } from "zustand";
 
-
 export const riotStore = create((set) => ({
     summoner: [],
     obtenerDatosInvocador: async (nombreInvocador, region) =>{

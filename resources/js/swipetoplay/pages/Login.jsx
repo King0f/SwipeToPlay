@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
-
-
+import { apiStore } from "../store/apiStore/apiStore";
 
 function Login() {
 
+  const {localhost} = apiStore((state) => ({
+    localhost: state.localhost,
+  }))
     const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -41,7 +43,7 @@ function Login() {
         body: JSON.stringify(user),
       };
 
-      const url = "http://localhost/SwipeToPlay/public/api/login";
+      const url = `${localhost}/api/login`
 
       /* El código está realizando una solicitud POST a la URL especificada con las opciones proporcionadas. */
       fetch(url, options)

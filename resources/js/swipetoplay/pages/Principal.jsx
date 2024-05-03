@@ -35,6 +35,7 @@ import { riotStore } from '../store/riotStore/riotStore';
     {summoner && summoner.map((sum, index) => (
             <p>{sum[index]}</p>
         ))}
+    {console.log(process.env.AUTOPREFIXER_GRID)}
     </>
   )
 }

@@ -1,5 +1,8 @@
 import { create } from "zustand";
-
+import { apiStore } from "../apiStore/apiStore";
+const {localhost} = apiStore((state) => ({
+    localhost: state.localhost,
+}))
 export const chatStore = create((set,get) => ({
     mensajes: [],
     chats: [],
@@ -12,7 +15,7 @@ export const chatStore = create((set,get) => ({
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`,
             });
-            const response = await fetch(`http://localhost/SwipeToPlay/public/api/obtenerChats`, {
+            const response = await fetch(`${localhost}/api/obtenerChats`, {
               method: 'GET',
               headers: headers
             });
@@ -37,7 +40,7 @@ export const chatStore = create((set,get) => ({
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`,
             });
-            const response = await fetch(`http://localhost/SwipeToPlay/public/api/obtenerMensajes/${idChat}`, {
+            const response = await fetch(`${localhost}/api/obtenerMensajes/${idChat}`, {
               method: 'GET',
               headers: headers
             });
@@ -56,7 +59,7 @@ export const chatStore = create((set,get) => ({
         const token = localStorage.getItem('token');
             if (!token) throw new Error('No token found');
   
-        const url = "http://localhost/SwipeToPlay/public/api/guardarMensaje";  
+        const url = `${localhost}/api/guardarMensaje`;  
         const payload = {
             id_chat: chat,
             id_usuario: id_usuario,

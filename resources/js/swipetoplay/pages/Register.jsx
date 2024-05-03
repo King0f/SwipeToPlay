@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
-
-
+import { apiStore } from "../apiStore/apiStore";
 
 function Register() {
 
+  const {localhost} = apiStore((state) => ({
+    localhost: state.localhost,
+}))
     const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -46,7 +48,7 @@ function Register() {
      /* La variable `const url` almacena el punto final de la URL al que se enviarán los datos de
      registro. En este caso, se establece en "http://localhost/TareaRestaurante2/public/api/register".
      Esta URL se utiliza en la función `fetch` para realizar una solicitud POST al servidor y registrar un nuevo usuario. */
-      const url = "http://localhost/SwipeToPlay/public/api/register";
+      const url = `${localhost}/api/register`;
 
       /* El código está realizando una solicitud POST a la URL especificada con las opciones proporcionadas. */
       fetch(url, options)

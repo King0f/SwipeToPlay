@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
+import { apiStore } from "../store/apiStore/apiStore";
 const RiotUser = () => {
+    const {localhost} = apiStore((state) => ({
+        localhost: state.localhost,
+    }))
     const [riotAccount, setRiotAccount] = useState("");
     const [termsAccepted, setTermsAccepted] = useState(false);
 
@@ -16,7 +19,7 @@ const RiotUser = () => {
             return;
         }
         // Aquí manejarías el envío del nombre de cuenta y la validación con tu backend
-        const url = "http://localhost/SwipeToPlay/public/api/riotUser";  
+        const url = `${localhost}/api/riotUser`;  
         const payload = {
             riotID: riotAccount
         };

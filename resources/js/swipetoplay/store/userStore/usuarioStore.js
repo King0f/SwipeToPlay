@@ -1,5 +1,8 @@
 import { create } from "zustand";
-
+import { apiStore } from "../apiStore/apiStore";
+const {localhost} = apiStore((state) => ({
+    localhost: state.localhost,
+}))
 export const usuarioStore = create((set) => ({
     usuario: [],
     usuarioID: [],
@@ -15,7 +18,7 @@ export const usuarioStore = create((set) => ({
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         });
-        const response = await fetch(`http://localhost/SwipeToPlay/public/api/user/${id}`, {
+        const response = await fetch(`${localhost}/api/user/${id}`, {
           method: 'GET',
           headers: headers
         });
@@ -38,7 +41,7 @@ export const usuarioStore = create((set) => ({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
           });
-          const response = await fetch('http://localhost/SwipeToPlay/public/api/user', {
+          const response = await fetch(`${localhost}/api/user`, {
             method: 'GET',
             headers: headers
           });

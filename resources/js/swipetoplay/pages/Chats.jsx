@@ -3,8 +3,12 @@ import { chatStore } from "../store/chatStore/chatStore";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import ChatComp from "../components/ChatComp";
 import Header from "../components/Header";
+import { apiStore } from "../store/apiStore/apiStore";
 
 function Chats() {
+    const {localhost} = apiStore((state) => ({
+        localhost: state.localhost,
+    }))
     const { chats, getChats } = chatStore(state => ({
         chats: state.chats,
         getChats: state.getChats
@@ -27,7 +31,7 @@ function Chats() {
                 const otherUserId = chat.id_user1 === usuario.id ? chat.id_user2 : chat.id_user1;
                 const user = await obtenerUsuarioById(otherUserId);
                 if (user) {
-                    const imagePath = user.imageName ? `http://localhost/SwipeToPlay/public/imagenes/${user.imageName}` : photoURL;
+                    const imagePath = user.imageName ? `${localhost}/imagenes/${user.imageName}` : photoURL;
                     details[chat.id] = {
                         username: user.username,
                         imagePath: imagePath
