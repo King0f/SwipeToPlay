@@ -14,7 +14,7 @@ import Chats from './pages/Chats.jsx';
 function App() {
   return (
     <>
-    <Router basename="/SwipeToPlay/public">
+    <Router /* basename="/SwipeToPlay/public" */>
       <Routes>
         <Route path='/' element={<Principal />}></Route>
         <Route path='/Testing' element={<Testing />}></Route>
