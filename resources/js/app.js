@@ -1,6 +1,7 @@
 import './bootstrap';
+import './swipetoplay/main'
 
-const API_KEY = 'RGAPI-56d05df7-381c-4387-9dba-9e8a67280e4f';
+/* const API_KEY = 'RGAPI-56d05df7-381c-4387-9dba-9e8a67280e4f';
 
 async function obtenerDatosInvocador(nombreInvocador, region) {
     const summonerUrl = `https://${region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${nombreInvocador}`;
@@ -41,4 +42,4 @@ obtenerDatosInvocador(nombreInvocador, region)
         console.log('Historial de partidas:');
         console.log(data.matchHistory);
     })
-    .catch((error) => console.error(error));
+    .catch((error) => console.error(error)); */
