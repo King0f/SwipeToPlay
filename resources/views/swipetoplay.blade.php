@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>SwipeToPlay</title>
         @viteReactRefresh
-        @vite('resources/js/swipetoplay/main.jsx')
+        @vite('resources/js/app.js')
     </head>
     <body >
         <div id='root'></div>
