@@ -3,8 +3,8 @@ import filters from '../../../assets/ajustes-deslizadores.svg';
 
 const Filters = () => {
   return (
-    <div className="mt-12 ml-5 rounded-full h-3/4 w-16 bg-slate-300 p-5">
-      <div className='bg-gray-500 rounded-full p-1'><img src={filters} className=''/></div>
+    <div className="h-screen w-60 bg-slate-300 p-5">
+      <div className='bg-gray-500 w-8 rounded-full mt-5 m-auto p-1'><img src={filters} className=''/></div>
       <br/>
       <br/>
       <div>Filtro 2</div>
