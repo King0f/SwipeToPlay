@@ -55,6 +55,29 @@ export const chatStore = create((set,get) => ({
             console.error(err)
         }
     },
+    obtenerMatchPorChat: async (idChat) => {
+        try{
+            const localhost = apiStore.getState().localhost;
+            const token = localStorage.getItem('token');
+            if (!token) throw new Error('No token found');
+  
+            const headers = new Headers({
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            });
+            const response = await fetch(`${localhost}/api/obtenerMatchPorChat/${idChat}`, {
+              method: 'GET',
+              headers: headers
+            });
+            if (!response.ok) throw new Error('Network response was not ok');
+  
+            const data = await response.json();
+            return data;
+            
+        }catch(err){
+            console.error(err)
+        }
+    },
     guardarMensaje: async (chat,id_usuario,mensaje, username) => {
         const localhost = apiStore.getState().localhost;
         const token = localStorage.getItem('token');

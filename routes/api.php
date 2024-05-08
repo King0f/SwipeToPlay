@@ -26,5 +26,6 @@ Route::get('/user/{id}', [Controller::class, 'obtenerUsuarioByID']);
 Route::post('/subirImagen', [AuthController::class, 'subirImagen']);
 Route::post('/riotUser', [Controller::class, 'crearConexionRiotUsuario'])->middleware('auth:sanctum');
 Route::get('/obtenerMensajes/{idChat}', [ChatController::class, 'obtenerMensajes']);
+Route::get('/obtenerMatchPorChat/{idChat}', [ChatController::class, 'obtenerMatchPorChat']);
 Route::post('/guardarMensaje', [ChatController::class, 'guardarMensaje']);
 Route::get('/obtenerChats', [ChatController::class, 'obtenerChats'])->middleware('auth:sanctum');

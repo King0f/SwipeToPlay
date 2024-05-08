@@ -9,9 +9,10 @@ function Chats() {
     const {localhost} = apiStore((state) => ({
         localhost: state.localhost,
     }))
-    const { chats, getChats } = chatStore(state => ({
+    const { chats, getChats, obtenerMatchPorChat } = chatStore(state => ({
         chats: state.chats,
-        getChats: state.getChats
+        getChats: state.getChats,
+        obtenerMatchPorChat: state.obtenerMatchPorChat
     }));
     const { usuario, obtenerUsuarioById } = usuarioStore(state => ({
         usuario: state.usuario,
@@ -28,7 +29,8 @@ function Chats() {
         const fetchUserDetails = async () => {
             const details = {};
             for (const chat of chats) {
-                const otherUserId = chat.id_user1 === usuario.id ? chat.id_user2 : chat.id_user1;
+                const usernames = await obtenerMatchPorChat(chat.id)
+                const otherUserId = usernames.id_user1 === usuario.id ? usernames.id_user2 : usernames.id_user1;
                 const user = await obtenerUsuarioById(otherUserId);
                 if (user) {
                     const imagePath = user.imageName ? `${localhost}/imagenes/${user.imageName}` : photoURL;

@@ -26,6 +26,9 @@ class Controller extends BaseController
         $conexion = new Conexiones();
         $conexion->id_user = $usuario->id;
         $conexion->riotID = $request->riotID;
+        $conexion->juego = $request->juego;
+        $conexion->rango = $request->rango;
+        $conexion->posicion = $request->posicion;
         $conexion->save();
         return response("Riot User guardado con exito!",200);
     }

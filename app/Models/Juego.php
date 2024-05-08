@@ -20,5 +20,10 @@ class Juego extends Model
 
     protected $fillable = [
         'nombre',
-        'rangos'];
+        'rangos'
+    ];
+    protected $casts = [
+        'rangos' => 'array'
+    ];
 }
+    

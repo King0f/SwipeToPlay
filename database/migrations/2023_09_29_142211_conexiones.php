@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('conexiones', function (Blueprint $table) {
             $table->id()->primaryKey();
             $table->string('riotID');
+            $table->string('juego');
+            $table->string('rango');
+            $table->string('posicion');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users');
         });

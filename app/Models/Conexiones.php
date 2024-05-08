@@ -20,5 +20,8 @@ class Conexiones extends Model
 
     protected $fillable = [
         'riotID',
+        'juego',
+        'rango',
+        'posicion',
         'id_user'];
 }

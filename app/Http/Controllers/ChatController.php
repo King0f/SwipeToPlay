@@ -34,5 +34,10 @@ class ChatController extends Controller
         }
         return response()->json($chats);   
     }
+    function obtenerMatchPorChat($idChat){
+        $chat = Chat::where("id", $idChat)->first();
+        $match = Matches::where("id", $chat->id_match)->first();
+        return response()->json($match);
+    }
 
 }

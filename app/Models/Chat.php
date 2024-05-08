@@ -19,7 +19,5 @@ class Chat extends Model
     //campos
 
     protected $fillable = [
-        'id_user1',
-        'id_user2',
-        'id_match',];
+        'id_match'];
 }

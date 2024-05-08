@@ -7,6 +7,10 @@ const RiotUser = () => {
         localhost: state.localhost,
     }))
     const [riotAccount, setRiotAccount] = useState("");
+    const [rango, setRango] = useState("")
+    const [juego, setJuego] = useState("")
+    const [posicion, setPosicion] = useState("")
+
     const [termsAccepted, setTermsAccepted] = useState(false);
 
     const navigate = useNavigate();
@@ -21,7 +25,9 @@ const RiotUser = () => {
         // Aquí manejarías el envío del nombre de cuenta y la validación con tu backend
         const url = `${localhost}/api/riotUser`;  
         const payload = {
-            riotID: riotAccount
+            riotID: riotAccount,
+            juego: juego,
+            posicion: posicion
         };
 
         const options = {
@@ -52,7 +58,7 @@ const RiotUser = () => {
         <div className="h-screen bg-gray-900 flex items-center justify-center">
             <div className="bg-gray-800 bg-opacity-90 p-8 rounded-md shadow-lg w-96">
                 <h1 className="text-xl font-bold text-white mb-6">Bienvenido a SwipeToPlay!</h1>
-                <p className="text-white mb-4">En esta página usamos cuentas de Riot para realizar algunas de las funcionalidades de la página como la función Match! Por favor, inserte el nombre de su cuenta de Riot:</p>
+                <p className="text-white mb-4">Por favor, completa los siguientes datos para poder usar la funcionalidad de Match dentro de la página:</p>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
@@ -62,6 +68,91 @@ const RiotUser = () => {
                         placeholder="Nombre de cuenta de Riot"
                         required
                     />
+                    <select
+                        value={juego}
+                        onChange={(e) => setJuego(e.target.value)}
+                        className="w-full px-3 py-2 mb-4 border bg-gray-700 rounded-md text-white"
+                        required
+                    >
+                        <option value="">Selecciona un juego</option>
+                        <option value="League of Legends">League of Legends</option>
+                        <option value="Valorant">Valorant</option>
+                    </select>
+
+                    {/* Dropdown for selecting rank */}
+                    { juego === "League of Legends" && (
+                        <select
+                            value={rango}
+                            onChange={(e) => setRango(e.target.value)}
+                            className="w-full px-3 py-2 mb-4 border bg-gray-700 rounded-md text-white"
+                            required
+                        >
+                            <option value="">Selecciona un rango</option>
+                            <option value="Hierro">Hierro</option>
+                            <option value="Bronce">Bronce</option>
+                            <option value="Plata">Plata</option>
+                            <option value="Oro">Oro</option>
+                            <option value="Platino">Platino</option>
+                            <option value="Esmeralda">Esmeralda</option>
+                            <option value="Diamante">Diamante</option>
+                            <option value="Master">Master</option>
+                            <option value="GrandMaster">GrandMaster</option>
+                            <option value="Challenger">Challenger</option>
+                        </select>
+                    )}
+
+                    { juego === "Valorant" && (
+                        <select
+                            value={rango}
+                            onChange={(e) => setRango(e.target.value)}
+                            className="w-full px-3 py-2 mb-4 border bg-gray-700 rounded-md text-white"
+                            required
+                        >
+                            <option value="">Selecciona tu rango en el juego.</option>
+                            <option value="Hierro">Hierro</option>
+                            <option value="Bronce">Bronce</option>
+                            <option value="Plata">Plata</option>
+                            <option value="Oro">Oro</option>
+                            <option value="Platino">Platino</option>
+                            <option value="Esmeralda">Esmeralda</option>
+                            <option value="Diamante">Diamante</option>
+                            <option value="Inmortal">Inmortal</option>
+                            <option value="Radiant">Radiant</option> 
+                        </select>
+                    )}
+
+                    {/* Dropdown for selecting position */}
+                    { juego === "League of Legends" && (
+                        <select
+                            value={posicion}
+                            onChange={(e) => setPosicion(e.target.value)}
+                            className="w-full px-3 py-2 mb-4 border bg-gray-700 rounded-md text-white"
+                            required
+                        >
+                            <option value="">Selecciona tu posición más jugada del juego.</option>
+                            <option value="Top">Top</option>
+                            <option value="Jungla">Jungla</option>
+                            <option value="Medio">Medio</option>
+                            <option value="AD Carry">AD Carry</option>
+                            <option value="Soporte">Soporte</option>
+                        </select>
+                    )}
+
+                    { juego === "Valorant" && (
+                        <select
+                            value={posicion}
+                            onChange={(e) => setPosicion(e.target.value)}
+                            className="w-full px-3 py-2 mb-4 border bg-gray-700 rounded-md text-white"
+                            required
+                        >
+                            <option value="">Selecciona tu tipo de personaje más jugado del juego.</option>
+                            <option value="Duelista">Duelista</option>
+                            <option value="Iniciador">Iniciador</option>
+                            <option value="Centinela">Centinela</option>
+                            <option value="Controlador">Controlador</option>
+                        </select>
+                    )}
+
                     <div className="flex items-center mb-4">
                         <input
                             type="checkbox"
