@@ -12,7 +12,7 @@ const MensajeComp = ({mensaje, User, photoURL}) => {
       }, []);
     return(
       <div className={`message ${mensajeClass}`}>
-        <img src={photoURL} className="chatimg" />
+        <img src={User.imagen} className="chatimg bg-white" />
         <div className="message-info">
             <p className="chatp">{mensaje.mensaje}</p>
             <p className={`hora${mensajeClass}`}>{mensaje.created_at ? format(parseISO(mensaje.created_at), 'HH:mm') : ''}</p>

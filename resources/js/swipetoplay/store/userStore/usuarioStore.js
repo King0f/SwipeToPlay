@@ -52,5 +52,27 @@ export const usuarioStore = create((set) => ({
           console.error(err);
           // Puedes manejar el error de alguna manera específica si lo necesitas
         }
+      },
+      guardarFotoPerfil: async (file) => {
+        const localhost = apiStore.getState().localhost;
+        const token = localStorage.getItem('token');
+            if (!token) throw new Error('No token found');
+        const url = `${localhost}/api/subirImagen`;
+        const formData = new FormData();
+        formData.append('file', file);
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+              'Authorization': `Bearer ${token}`
+          },
+          body: formData
+      });
+  
+      if (!response.ok) {
+          throw new Error('Failed to upload image');
       }
+  
+      const data = await response.json();
+      set({ usuario: data })
+    }
 }) )

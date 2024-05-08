@@ -19,7 +19,7 @@ export default function ProfileComp() {
                 <div className="username-container flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center">
                     <div className="profile-container">
                         <div className="profile-img">
-                            <img src="https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png" alt="Profile Picture" />
+                        <img src={usuario.imagen ? usuario.imagen : "https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png"} alt="Profile Picture" />
                         </div>
                         <div className="profile-description">
                         <p className="user-title">{usuario.username }</p>

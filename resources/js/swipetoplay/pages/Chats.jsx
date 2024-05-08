@@ -33,7 +33,7 @@ function Chats() {
                 const otherUserId = usernames.id_user1 === usuario.id ? usernames.id_user2 : usernames.id_user1;
                 const user = await obtenerUsuarioById(otherUserId);
                 if (user) {
-                    const imagePath = user.imageName ? `${localhost}/imagenes/${user.imageName}` : photoURL;
+                    const imagePath = user.imagen;
                     details[chat.id] = {
                         username: user.username,
                         imagePath: imagePath
@@ -60,7 +60,7 @@ function Chats() {
                 >
                     {userDetails[chat.id] ? (
                         <div className="flex items-center space-x-4">
-                            <img src={userDetails[chat.id].imagePath || 'https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png'} alt={`${userDetails[chat.id].username}'s profile`} className="w-10 h-10 rounded-full"/>
+                            <img src={userDetails[chat.id].imagePath || 'https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png'} alt={`${userDetails[chat.id].username}'s profile`} className="w-10 h-10 rounded-full bg-white"/>
                             <p className="text-white text-lg"><b>{userDetails[chat.id].username}</b></p>
                         </div>
                     ) : "Loading..."}
