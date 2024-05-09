@@ -35,7 +35,8 @@ class UserFactory extends Factory
             'password' => Hash::make('12345678'),  // Asegurarse que las contraseñas están hasheadas
             'lvl_premium' => $lvl_premium,
             'desplazamientos' => $desplazamientos,
-            'imagen' => null,  // Dejar el campo de imagen vacío
+            'imagen' => null,
+            'likes' => $this->faker->numberBetween(1, 999)  // Dejar el campo de imagen vacío
         ];
     }
 

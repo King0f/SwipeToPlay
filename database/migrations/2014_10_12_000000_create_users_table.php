@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('lvl_premium');
             $table->integer('desplazamientos');
             $table->string('imagen')->nullable();
+            $table->integer('likes');
             $table->rememberToken();
             $table->timestamps();
         });

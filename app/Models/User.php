@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'lvl_premium',
         'desplazamientos',
-        'imagen'
+        'imagen',
+        'likes'
     ];
 
     /**
