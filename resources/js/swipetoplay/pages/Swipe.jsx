@@ -3,6 +3,9 @@ import Header from '../components/Header'
 import Filters from '../components/Filters'
 import { usuarioStore } from '../store/userStore/usuarioStore'
 import imagenUser from '../../../assets/profile.jpg'
+import Icon_social_like_l from '../components/Icon_social_like_l'
+import Icon_actions_close_l from '../components/Icon_actions_close_l'
+import Icon_social_like_m from '../components/Icon_social_like_m'
 const Swipe = () => {
   const {usuario, usuarioSwipe, obtenerUsuarioSwipe, obtenerConexionLOL, obtenerConexionValorant, actionSwipe} = usuarioStore((state) => ({
     usuario: state.usuario,
@@ -38,38 +41,41 @@ const Swipe = () => {
     }
   }
 
-  
+
   return (
     <>
     <Header/>
     <div className='flex justify-between'>
     <Filters/>
-    <div className='flex m-auto'>
-    <div className='flex flex-col'>
+    <div className='flex mx-auto mb-20 mt-14'>
+    <div className='flex flex-col justify-around'>
     <p className='text-center text-4xl font-Swipe font-semibold'>Swipe</p>
     <div className='flex'>
-    <div className='self-center w-12 h-12 rounded-full border-2 bg-gray-500'>
-    <button onClick={() => handleAction(2)}> Pass </button>
-    </div>
+    <div className='m-auto mr-5'><button onClick={() => handleAction(2)}> <Icon_actions_close_l fill="red"/></button></div>
     <div className='w-96 h-96 border-2 bg-gray-300'>
-      <img src={usuarioSwipe.imagen  || imagenUser} className="profile-img"></img>
-      <p>{usuarioSwipe.username}</p>
-      <p>Total de likes de este usuario: {usuarioSwipe.likes}</p>
-      <h3><b>Datos de League of Legends:</b></h3>
-      <p>Nombre de la cuenta de Riot: {conexionLOL.riotID}</p>
-      <p>Rango del jugador: {conexionLOL.rango} </p>
-      <p>Posicion más jugada:{conexionLOL.posicion}</p>
-      <h3><b>Datos de Valorant:</b></h3>
-      <p>Nombre de la cuenta de Riot: {conexionValorant.riotID} </p>
-      <p>Rango del jugador:{conexionValorant.rango} </p>
-      <p>Posicion más jugada: {conexionValorant.posicion} </p>
-      <p>Total de deslizamientos restantes: {usuario.desplazamientos}</p>
+      <img src={usuarioSwipe.imagen  || imagenUser} className="profile-img m-auto mt-2"/>
+      <p className='text-center font-Swipe font-semibold text-red-600'>{usuarioSwipe.username}</p>
+      <div className='flex font-Swipe justify-center'><p>{usuarioSwipe.likes}</p><Icon_social_like_m fill="red"/></div>
+      <hr />
+      <div className='flex justify-around'>
+      <div className='flex flex-col border-r-2'>
+      <h3><b>League of Legends</b></h3>
+      <p>ID: {conexionLOL.riotID}</p>
+      <p>Rank: {conexionLOL.rango} </p>
+      <p>Rol: {conexionLOL.posicion}</p>
+      </div>
+      <div className='flex flex-col'>
+      <h3><b>Valorant</b></h3>
+      <p>ID: {conexionValorant.riotID} </p>
+      <p>Rank: {conexionValorant.rango} </p>
+      <p>Rol: {conexionValorant.posicion} </p>
+      </div>
+      </div>
+      <p className='text-center'>Total de deslizamientos restantes: {usuario.desplazamientos}</p>
     </div>
-    <div className='self-center w-12 h-12 rounded-full border-2 bg-gray-500'>
-    <button onClick={() => handleAction(1)}> Like </button>
+    <div className='m-auto ml-5'><button onClick={() => handleAction(1)}> <Icon_social_like_l fill="lightgreen"/></button></div>
     </div>
-    </div>
-    <div className='w-16 h-16 bg-gray-500 m-auto rounded-full mt-4'></div>
+    <div className='h-16 bg-gray-500 w-1/2 mx-auto mt-4'>Superlike</div>
     </div>
     </div>
     </div>
