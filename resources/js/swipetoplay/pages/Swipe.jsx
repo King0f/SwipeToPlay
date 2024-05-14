@@ -9,6 +9,7 @@ import Icon_social_like_l from '../components/Icon_social_like_l'
 import Icon_actions_close_l from '../components/Icon_actions_close_l'
 import Icon_social_like_m from '../components/Icon_social_like_m'
 import Icon_social_pleasures_xl from '../components/Icon_social_pleasures_xl'
+import {ToastContainer, Zoom, toast } from 'react-toastify'
 const Swipe = () => {
   const {usuario, usuarioSwipe, obtenerUsuarioSwipe, obtenerConexionLOL, obtenerConexionValorant, actionSwipe} = usuarioStore((state) => ({
     usuario: state.usuario,
@@ -39,8 +40,13 @@ const Swipe = () => {
 
   const handleAction = async (action) => {
     try{
-      actionSwipe(usuarioSwipe.id, action)
-      fetchData();
+      if (usuario.desplazamientos <= 0 && usuario.lvl_premium != 2){
+        toast.error("No tienes deslizamientos suficientes para realizar esta accion.", 
+        {position: 'top-right',className:'foo-bar',theme:'light',transition:Zoom, autoClose:3000, })
+      }else{
+        actionSwipe(usuarioSwipe.id, action)
+        fetchData();
+      }
     }catch{
 
     }
@@ -50,6 +56,7 @@ const Swipe = () => {
     <>
     <Header/>
     <div className='flex justify-between'>
+    <ToastContainer pauseOnFocusLoss={false} limit={3} />
     <Filters/>
     <div className='flex mx-auto mb-20 mt-14'>
     <div className='flex flex-col justify-around'>
@@ -74,7 +81,7 @@ const Swipe = () => {
       <p><b>Rol: </b> {conexionValorant.posicion} </p>
       </div>
       </div>
-      <p className='text-center mt-10'>Total de deslizamientos restantes: {usuario.desplazamientos}</p>
+      <p className='text-center mt-10'>Total de deslizamientos restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</p>
     </div>
     <div className=' self-center ml-5 rounded-full w-12 h-12 hover:bg-green-300 '><div className='ml-2 mt-2'><button onClick={() => handleAction(1)} className=''><Icon_social_like_l fill="green"/></button></div></div>
     </div>
