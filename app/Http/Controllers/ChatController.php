@@ -24,13 +24,20 @@ class ChatController extends Controller
     }
 
     function obtenerChats(Request $request){
-        $matches = Matches::where('id_user1', $request->user()->id)
-                      ->orWhere('id_user2', $request->user()->id)
-                      ->get();
+        $userId = $request->user()->id;
+        $matches = Matches::where(function($query) use ($userId) {
+            $query->where('id_user1', $userId)
+            ->whereNotNull('id_user2');
+        })->orWhere(function($query) use ($userId) {
+            $query->where('id_user2', $userId)
+            ->whereNotNull('id_user1');
+        })->get();
         $chats = [];
         foreach($matches as $match){
             $chat = Chat::where("id_match", $match->id)->first();
-            $chats [] = $chat;
+            if ($chat) {
+                $chats[] = $chat;
+            }
         }
         return response()->json($chats);   
     }

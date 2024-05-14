@@ -21,5 +21,6 @@ class Matches extends Model
     protected $fillable = [
         'id_user1',
         'id_user2',
+        'usuario_esperado',
         'id_juego'];
 }

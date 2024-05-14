@@ -48,10 +48,10 @@ export default function Header() {
 
         <div className="">
           <div
-            onClick={() => setCurrentPage("Blablabla")}
-            className={`text-black font-Swipe ${currentPage === "Blablabla" ? "font-bold" : ""} nav-link`}
+            onClick={() => setCurrentPage("Chatting")}
+            className={`text-black font-Swipe ${currentPage === "Chatting" ? "font-bold" : ""} nav-link`}
           >
-            <Link to="/blablabla">Blablabla</Link>
+            <Link to="/Chat">Chatting</Link>
           </div>
         </div>
 

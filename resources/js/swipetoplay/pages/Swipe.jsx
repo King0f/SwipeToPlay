@@ -20,26 +20,27 @@ const Swipe = () => {
   }))
   const [conexionLOL, setConexionLOL] = useState([]);
   const [conexionValorant, setConexionValorant] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        await obtenerUsuarioSwipe();
-        const conexionLOLData = await obtenerConexionLOL(usuarioSwipe.id);
-        const conexionValorantData = await obtenerConexionValorant(usuarioSwipe.id);
-        setConexionLOL(conexionLOLData);
-        setConexionValorant(conexionValorantData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+  async function fetchData() {
+    try {
+      await obtenerUsuarioSwipe();
+      const conexionLOLData = await obtenerConexionLOL(usuarioSwipe.id);
+      const conexionValorantData = await obtenerConexionValorant(usuarioSwipe.id);
+      setConexionLOL(conexionLOLData);
+      setConexionValorant(conexionValorantData);
+      console.log(conexionLOL)
+      console.log(conexionValorant)
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
-
+  }
+  useEffect(() => {
     fetchData();
   }, []);
 
   const handleAction = async (action) => {
     try{
       actionSwipe(usuarioSwipe.id, action)
-      obtenerUsuarioSwipe();
+      fetchData();
     }catch{
 
     }
