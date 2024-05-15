@@ -1,4 +1,5 @@
 import './bootstrap';
+import './swipetoplay/main'
 
 /* const API_KEY = 'RGAPI-56d05df7-381c-4387-9dba-9e8a67280e4f';
 
