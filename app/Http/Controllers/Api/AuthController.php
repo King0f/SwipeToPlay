@@ -68,7 +68,7 @@ class AuthController extends Controller
                 'public/imagenes',
                 $user->id . '.' . $request->file('file')->getClientOriginalExtension()
             );
-            $user->imagen = str_replace('public/', 'storage/', $path);
+            $user->imagen = str_replace('public/', '../storage/', $path);
             $user->save();
     
             return response()->json($user);
