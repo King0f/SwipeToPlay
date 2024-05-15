@@ -11,13 +11,15 @@ import Icon_social_like_m from '../components/Icon_social_like_m'
 import Icon_social_pleasures_xl from '../components/Icon_social_pleasures_xl'
 import {ToastContainer, Zoom, toast } from 'react-toastify'
 const Swipe = () => {
-  const {usuario, usuarioSwipe, obtenerUsuarioSwipe, obtenerConexionLOL, obtenerConexionValorant, actionSwipe} = usuarioStore((state) => ({
+  const {usuario, usuarioSwipe, obtenerUsuarioSwipe, obtenerConexionLOL, obtenerConexionValorant, actionSwipe, swipesResetTimer, resetTimer} = usuarioStore((state) => ({
     usuario: state.usuario,
     usuarioSwipe: state.usuarioSwipe,
     obtenerUsuarioSwipe: state.obtenerUsuarioSwipe,
     obtenerConexionLOL: state.obtenerConexionLOL,
     obtenerConexionValorant: state.obtenerConexionValorant,
-    actionSwipe: state.actionSwipe
+    actionSwipe: state.actionSwipe,
+    swipesResetTimer: state.swipesResetTimer,
+    resetTimer: state.resetTimer
   }))
   const [conexionLOL, setConexionLOL] = useState([]);
   const [conexionValorant, setConexionValorant] = useState([]);
@@ -36,6 +38,8 @@ const Swipe = () => {
   }
   useEffect(() => {
     fetchData();
+    /* swipesResetTimer();
+    console.log(resetTimer) */
   }, []);
 
   const handleAction = async (action) => {
@@ -82,6 +86,7 @@ const Swipe = () => {
       </div>
       </div>
       <p className='text-center mt-10'>Total de deslizamientos restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</p>
+      {/* <p className='text-center mt-10'>Siguiente reseteo de deslizamientos: {resetTimer}</p> */}
     </div>
     <div className=' self-center ml-5 rounded-full w-12 h-12 hover:bg-green-300 '><div className='ml-2 mt-2'><button onClick={() => handleAction(1)} className=''><Icon_social_like_l fill="green"/></button></div></div>
     </div>

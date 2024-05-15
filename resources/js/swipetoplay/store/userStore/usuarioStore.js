@@ -4,6 +4,7 @@ export const usuarioStore = create((set) => ({
     usuario: [],
     usuarioID: [],
     usuarioSwipe: [],
+    resetTimer: [],
     setear: (user) =>{
         set(() => ({ usuario: user }))
     },
@@ -181,5 +182,28 @@ export const usuarioStore = create((set) => ({
         throw new Error('Elija una opcion valida.');
       }
       
+    },
+    swipesResetTimer: async () => {
+      try {
+        const localhost = apiStore.getState().localhost;
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error('No token found');
+
+        const headers = new Headers({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        });
+        const response = await fetch(`${localhost}/api/timerReset`, {
+          method: 'GET',
+          headers: headers
+        });
+        if (!response.ok) throw new Error('Network response was not ok');
+
+        const data = await response.json();
+        set({ resetTimer: data }); // Actualizamos el estado directamente aquí
+      } catch (err) {
+        console.error(err);
+        // Puedes manejar el error de alguna manera específica si lo necesitas
+      }
     }
 }) )
