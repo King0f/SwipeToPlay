@@ -20,10 +20,10 @@ Route::get('/', function () {
     return view('swipetoplay');
 });
 
-Route::get('/swipetoplay', function () {
+/* Route::get('/swipetoplay', function () {
     return view('swipetoplay');
 })->name("swipetoplay");
-
+ */
 Route::get('cine', function () {
     return view('cine');
 })->name("cine");
