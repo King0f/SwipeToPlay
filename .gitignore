@@ -17,4 +17,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-./resources/js/swipetoplay/store/apiStore/apiStore.js
+/resources/js/swipetoplay/store/apiStore/apiStore.js
