@@ -20,12 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('swipetoplay', function () {
+Route::get('/swipetoplay', function () {
     return view('swipetoplay');
-});
+})->name("swipetoplay");
 Route::get('cine', function () {
     return view('cine');
-});
+})->name("cine");
 Route::get('/enviarCorreo', function () {
     $destinatario = 'javier.ruiz@doc.medac.es';
     Mail::to($destinatario)->send(new ReservaMail());
