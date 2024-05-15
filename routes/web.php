@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('swipetoplay');
-});
+})->name('/');
 
 /* Route::get('/swipetoplay', function () {
     return view('swipetoplay');
