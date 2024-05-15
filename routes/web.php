@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('swipetoplay');
+    return view('welcome');
 });
 
 Route::get('/enviarCorreo', function () {

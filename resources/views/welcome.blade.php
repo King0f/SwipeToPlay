@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{route('restaurante')}}">Restaurante</a>
+                    <a href="{{route('swipetoplay')}}">Swipe to Play</a>
                     <a href="{{route('cine')}}">Cine</a>
                 </div>
             </div>
