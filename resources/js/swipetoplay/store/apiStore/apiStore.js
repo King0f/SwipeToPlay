@@ -4,6 +4,6 @@ export const apiStore = create((set) => ({
     //RUTA PARA PLESK: ""
     localhost: "http://localhost/SwipeToPlay/public",
     //RUTA PARA LOCALHOST: "/SwipeToPlay/public/swipetoplay" 
-    //RUTA PARA PLESK: "/swipetoplay"
-    basename: "/swipetoplay"
+    //RUTA PARA PLESK: "swipetoplay"
+    basename: "swipetoplay"
 }))
