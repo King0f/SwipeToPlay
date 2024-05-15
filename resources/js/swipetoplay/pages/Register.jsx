@@ -4,8 +4,9 @@ import { apiStore } from "../store/apiStore/apiStore";
 
 function Register() {
 
-  const {localhost} = apiStore((state) => ({
+  const {localhost, path} = apiStore((state) => ({
     localhost: state.localhost,
+    path: state.basename
 }))
     const [formData, setFormData] = useState({
     username: "",
@@ -57,7 +58,7 @@ function Register() {
         if(resultado.token) {
           localStorage.setItem('token', resultado.token); // Guarda el token en localStorage
           localStorage.setItem('username', 0);
-           navigate('/RiotUser'); // Redirige al inicio usando navigate
+           navigate(path + '/RiotUser'); // Redirige al inicio usando navigate
         }
       })
       .catch(err => console.log(err));
@@ -107,7 +108,7 @@ function Register() {
               </button>
             </form>
             <div className="mt-4 text-white text-center">
-              ¿Ya tienes cuenta? <Link to="/Login" className="text-red-500 underline font-bold">Inicia sesión aquí.</Link>
+              ¿Ya tienes cuenta? <Link to={path + "/Login"} className="text-red-500 underline font-bold">Inicia sesión aquí.</Link>
             </div>
           </div>
         </div>

@@ -4,8 +4,9 @@ import { apiStore } from "../store/apiStore/apiStore";
 
 function Login() {
 
-  const {localhost} = apiStore((state) => ({
+  const {localhost,path} = apiStore((state) => ({
     localhost: state.localhost,
+    path: state.basename
   }))
     const [formData, setFormData] = useState({
     email: "",
@@ -52,7 +53,7 @@ function Login() {
         if(resultado.token) {
           localStorage.setItem('token', resultado.token); // Guarda el token en localStorage
           localStorage.setItem('username', 0);
-          navigate('/'); // Redirige al inicio usando navigate
+          navigate(path); // Redirige al inicio usando navigate
         }
       })
       .catch(err => console.log(err));
@@ -91,7 +92,7 @@ function Login() {
               </button>
             </form>
             <div className="mt-4 text-white text-center">
-              ¿Aún no tienes cuenta? <Link to="/Register" className="text-red-500 font-bold underline">Registrate aquí.</Link>
+              ¿Aún no tienes cuenta? <Link to={path + "/Register"} className="text-red-500 font-bold underline">Registrate aquí.</Link>
             </div>
           </div>
         </div>

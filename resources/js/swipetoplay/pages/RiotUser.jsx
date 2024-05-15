@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { apiStore } from "../store/apiStore/apiStore";
 const RiotUser = () => {
-    const {localhost} = apiStore((state) => ({
+    const {localhost,path} = apiStore((state) => ({
         localhost: state.localhost,
+        path: state.basename
     }))
     const [riotAccount, setRiotAccount] = useState("");
     const [rango, setRango] = useState("")
@@ -43,7 +44,7 @@ const RiotUser = () => {
             .then(response => {
                 if (response.ok) { // Verifica si la respuesta del servidor es 200-299
                     console.log("Respuesta del servidor: OK");
-                    navigate('/'); // Redireccionar a la página principal o dashboard tras el éxito
+                    navigate(path); // Redireccionar a la página principal o dashboard tras el éxito
                 } else {
                     throw new Error('Algo salió mal en la solicitud al servidor'); // Lanza un error si la respuesta no es satisfactoria
                 }

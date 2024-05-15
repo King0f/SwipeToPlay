@@ -7,9 +7,11 @@ import conectarLol from '../../../assets/conectarLol.jpg'
 import conectarValo from '../../../assets/conectarValo.jpg'
 import conectarDiscord from '../../../assets/conectarDiscord.jpg'
 import {useNavigate } from "react-router-dom";
+import { apiStore } from "../store/apiStore/apiStore";
 
 const Profile = () => {
     const navigate = useNavigate();
+    const path = apiStore.getState().basename;
     const {usuario, obtenerUsuario, guardarFotoPerfil} = usuarioStore((state) => ({
       usuario: state.usuario,
       obtenerUsuario: state.obtenerUsuario,
@@ -19,7 +21,7 @@ const Profile = () => {
       obtenerUsuario();
     }, []);
     const home = () => {
-        navigate('/');
+        navigate(path);
     };
     const fileInputRef = useRef(null);
 

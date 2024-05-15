@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/App.css'
+import { apiStore } from "../store/apiStore/apiStore";
 
 export default function ProfileComp() {
   const token = !!localStorage.getItem('token');
+  const path = apiStore.getState().basename;
   /* debugger; */
   const {usuario, obtenerUsuario} = usuarioStore((state) => ({
     usuario: state.usuario,
@@ -15,7 +17,7 @@ export default function ProfileComp() {
   }, []);
   return (
     <>
-      {token ? (<Link to="/Profile">
+      {token ? (<Link to={path + "/Profile"}>
                 <div className="username-container flex bg-slate-900 bg-opacity-45 rounded-full h-16 justify-center px-5 items-center">
                     <div className="profile-container">
                         <div className="profile-img">
@@ -30,7 +32,7 @@ export default function ProfileComp() {
                         <i className="bi bi-three-dots"></i>
                     </div>
                 </div>
-            </Link>): (<Link to="/Login">
+            </Link>): (<Link to={path + "/Login"}>
             <div className="username-container">
                 <div className="profile-container">
                     <div className="profile-img">
