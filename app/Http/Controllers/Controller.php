@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class Controller extends BaseController
 {
@@ -31,5 +32,10 @@ class Controller extends BaseController
         $conexion->posicion = $request->posicion;
         $conexion->save();
         return response("Riot User guardado con exito!",200);
+    }
+    public function timerReset()
+    {
+        $eventInfo = DB::select("SELECT LAST_EXECUTED FROM information_schema.EVENTS WHERE EVENT_SCHEMA = 'swipetoplay' AND EVENT_NAME = 'reset_desplazamientos'");
+        return response()->json($eventInfo);
     }
 }
