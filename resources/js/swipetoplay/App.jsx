@@ -10,13 +10,10 @@ import Swipe from './pages/Swipe.jsx';
 import Profile from './pages/Profile.jsx';	
 import RiotUser from './pages/RiotUser.jsx';
 import Chats from './pages/Chats.jsx';
-import { apiStore } from './store/apiStore/apiStore.js';
 
 function App() {
-  const basename = apiStore.getState().basename;
   return (
     <>
-    <Router basename={basename}>
       <Routes>
         <Route path='/' element={<Principal />}></Route>
         <Route path='/Testing' element={<Testing />}></Route>
@@ -28,7 +25,6 @@ function App() {
         <Route path='/RiotUser' element={<RiotUser />}></Route>
         <Route path='/Chat' element={<Chats />}></Route>
       </Routes>
-    </Router>
     </>
   )
 }
