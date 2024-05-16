@@ -10,7 +10,7 @@ use App\Models\Chat;
 class ChatController extends Controller
 {
     function obtenerMensajes($idChat){
-        $mensajes = Mensajes::where("id_chat", $idChat)->orderBy("created_at", "asc")->get();
+        $mensajes = Mensajes::where("id_chat", $idChat)->orderBy("created_at", "desc")->get();
         return response()->json($mensajes);
     }
     function guardarMensaje(Request $request){

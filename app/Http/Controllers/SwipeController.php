@@ -11,6 +11,7 @@ use App\Models\User;
 class SwipeController extends Controller
 {
     function obtenerUsuarioSwipe(Request $request){
+        $userId = $request->user()->id;
         // Cuenta todos los usuarios
         $totalUsuarios = User::count();
 
@@ -19,7 +20,7 @@ class SwipeController extends Controller
         }
 
         $randomIndex = rand(1, $totalUsuarios) - 1; 
-        $usuarioAleatorio = User::skip($randomIndex)->first();
+        $usuarioAleatorio = User::skip($randomIndex)->whereNot("id",$userId)->first();
 
         // Devuelve el usuario aleatorio
         return response()->json($usuarioAleatorio); 

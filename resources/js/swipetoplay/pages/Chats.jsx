@@ -46,8 +46,9 @@ function Chats() {
 
     return (
     <>
-        <div className="flex h-screen bg-black">
-        <div className="w-full  min-[400px]:w-1/2 sm:w-1/4 md:w-1/4 lg:w-1/4 xl:w-1/4 overflow-y-auto">
+    <Header />
+        <div className="flex h-[91vh] bg-black">
+        <div className="w-full mt-3 min-[400px]:w-1/2 sm:w-1/4 md:w-1/4 lg:w-1/4 xl:w-1/4 overflow-y-auto">
             {chats?.map((chat) => (
                 <div
                     key={chat?.id}
@@ -66,7 +67,7 @@ function Chats() {
 
             <div className="w-3/4 flex justify-center items-center bg-gray-900 text-white">
                 {selectedChatId ? (
-                    <ChatComp chatId={selectedChatId} />
+                    <ChatComp chatId={selectedChatId} urlReceived={userDetails[selectedChatId].imagePath || 'https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png'} />
                 ) : (
                     <div>Select a chat to view details</div>
                 )}
