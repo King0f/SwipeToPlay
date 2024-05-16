@@ -88,7 +88,7 @@ const Swipe = () => {
       <p className='text-center mt-10'>Total de deslizamientos restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</p>
       {/* <p className='text-center mt-10'>Siguiente reseteo de deslizamientos: {resetTimer}</p> */}
     </div>
-    <div id="containerSwipe" className='w-[400px] h-[450px] border-4 border-red-800 bg-red-400 mx-2'>
+    <div id="containerSwipe" className='w-[400px] h-[450px] border-4 border-red-800 bg-red-400 mx-2 '>
       <img src={usuarioSwipe.imagen  || imagenUser} className="w-24 rounded-full border-4 border-black m-auto mt-2"/>
       <p className='text-center text-size-xl font-Swipe font-semibold text-black mt-2'>{usuarioSwipe.username}</p>
       <div className='flex font-Swipe justify-center mb-4 font-semibold mt-1'><p>{usuarioSwipe.likes}</p><Icon_social_like_m fill="green"/></div>
