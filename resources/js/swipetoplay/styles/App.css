@@ -171,3 +171,6 @@ a {
   cursor: pointer;
 }
 
+.contenttt{
+    transition: transform 0.5s;
+}
