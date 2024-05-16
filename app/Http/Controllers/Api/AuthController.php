@@ -40,6 +40,7 @@ class AuthController extends Controller
                 'username' => $request->username,
                 'lvl_premium' => 0,
                 'desplazamientos' => 10,
+                'likes' => 0,
                 'imagen' => null,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)

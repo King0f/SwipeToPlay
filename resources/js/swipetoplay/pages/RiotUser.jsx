@@ -23,11 +23,11 @@ const RiotUser = () => {
             alert("Debe aceptar los términos y condiciones para continuar.");
             return;
         }
-        // Aquí manejarías el envío del nombre de cuenta y la validación con tu backend
         const url = `${localhost}/api/riotUser`;  
         const payload = {
             riotID: riotAccount,
             juego: juego,
+            rango: rango,
             posicion: posicion
         };
 
