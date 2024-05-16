@@ -76,9 +76,13 @@ const Profile = () => {
             <div className="relative w-1/2 m-auto rounded-full" 
                 onMouseEnter={() => setHovered(true)} 
                 onMouseLeave={() => setHovered(false)}>
-              <img src={usuario.imagen || imagenUser} className="rounded-full hover:bg-gray-700 hover:opacity-90" onClick={handleEditPictureClick} />
+              <img
+                src={usuario.imagen || imagenUser}
+                className="rounded-full h-64 object-fit border-2 border-black"
+                onClick={handleEditPictureClick}
+              />
               {hovered && (
-                <span className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-50 p-2 rounded-full text-2xl" onClick={handleEditPictureClick}>
+                <span className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-70 p-2 rounded-full text-2xl" onClick={handleEditPictureClick}>
                   <b>Cambiar imagen</b>
                 </span>
               )}

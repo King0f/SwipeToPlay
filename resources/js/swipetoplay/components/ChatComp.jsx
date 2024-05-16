@@ -3,7 +3,7 @@ import { usuarioStore } from "../store/userStore/usuarioStore"
 import "../styles/Chat.css"
 import { useState, useEffect, useRef } from "react"
 import MensajeComp from "./MensajeComp"
-const ChatComp = ({ chatId }) => {
+const ChatComp = ({ chatId, urlReceived}) => {
     const dummy = useRef()
     const [formValue, setFormValue] = useState('');
     const chat = chatId
@@ -44,17 +44,22 @@ const ChatComp = ({ chatId }) => {
         
         
     }, [getMensajes, chat, chatId])
-    useEffect(() => {
-        dummy.current.scrollIntoView({behavior: 'smooth'});
-    },[mensajes])
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (formValue.trim()) {
             await guardarMensaje(chat, usuario.id, formValue, usuario.username);
             await getMensajes(chat);
             setFormValue('');
-            dummy.current.scrollIntoView({behavior: 'smooth'});
+            if (dummy.current) {
+                const scrollableContainer = dummy.current.parentNode; // Asumiendo que el contenedor padre es scrollable
+                const dummyPosition = dummy.current.offsetEnd; // Posición de `dummy` relativa al contenedor scrollable
+                const scrollPosition = dummyPosition + dummy.current.clientHeight - scrollableContainer.clientHeight;
+                scrollableContainer.scrollTo({
+                  top: scrollPosition,
+                  behavior: 'smooth'
+                });
+              }
         }
     }
     return (
@@ -62,7 +67,7 @@ const ChatComp = ({ chatId }) => {
         <section>
         <main className="chatmain">
         {mensajes && mensajes.map((msg, index) => (
-            <MensajeComp key={msg.id || index} mensaje={msg} User ={usuario} photoURL={photoURL}/>
+            <MensajeComp key={msg.id || index} mensaje={msg} User ={usuario} photoURL={usuario.imagen || photoURL} urlReceived={urlReceived}/>
         ))} 
         <div ref={dummy}></div>
         </main>
