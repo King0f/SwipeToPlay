@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react'
-import { Link} from "react-router-dom";
+import { useState, useEffect, useRef } from 'react'
+import { Link, useNavigate} from "react-router-dom";
 import '../styles/App.css'
 import Header from '../components/Header';
+import textoPagPrincipal from '../../../assets/textoPagPrincipal.png'
+import instrucciones from '../../../assets/instrucciones.png'
+import textoLogo2 from '../../../assets/textoLogo2.png'
 import { riotStore } from '../store/riotStore/riotStore';
+import { apiStore } from '../store/apiStore/apiStore';
+import Footer from '../components/Footer';
 
     function Principal() {
+        const navigate = useNavigate();
+        const path = apiStore.getState().basename;
     /* const {summoner, obtenerDatosInvocador} = riotStore((state) => ({
         summoner: state.summoner,
         obtenerDatosInvocador: state.obtenerDatosInvocador,
@@ -13,11 +20,15 @@ import { riotStore } from '../store/riotStore/riotStore';
         obtenerDatosInvocador("SalmorejoKing/EUW", "europe");
       }, []); */
 
+      const swiper = () =>{
+        navigate(path + "/Swipe");
+    }
 
   return (
     <>
     <Header />
     <div className="App mt-10">
+    <img src={textoPagPrincipal}/>
     <div>
     <p className='text-center text-size-3xl mb-5 font-semibold font-Swipe text-red-800'>Choose Your Subscription</p>
     <div className="w-full h-96 flex justify-center">
@@ -60,7 +71,15 @@ import { riotStore } from '../store/riotStore/riotStore';
 
     </div>
 </div>
+    <div className='my-36'></div>
+    <div className='bg-black h-[500px]'>
+        <img src={instrucciones} className='w-10/12'/>
     </div>
+    <div className='mb-72 bg-black flex justify-center pb-10'>
+        <button className='bg-red-600 w-56 h-14 hover:bg-red-800 hover:text-white hover:border-4 hover:border-yellow-300 transition' onClick={swiper}><p className='font-Swipe text-size-l font-semibold'>Start Swiping</p></button>
+    </div>
+    <Footer/>
+        </div>
     </>
   )
 }
