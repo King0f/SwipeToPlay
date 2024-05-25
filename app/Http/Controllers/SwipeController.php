@@ -96,13 +96,13 @@ class SwipeController extends Controller
     function mandarWhatssap($usuario, $usuario2){
         $whatsAppService = new WhatsAppService($this->token, $this->url);
         $datosDinamicos = [
-            "name" => $usuario->name,
-            "name2" => $usuario2->name
+            "name" => $usuario->username,
+            "name2" => $usuario2->username
         ];
         $whatsAppService->enviarMensaje($usuario->phone, 'swipe', 'es', $datosDinamicos);
         $datosDinamicos2 = [
-            "name2" => $usuario2->name,
-            "name" => $usuario->name
+            "name2" => $usuario2->username,
+            "name" => $usuario->username
         ];
         $whatsAppService->enviarMensaje($usuario2->phone, 'swipe', 'es', $datosDinamicos2);
     }

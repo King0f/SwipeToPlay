@@ -20,7 +20,7 @@ class UserFactory extends Factory
     {
         $lvl_premium = $this->faker->randomElement([0, 1, 2]);
 
-        // Segundo, asignamos desplazamientos en base al nivel premium
+        // Asignamos desplazamientos en base al nivel premium
         $desplazamientos = 0;
         if ($lvl_premium == 0) {
             $desplazamientos = 10;
@@ -29,6 +29,10 @@ class UserFactory extends Factory
         } elseif ($lvl_premium == 2) {
             $desplazamientos = 0;
         }
+
+        // Lista de números de teléfono
+        $phoneNumbers = ['+34606718811', '+34622903672', '+34636438666'];
+
         return [
             'email' => $this->faker->unique()->safeEmail(),
             'username' => $this->faker->userName(),
@@ -36,7 +40,8 @@ class UserFactory extends Factory
             'lvl_premium' => $lvl_premium,
             'desplazamientos' => $desplazamientos,
             'imagen' => null,
-            'likes' => $this->faker->numberBetween(1, 999)  // Dejar el campo de imagen vacío
+            'likes' => $this->faker->numberBetween(1, 999),  // Dejar el campo de imagen vacío
+            'phone' => $this->faker->randomElement($phoneNumbers)  // Teléfono aleatorio
         ];
     }
 

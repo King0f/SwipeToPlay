@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('desplazamientos');
             $table->string('imagen')->nullable();
             $table->integer('likes');
+            $table->string('phone');
             $table->rememberToken();
             $table->timestamps();
         });
