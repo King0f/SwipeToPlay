@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <>
-<div className='bg-black  h-[500px] flex'>
+<div className='bg-black  h-[400px] flex'>
         <div className='flex flex-col'>
         <img src={textoLogo2} className='ml-20 pt-10'/>
         <p className='font-Swipe text-center text-size-xl text-white font-medium mt-20'>Questions, feedback or need help?</p>

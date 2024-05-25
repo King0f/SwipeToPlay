@@ -72,8 +72,8 @@ import Footer from '../components/Footer';
     </div>
 </div>
     <div className='my-36'></div>
-    <div className='bg-black h-[600px] '>
-        <img src={instrucciones}/>
+    <div className='bg-black h-[500px]'>
+        <img src={instrucciones} className='w-10/12'/>
     </div>
     <div className='mb-72 bg-black flex justify-center pb-10'>
         <button className='bg-red-600 w-56 h-14 hover:bg-red-800 hover:text-white hover:border-4 hover:border-yellow-300 transition' onClick={swiper}><p className='font-Swipe text-size-l font-semibold'>Start Swiping</p></button>

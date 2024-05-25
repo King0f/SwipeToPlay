@@ -10,6 +10,7 @@ import {useNavigate } from "react-router-dom";
 import { apiStore } from "../store/apiStore/apiStore";
 import 'boxicons'
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -73,8 +74,8 @@ const Profile = () => {
           </div>
 
           <div className='flex flex-col w-1/3'>
-            <div className="relative w-1/2 m-auto rounded-full flex items-center justify-center" 
-                onMouseEnter={() => setHovered(true)} 
+            <div className="relative w-1/2 m-auto rounded-full flex items-center justify-center"
+                onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}>
               <img
                 src={usuario.imagen || imagenUser}
@@ -96,7 +97,7 @@ const Profile = () => {
                 accept="image/*"
             />
           </div>
-        
+
 
         <div className=' flex-col w-3/3 m-auto'>
         <p className='text-center font-Swipe text-red-500 text-xl font-extrabold mt-10'>Información del Usuario</p>
@@ -117,11 +118,12 @@ const Profile = () => {
           })()}
         </div>
         </div>
-          
-        
+
+
     </div>
+    <div className="mt-72"><Footer/></div>
     </div>
-    
+
   )
 }
 
