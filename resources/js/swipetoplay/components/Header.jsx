@@ -12,14 +12,19 @@ export default function Header() {
   const [currentPage, setCurrentPage] = useState("Home");
   const navigate = useNavigate();
   const popUpNotLogged = () => {
-    toast.warning("Necesitas tener una cuenta y estar logeado para entrar a esta página.", 
+    toast.warning("Necesitas tener una cuenta y estar logeado para entrar a esta página.",
     {position: 'top-left',theme:'light',transition:Zoom, autoClose:3000, })
   };
+
+  const init = () => {
+    navigate(path);
+  };
+
   return (
     <div className="w-full flex justify-center h-16 bg-black-300 bg-opacity-75">
       <header className="fixed top-0 w-full h-20 clearNav z-50 flex items-center justify-around bg-opacity-35">
         <div className="mx-5 w-1/3">
-          <img src={imagenEjemplo} alt="TextoLogo" className=""/>
+          <img src={imagenEjemplo} alt="TextoLogo" onClick={init}/>
         </div>
     {token ? (
       <>
@@ -38,7 +43,7 @@ export default function Header() {
               className={`text-black font-Swipe ${currentPage === "Profile" ? "font-bold" : ""} nav-link`}
             >
             <Link to={path + "/Swipe"}>Start Swiping</Link>
-              
+
             </div>
           </div>
 
@@ -78,7 +83,7 @@ export default function Header() {
               className={`text-black font-Swipe ${currentPage === "Profile" ? "font-bold" : ""} nav-link`}
             >
             <Link><button onClick={popUpNotLogged}>Start Swiping</button></Link>
-              
+
             </div>
           </div>
 
