@@ -10,6 +10,7 @@ import {useNavigate } from "react-router-dom";
 import { apiStore } from "../store/apiStore/apiStore";
 import 'boxicons'
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Tarjetas = () => {
     const navigate = useNavigate();
@@ -58,7 +59,7 @@ const Tarjetas = () => {
     <div className="pt-20">
   <Header />
   <div className="flex w-full p-2 justify-center">
-    <div className="fixed left-5 flex flex-col p-2 border-2 border-red-300 rounded justify-center transform -translate-y-1/2 top-1/2">
+    <div className="fixed left-5 flex flex-col p-2 border-2 border-red-300 rounded justify-center transform -translate-y-1/2 top-1/3">
       <Link to={path + "/Profile"}>
         <button className="flex p-2 hover:bg-red-400 rounded">
           <box-icon name="user"></box-icon>
@@ -227,8 +228,9 @@ const Tarjetas = () => {
       </main>
     )}
     </div>
-</div>
 
+<footer><Footer/></footer>
+</div>
     
   )
 }
