@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Tarjeta;
 
 
 class AuthController extends Controller
@@ -120,5 +121,24 @@ class AuthController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+    }
+    public function obtenerTarjetas(Request $request) {
+        $usuario = $request->user();
+        $tarjetas = $usuario->tarjeta;
+
+        return response()->json($tarjetas);
+    }
+    public function agregarTarjeta(Request $request) {
+        $usuario = $request->user();
+        $tarjeta = Tarjeta::create([
+            'titular' => $request->input("titular"),
+            'n_tarjeta' => $request->input("n_tarjeta"),
+            'f_caducidad' => $request->input("f_caducidad"),
+            'cvv' => $request->input("cvv"),
+            'id_cliente' => $usuario->id
+        ]);
+        $tarjeta->save();
+
+        return response()->json($tarjeta);
     }
 }

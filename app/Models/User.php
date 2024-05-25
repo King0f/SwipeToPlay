@@ -46,5 +46,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function tarjeta() {
+        return $this->hasMany(Tarjeta::class,'id_cliente');
+    }
 
 }

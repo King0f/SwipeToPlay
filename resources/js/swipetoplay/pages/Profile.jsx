@@ -64,7 +64,11 @@ const Profile = () => {
             <button class="flex p-2 hover:bg-red-400 rounded">
               <box-icon name='link-alt' ></box-icon>
             </button></Link>
-            <Link to={path + "/Condiguracion"}>
+            <Link to={path + "/HistorialMatch"}>
+            <button class="flex p-2 hover:bg-red-400 rounded">
+              <box-icon name='heart'></box-icon>
+            </button></Link>
+            <Link to={path + "/Configuracion"}>
             <button class="flex p-2 hover:bg-red-400 rounded">
               <box-icon name='cog' ></box-icon>
             </button></Link>

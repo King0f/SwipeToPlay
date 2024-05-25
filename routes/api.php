@@ -25,6 +25,8 @@ Route::post('/login', [AuthController::class, 'loginUser']);
 Route::get('/user', [Controller::class, 'obtenerUsuario'])->middleware('auth:sanctum');
 Route::get('/userSwipe', [SwipeController::class, 'obtenerUsuarioSwipe'])->middleware('auth:sanctum');
 Route::get('/user/{id}', [Controller::class, 'obtenerUsuarioByID']);
+Route::get('/tarjetas', [AuthController::class, 'obtenerTarjetas'])->middleware('auth:sanctum');
+Route::post('/newTarjeta', [AuthController::class, 'agregarTarjeta'])->middleware('auth:sanctum');
 Route::post('/subirImagen', [AuthController::class, 'subirImagen'])->middleware('auth:sanctum');
 Route::post('/riotUser', [Controller::class, 'crearConexionRiotUsuario'])->middleware('auth:sanctum');
 Route::get('/obtenerMensajes/{idChat}', [ChatController::class, 'obtenerMensajes']);
