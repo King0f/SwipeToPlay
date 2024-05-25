@@ -7,9 +7,14 @@ use App\Models\Conexiones;
 use App\Models\Matches;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Service\WhatsAppService;
 
 class SwipeController extends Controller
 {
+    private $token = 'EAAGHazWOFisBO3MhZBQZA8VMx8NSVHRtjXdEsZCtYs9KvQI9anSC7sL7BqVchtqRpaKktURX9aZClEymp9ILOuULwb8kzqcLkIqUnz1RAhHV5YVm8XCl0ia6LT2Cb9owfAvrCVJJgaEeB3KPoI3NUDM29SQErJ2rTugZCAoFoEep4XCSkftGq98KXtOo1Owr4HqwGUDEEP1SeBbrOD64uBIDoY5E1TZCok90YZD';
+    
+    private $url = 'https://graph.facebook.com/v18.0/239082649298144/messages';
+
     function obtenerUsuarioSwipe(Request $request){
         $userId = $request->user()->id;
         // Cuenta todos los usuarios
@@ -59,6 +64,7 @@ class SwipeController extends Controller
             $chat = new Chat();
             $chat->id_match = $match->id;
             $chat->save();
+            $this->mandarWhatssap($usuario, $userSwipe);
         }else{
             $match = Matches::where('id_user1', $userSwipe->id)->where('usuario_esperado', $usuario->id)->first();
             if ($match){
@@ -68,6 +74,7 @@ class SwipeController extends Controller
                 $chat = new Chat();
                 $chat->id_match = $match->id;
                 $chat->save();
+                $this->mandarWhatssap($usuario, $userSwipe);
             }else{
                 $match = new Matches();
                 $match->id_user1 = $usuario->id;
@@ -84,5 +91,19 @@ class SwipeController extends Controller
         $usuario->desplazamientos = $usuario->desplazamientos - 1;
         $usuario->save();
         return response()->json($usuario);
+    }
+
+    function mandarWhatssap($usuario, $usuario2){
+        $whatsAppService = new WhatsAppService($this->token, $this->url);
+        $datosDinamicos = [
+            "name" => $usuario->name,
+            "name2" => $usuario2->name
+        ];
+        $whatsAppService->enviarMensaje($usuario->phone, 'swipe', 'es', $datosDinamicos);
+        $datosDinamicos2 = [
+            "name2" => $usuario2->name,
+            "name" => $usuario->name
+        ];
+        $whatsAppService->enviarMensaje($usuario2->phone, 'swipe', 'es', $datosDinamicos2);
     }
 }
