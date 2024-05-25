@@ -4,20 +4,15 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Repository\DriverRepository;
-
 class MailchimpEmailService 
 {
     private $apiKey;
 
     private $url;
 
-    private DriverRepository $driverRepository;
-
-    public function __construct(string $apiKey, string $url, DriverRepository $driverRepository) {
+    public function __construct(string $apiKey, string $url) {
         $this->apiKey = $apiKey;
         $this->url = $url;
-        $this->driverRepository = $driverRepository;
     }
 
     public function enviarCampaña(string $fromEmail, string $htmlContentBase, array $htmlContentVersions, array $drivers): array {
@@ -68,10 +63,5 @@ class MailchimpEmailService
         curl_close($curl);
     
         return $response_data;
-    }    
-
-    public function findDriversWithValidity2($notification): array
-    {
-        return $this->driverRepository->findDriversWithValidity($notification->getTime(), $notification->getQuantity());
     }
 }

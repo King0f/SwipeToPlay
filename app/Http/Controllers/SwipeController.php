@@ -8,12 +8,17 @@ use App\Models\Matches;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Service\WhatsAppService;
+use App\Service\MailchimpEmailService;
 
 class SwipeController extends Controller
 {
     private $token = 'EAAGHazWOFisBO3MhZBQZA8VMx8NSVHRtjXdEsZCtYs9KvQI9anSC7sL7BqVchtqRpaKktURX9aZClEymp9ILOuULwb8kzqcLkIqUnz1RAhHV5YVm8XCl0ia6LT2Cb9owfAvrCVJJgaEeB3KPoI3NUDM29SQErJ2rTugZCAoFoEep4XCSkftGq98KXtOo1Owr4HqwGUDEEP1SeBbrOD64uBIDoY5E1TZCok90YZD';
     
     private $url = 'https://graph.facebook.com/v18.0/239082649298144/messages';
+
+    private $token2 = 'ce2479cf609aae0d0310bdbd69a6f519-us22';
+
+    private $url2 = 'https://mandrillapp.com/api/1.0/messages/send';
 
     function obtenerUsuarioSwipe(Request $request){
         $userId = $request->user()->id;
@@ -65,6 +70,7 @@ class SwipeController extends Controller
             $chat->id_match = $match->id;
             $chat->save();
             $this->mandarWhatssap($usuario, $userSwipe);
+            $this->mandarCorreo($usuario, $userSwipe);
         }else{
             $match = Matches::where('id_user1', $userSwipe->id)->where('usuario_esperado', $usuario->id)->first();
             if ($match){
@@ -75,6 +81,7 @@ class SwipeController extends Controller
                 $chat->id_match = $match->id;
                 $chat->save();
                 $this->mandarWhatssap($usuario, $userSwipe);
+                $this->mandarCorreo($usuario, $userSwipe);
             }else{
                 $match = new Matches();
                 $match->id_user1 = $usuario->id;
@@ -105,5 +112,38 @@ class SwipeController extends Controller
             "name" => $usuario->username
         ];
         $whatsAppService->enviarMensaje($usuario2->phone, 'swipe', 'es', $datosDinamicos2);
+    }
+
+    function mandarCorreo($usuario, $usuario2){
+        $mailchimpEmailService = new MailchimpEmailService($this->token2, $this->url2);
+        $htmlContentBase = $this->buildEmailContent();
+        $htmlContentVersions = [$htmlContentBase];
+        $drivers = [$usuario, $usuario2];
+
+        $mailchimpEmailService->enviarCampaña(
+            'your-email@example.com',
+            $htmlContentBase,
+            $htmlContentVersions,
+            $drivers
+        );
+    }
+
+    private function buildEmailContent(): string
+    {
+        $htmlContent = '
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Swipe to play</title>
+        </head>
+        <body>
+            <p>Hola,</p>
+            <p>Tienes un nuevo match!</p>
+            <p>No lo hagas esperar y disfrutad vuestras partidas.</p>
+            <a href="https://proyecto5.medacarena.com.es/swipetoplay">SwipeToPlay</a>
+        </body>
+        </html>';
+
+        return $htmlContent;
     }
 }
