@@ -69,7 +69,7 @@ function Chats() {
                 {selectedChatId ? (
                     <ChatComp chatId={selectedChatId} urlReceived={userDetails[selectedChatId].imagePath || 'https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png'} />
                 ) : (
-                    <div>Select a chat to view details</div>
+                    <div>Selecciona uno de los chats de la bandeja</div>
                 )}
             </div>
         </div>
