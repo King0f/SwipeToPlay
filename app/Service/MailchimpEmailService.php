@@ -15,11 +15,11 @@ class MailchimpEmailService
         $this->url = $url;
     }
 
-    public function enviarCampaña(string $fromEmail, string $htmlContentBase, array $htmlContentVersions, array $drivers): array {
+    public function enviarCampaña(string $fromEmail, string $htmlContentBase, array $htmlContentVersions, array $users ): array {
         $messageVersions = [];
-        foreach ($drivers as $index => $driver) {
+        foreach ($users as $index => $email) {
             $messageVersions[] = [
-                ["email" => $driver->getEmail(),
+                ["email" => $email,
                 "type" => "to"]
             ];
         }
@@ -28,7 +28,7 @@ class MailchimpEmailService
             "key" => $this->apiKey,
             "message" => [
                 "from_email" => $fromEmail,
-                "subject" => "Licencia de conducir",
+                "subject" => "Swipe To Play",
                 "text" => $htmlContentBase,
                 "to" => $messageVersions,
             ]

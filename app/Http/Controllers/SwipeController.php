@@ -16,7 +16,7 @@ class SwipeController extends Controller
     
     private $url = 'https://graph.facebook.com/v18.0/239082649298144/messages';
 
-    private $token2 = 'ce2479cf609aae0d0310bdbd69a6f519-us22';
+    private $token2 = 'md-SBL9a8HzhDQrHjOU3jeK2A';
 
     private $url2 = 'https://mandrillapp.com/api/1.0/messages/send';
 
@@ -118,13 +118,13 @@ class SwipeController extends Controller
         $mailchimpEmailService = new MailchimpEmailService($this->token2, $this->url2);
         $htmlContentBase = $this->buildEmailContent();
         $htmlContentVersions = [$htmlContentBase];
-        $drivers = [$usuario, $usuario2];
+        $users = [$usuario->email, $usuario2->email];
 
         $mailchimpEmailService->enviarCampaña(
-            'your-email@example.com',
+            'arc00036@gmail.com',
             $htmlContentBase,
             $htmlContentVersions,
-            $drivers
+            $users 
         );
     }
 
@@ -140,7 +140,6 @@ class SwipeController extends Controller
             <p>Hola,</p>
             <p>Tienes un nuevo match!</p>
             <p>No lo hagas esperar y disfrutad vuestras partidas.</p>
-            <a href="https://proyecto5.medacarena.com.es/swipetoplay">SwipeToPlay</a>
         </body>
         </html>';
 
