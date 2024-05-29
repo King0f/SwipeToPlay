@@ -6,12 +6,13 @@ import './styles/App.css'
 import Register from './pages/Register.jsx';
 import Login from './pages/Login.jsx';
 import Swipe from './pages/Swipe.jsx';
-import Profile from './pages/Profile.jsx';	
-import Tarjetas from './pages/Tarjetas.jsx';	
+import Profile from './pages/Profile.jsx';
+import Tarjetas from './pages/Tarjetas.jsx';
 import RiotUser from './pages/RiotUser.jsx';
 import Chats from './pages/Chats.jsx';
 import { apiStore } from './store/apiStore/apiStore.js'
 import Comprar from './pages/Comprar.jsx';
+import Games from './pages/Games.jsx';
 
 function App() {
   const path =  apiStore.getState().basename;
@@ -23,6 +24,7 @@ function App() {
         <Route path={path + '/Register'} element={<Register />}></Route>
         <Route path={path + '/Login'} element={<Login />}></Route>
         <Route path={path + '/Swipe'} element={<Swipe />}></Route>
+        <Route path={path + '/Games'} element={<Games />}></Route>
         <Route path={path + '/Profile'} element={<Profile />}></Route>
         <Route path={path + '/Tarjetas'} element={<Tarjetas />}></Route>
         <Route path={path + '/RiotUser'} element={<RiotUser />}></Route>

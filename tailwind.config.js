@@ -480,6 +480,10 @@ export default {
       fontFamily: {
         'Swipe': ['Poppins', 'sans-serif'],
       },
+      boxShadow: {
+        'custom-red': '0 8px 25px 5px rgba(255, 0, 0, 0.6)',
+        'custom-blue': '0 8px 25px 5px rgba(0, 0, 255, 0.6)',
+      },
       fontWeight: {
         'audienseBold': 'bold',
         'audienseSemiBold': '600',
