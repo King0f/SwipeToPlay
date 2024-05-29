@@ -38,3 +38,4 @@ Route::get('/obtenerConexionValorant/{id}', [SwipeController::class, 'obtenerCon
 Route::get('/handlePass', [SwipeController::class, 'handlePass'])->middleware('auth:sanctum');
 Route::post('/handleLike', [SwipeController::class, 'handleLike'])->middleware('auth:sanctum');
 Route::get('/timerReset', [Controller::class, 'timerReset']);
+Route::post('/procesarCompra', [Controller::class, 'procesarCompra'])->middleware('auth:sanctum');

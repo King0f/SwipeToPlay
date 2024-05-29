@@ -8,21 +8,41 @@ import textoLogo2 from '../../../assets/textoLogo2.png'
 import { riotStore } from '../store/riotStore/riotStore';
 import { apiStore } from '../store/apiStore/apiStore';
 import Footer from '../components/Footer';
+import { usuarioStore } from '../store/userStore/usuarioStore';
+import {ToastContainer, Zoom, toast } from 'react-toastify'
 
-    function Principal() {
-        const navigate = useNavigate();
-        const path = apiStore.getState().basename;
-    /* const {summoner, obtenerDatosInvocador} = riotStore((state) => ({
-        summoner: state.summoner,
-        obtenerDatosInvocador: state.obtenerDatosInvocador,
+function Principal() {
+    const navigate = useNavigate();
+    const path = apiStore.getState().basename;
+    const {usuario, obtenerUsuario} = usuarioStore((state) => ({
+        usuario: state.usuario,
+        obtenerUsuario: state.obtenerUsuario,
     }))
     useEffect(() => {
-        obtenerDatosInvocador("SalmorejoKing/EUW", "europe");
-      }, []); */
+        obtenerUsuario();
+    }, []);
 
-      const swiper = () =>{
+    const swiper = () =>{
         navigate(path + "/Swipe");
     }
+
+    const comprobarLvlPremium = (lvl) => {
+        if (lvl == 1) {
+            if (usuario.lvl_premium == lvl) {
+                toast.error("Usted ya tiene el nivel de suscripción premium.", {position: 'top-left', theme:'light', transition: Zoom, autoClose: 3000});
+            } else {
+                toast.dismiss(); // Cancela todos los toasts antes de navegar
+                navigate(path + '/ComprarPremium');
+            }
+        } else if (lvl == 2) {
+            if (usuario.lvl_premium == lvl) {
+                toast.error("Usted ya tiene el nivel de suscripción deluxe.", {position: 'top-left', theme:'light', transition: Zoom, autoClose: 3000});
+            } else {
+                toast.dismiss(); // Cancela todos los toasts antes de navegar
+                navigate(path + '/ComprarDeluxe');
+            }
+        }
+    };
 
   return (
     <>
@@ -52,7 +72,7 @@ import Footer from '../components/Footer';
     <p className='text-size-l text-center text-gray-500 font-Swipe font-medium'>Mensajes ilimitados</p>
     </div>
 
-    <button className='mb-4'><Link to={path + '/ComprarDeluxe'}><div className='w-44 h-12 m-auto border-red-900 border-2 bg-red-600 hover:bg-red-700 hover:border-red-950 flex justify-center'><p className='self-center text-size-l text-center text-white font-Swipe font-semibold'>Suscribirse</p></div></Link></button>
+    <button className='mb-4' onClick={() => comprobarLvlPremium(2)}><div className='w-44 h-12 m-auto border-red-900 border-2 bg-red-600 hover:bg-red-700 hover:border-red-950 flex justify-center'><p className='self-center text-size-l text-center text-white font-Swipe font-semibold'>Suscribirse</p></div></button>
    
    </div>
     <div className='w-60 h-80 border-4 self-center flex flex-col justify-between bg-gray-200 border-red-700'>
@@ -65,7 +85,7 @@ import Footer from '../components/Footer';
     <p className='text-size-m text-center text-gray-500 font-Swipe font-medium'>1 Superlike diario</p>
     <p className='text-size-m text-center text-gray-500 font-Swipe font-medium'>100 mensajes ilimitados</p>
     </div>
-    <button className='mb-4'><Link to={path + '/ComprarPremium'}><div className='w-44 h-12 m-auto border-red-900 border-2 bg-red-600 hover:bg-red-700 hover:border-red-950 flex justify-center'><p className='self-center text-size-l text-center text-white font-Swipe font-semibold'>Suscribirse</p></div></Link></button>
+    <button className='mb-4' onClick={() => comprobarLvlPremium(1)}><div className='w-44 h-12 m-auto border-red-900 border-2 bg-red-600 hover:bg-red-700 hover:border-red-950 flex justify-center'><p className='self-center text-size-l text-center text-white font-Swipe font-semibold'>Suscribirse</p></div></button>
     </div>
 
     </div>

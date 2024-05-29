@@ -3,12 +3,16 @@ import { usuarioStore } from '../store/userStore/usuarioStore';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import {ToastContainer, Zoom, toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom';
+import { apiStore } from '../store/apiStore/apiStore';
 
 const Comprar = ({ product, precio }) => {
   const [userDetailsOpen, setUserDetailsOpen] = useState(true);
   const [creditCardOpen, setCreditCardOpen] = useState(true);
   const [selectedCard, setSelectedCard] = useState('');
   const [isReadOnly, setIsReadOnly] = useState(false);
+  const path = apiStore.getState().basename;
+  const navigate = useNavigate();
   const tarjetaAñadida = () => {
     toast.success("Tarjeta de crédito añadida con éxito!",
     {position: 'top-left',theme:'light',transition:Zoom, autoClose:3000, })
@@ -19,13 +23,27 @@ const Comprar = ({ product, precio }) => {
     cardExpiry: '',
     cardCVC: ''
   });
+  const handlePurchase = () => {
+    if (!formData.cardName || !formData.cardNumber || !formData.cardExpiry || !formData.cardCVC) {
+        toast.error("Por favor, complete todos los campos de la tarjeta de crédito antes de finalizar la compra.", {position: 'top-left',theme:'light',transition:Zoom, autoClose:3000, })
+        return;
+      }
+    if(product == 'Suscripción Deluxe'){
+        procesarCompra(2);
+        navigate(path);
+    }else{
+        procesarCompra(1);
+        navigate(path);
+    }
+  };
 
-  const { usuario, tarjetas, obtenerUsuario, obtenerTarjetas, guardarTarjeta } = usuarioStore((state) => ({
+  const { usuario, tarjetas, obtenerUsuario, obtenerTarjetas, guardarTarjeta, procesarCompra } = usuarioStore((state) => ({
     usuario: state.usuario,
     tarjetas: state.tarjetas,
     obtenerUsuario: state.obtenerUsuario,
     obtenerTarjetas: state.obtenerTarjetas,
-    guardarTarjeta: state.guardarTarjeta
+    guardarTarjeta: state.guardarTarjeta,
+    procesarCompra: state.procesarCompra
   }));
 
   useEffect(() => {
@@ -64,12 +82,17 @@ const Comprar = ({ product, precio }) => {
   };
 
   const handleAddCard = () => {
-    const { cardName,cardNumber, cardExpiry, cardCVC } = formData;
-    guardarTarjeta(cardName,cardNumber, cardExpiry, cardCVC);
+    const { cardName, cardNumber, cardExpiry, cardCVC } = formData;
+    if (tarjetas.length >= 4) {
+        toast.error("No se pueden tener más de 4 tarjetas de crédito guardadas. Borre alguna en su perfil si desea añadir una nueva.",
+        {position: 'top-left',theme:'light',transition:Zoom, autoClose:3000, })
+        return;
+    }
+    guardarTarjeta(cardName, cardNumber, cardExpiry, cardCVC);
     obtenerTarjetas();
     setSelectedCard(cardNumber);
-    tarjetaAñadida();
-  };
+    tarjetaAñadida();  // Asumiendo que esta función maneja algo después de añadir la tarjeta
+};
 
   return (
     <>
@@ -182,6 +205,14 @@ const Comprar = ({ product, precio }) => {
                 </button>
               </div>
             )}
+            <div className="flex justify-center my-8">
+            <button 
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+            onClick={handlePurchase}
+            >
+                Finalizar Compra
+            </button>
+      </div>
           </div>
           <div className="w-1/2 p-4 border-l">
             <h2 className="text-2xl font-bold mb-4">Resumen de la Compra</h2>

@@ -38,4 +38,16 @@ class Controller extends BaseController
         $eventInfo = DB::select("SELECT LAST_EXECUTED FROM information_schema.EVENTS WHERE EVENT_SCHEMA = 'swipetoplay' AND EVENT_NAME = 'reset_desplazamientos'");
         return response()->json($eventInfo);
     }
+    public function procesarCompra(Request $request){
+        $usuario = $request->user();
+        if($request->input('action') == 1){
+            $usuario->lvl_premium = 1;
+            $usuario->save();
+            return response()->json($usuario); 
+        }elseif($request->input('action') == 2){
+            $usuario->lvl_premium = 2;
+            $usuario->save();
+            return response()->json($usuario);
+        }
+    }
 }

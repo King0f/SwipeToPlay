@@ -238,5 +238,25 @@ export const usuarioStore = create((set) => ({
         console.error(err);
         // Puedes manejar el error de alguna manera específica si lo necesitas
       }
+    },
+    procesarCompra: async (action) => {
+      const localhost = apiStore.getState().localhost;
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('No token found');
+        const payload = {
+          action: action,
+        };
+        const headers = new Headers({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        });
+        const response = await fetch(`${localhost}/api/procesarCompra`, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(payload)
+        });
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        set({usuario: data}); 
     }
 }) )

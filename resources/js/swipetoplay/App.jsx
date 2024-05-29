@@ -27,8 +27,8 @@ function App() {
         <Route path={path + '/Tarjetas'} element={<Tarjetas />}></Route>
         <Route path={path + '/RiotUser'} element={<RiotUser />}></Route>
         <Route path={path + '/Chat'} element={<Chats />}></Route>
-        <Route path={path + '/ComprarPremium'} element={<Comprar product="Subscripción Premium" precio="4.99€/Mes"/>}></Route>
-        <Route path={path + '/ComprarDeluxe'} element={<Comprar product="Subscripción Deluxe" precio="9.99€/Mes"/>}></Route>
+        <Route path={path + '/ComprarPremium'} element={<Comprar product="Suscripción Premium" precio="4.99€/Mes"/>}></Route>
+        <Route path={path + '/ComprarDeluxe'} element={<Comprar product="Suscripción Deluxe" precio="9.99€/Mes"/>}></Route>
       </Routes>
     </>
   )
