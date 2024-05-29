@@ -111,6 +111,7 @@ a {
   font-family: "Inter", sans-serif;
 }
 
+<<<<<<< Updated upstream
 /* ProfileComp */
 .username-container{
   background-color: #16161a;
@@ -174,3 +175,16 @@ a {
 .contenttt{
     transition: transform 0.5s;
 }
+=======
+.filters-container {
+    width: 100%;
+  }
+
+  .filters-wrapper {
+    transition: width 0.3s; /* Añade una transición para que el cambio de tamaño sea suave */
+  }
+
+  .filters-wrapper:hover {
+    width: 30%; /* Cuando se hace hover, cambia el ancho al 30% */
+  }
+>>>>>>> Stashed changes
