@@ -37,7 +37,6 @@ const Profile = () => {
     // Función para manejar cuando un archivo es seleccionado
     const handleFileChange = (event) => {
       const file = event.target.files[0];
-      console.log(file)
       if (file) {
         guardarFotoPerfil(file); // Suponiendo que esta función maneja la actualización
       }
@@ -114,16 +113,17 @@ const Profile = () => {
         {(() => {
           switch (usuario.lvl_premium) {
             case 0:
-              return <span>Nivel básico</span>;
+              return <span>Suscripción Básica</span>;
             case 1:
-              return <span>Premium nivel 1</span>;
+              return <span>Suscripción Premium</span>;
             case 2:
-              return <span>Premium nivel 2</span>;
+              return <span>Suscripción Deluxe</span>;
             default:
               return <span>Valor no reconocido</span>;
           }
         })()}
       </div>
+      <div className="w-72 h-4 my-5 m-auto"><b>Teléfono: </b>{usuario.email}</div>
     </div>
   </div>
   <div className="mt-72"><Footer /></div>

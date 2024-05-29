@@ -142,4 +142,18 @@ class AuthController extends Controller
 
         return response()->json($tarjeta);
     }
+    public function eliminarTarjeta(Request $request) {
+        $usuario = $request->user();
+        $reserva = Tarjeta::where('id_cliente', $usuario->id)->where('id', $request->id)->first();
+
+        // Verificar si la reserva existe
+        if (!$reserva) {
+            return response()->json(["Mensaje" => "La reserva no existe."], 404);
+        }
+
+        // Eliminar la reserva
+        $reserva->delete();
+
+        return response()->json(["Mensaje" => "Reserva eliminada correctamente."]);
+    }
 }

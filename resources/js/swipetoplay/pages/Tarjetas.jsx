@@ -1,11 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import Header from '../components/Header'
-import imagenEjemplo from '../../../assets/textoLogo.png'
-import imagenUser from '../../../assets/profile.jpg'
-import conectarLol from '../../../assets/conectarLol.jpg'
-import conectarValo from '../../../assets/conectarValo.jpg'
-import conectarDiscord from '../../../assets/conectarDiscord.jpg'
 import {useNavigate } from "react-router-dom";
 import { apiStore } from "../store/apiStore/apiStore";
 import 'boxicons'
@@ -15,6 +10,8 @@ import Footer from "../components/Footer";
 
 const Tarjetas = () => {
     const navigate = useNavigate();
+    const [showPopup, setShowPopup] = useState(false);
+    const [selectedCardId, setSelectedCardId] = useState(null);
     const path = apiStore.getState().basename;
     const [actualizar, setActualizar] = useState(false);
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
@@ -22,24 +19,57 @@ const Tarjetas = () => {
     const [expDate, setExpDate] = useState('12/24');
     const [ccvNumber, setCcvNumber] = useState('***');
     const [cardName, setCardName] = useState('Nombre Apellido');
-    /* const [tarjetas, setTarjetas] = useState(); */
-    const {tarjetas, obtenerTarjetas, guardarTarjeta} = usuarioStore((state) => ({
-      tarjetas: state.tarjetas,
-      obtenerTarjetas: state.obtenerTarjetas,
-      guardarTarjeta: state.guardarTarjeta
-    }))
+    const [tarjetas, setTarjetas] = useState();
     useEffect(() => {
-      obtenerTarjetas()
-  }, [actualizar])
+      const obtenerTarjetas = async () => {
+          const localhost = apiStore.getState().localhost;
+          const token = localStorage.getItem('token');
+          const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
+          const response = await fetch(`${localhost}/api/tarjetas`, { method: 'GET', headers: headers })
+          const data = await response.json();
+          return data;
+      }
+      obtenerTarjetas().then(data => { setTarjetas(data) }).catch(err => { console.log(err) });
+    }, [actualizar])
     const handleCerrarSesion = () => {
-      localStorage.removeItem('token'); // Eliminar el token del localStorage
+      localStorage.removeItem('token');
       navigate(path);
+    };
+    const handleCardClick = (id) => {
+      setSelectedCardId(id);
+      setShowPopup(true);
+    };
+    const handleDelete = async () => {
+        const localhost = apiStore.getState().localhost;
+        const token = localStorage.getItem('token');
+        const tarjeta = {
+          id: selectedCardId
+        }
+        const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`});
+        const response = await fetch(`${localhost}/api/delTarjeta`, { method: 'POST', headers: headers, body: JSON.stringify(tarjeta) })
+        const data = await response.json();
+        setActualizar(!actualizar);
+        setShowPopup(false);
+    };
+    const handleCancel = () => {
+      setShowPopup(false);
     };
     const handleSubmit = async (e) => {
       e.preventDefault();
-      guardarTarjeta(cardName,cardNumber,expDate,ccvNumber)
+      const localhost = apiStore.getState().localhost;
+      const tarjeta = {
+          titular: cardName,
+          n_tarjeta: cardNumber,
+          f_caducidad: expDate,
+          cvv: ccvNumber
+      }
+      console.log(tarjeta)
+      const token = localStorage.getItem('token');
+      const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
+      const response = await fetch(`${localhost}/api/newTarjeta`, { method: 'POST', headers: headers, body: JSON.stringify(tarjeta) });
+      const data = await response.json();
       setActualizar(!actualizar);
-      setMostrarFormulario(false); // Ocultar el formulario después de agregar la tarjeta
+      setMostrarFormulario(false);
     };
 
   return (
@@ -77,9 +107,10 @@ const Tarjetas = () => {
       </button>
     </div>
   </div>
-  <div className="bg-white flex flex-wrap justify-center gap-8 m-40">
+  <div className="bg-white flex flex-wrap justify-center gap-8 mr-20 ml-20 mb-40">
   {tarjetas?.map((tarjeta) => (
-    <div key={tarjeta.id} className="w-96 h-56 bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
+    <div key={tarjeta.id} className="w-96 h-56 bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 cursor-pointer"
+    onClick={() => handleCardClick(tarjeta.id)}>  
       <img className="object-cover w-full h-full rounded-xl" src="https://i.imgur.com/kGkSg1v.png" alt="tarjeta" />
       <div className="w-full px-8 absolute top-8">
         <div className="flex justify-between">
@@ -108,6 +139,27 @@ const Tarjetas = () => {
       </div>
     </div>
   ))}
+  {showPopup && (
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+      <div className="bg-white p-5 rounded shadow-lg text-center">
+        <p>¿Deseas eliminar esta tarjeta?</p>
+        <div className="mt-4 flex justify-center space-x-4">
+          <button
+            onClick={handleDelete}
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-500"
+          >
+            Sí
+          </button>
+          <button
+            onClick={handleCancel}
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-500"
+          >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  )}
 </div>
     <div className="mb-5">
     {!mostrarFormulario && (
