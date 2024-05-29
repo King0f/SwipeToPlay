@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
-import Filters from '../components/Filters';
 import flechaIzq from '../components/f1.png';
 import flechaDer from '../components/f2.png';
 import { usuarioStore } from '../store/userStore/usuarioStore';
@@ -25,7 +24,6 @@ const Swipe = () => {
     resetTimer: state.resetTimer
   }));
 
-  const [juegoSeleccionado, setJuegoSeleccionado] = useState('');
   const [conexionLOL, setConexionLOL] = useState([]);
   const [conexionValorant, setConexionValorant] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,6 +47,27 @@ const Swipe = () => {
   }, []);
 
   const handleAction = async (action) => {
+    console.log(usuariosSwipe[currentIndex].username);
+    try {
+      if (usuario.desplazamientos <= 0 && usuario.lvl_premium !== 2) {
+        toast.error("No tienes deslizamientos suficientes para realizar esta acción.", {
+          position: 'top-right',
+          className: 'foo-bar',
+          theme: 'light',
+          transition: Zoom,
+          autoClose: 3000,
+        });
+      } else {
+        await actionSwipe(usuariosSwipe[currentIndex].id, action);
+        fetchData();
+      }
+    } catch (error) {
+      console.error("Error handling action:", error);
+    }
+  };
+
+  const handleAction2 = async (action) => {
+    console.log(usuariosSwipe[currentIndex].username);
     try {
       if (usuario.desplazamientos <= 0 && usuario.lvl_premium !== 2) {
         toast.error("No tienes deslizamientos suficientes para realizar esta acción.", {
@@ -78,15 +97,13 @@ const Swipe = () => {
   };
 
   const onCardLeftScreen = (myIdentifier) => {
-    console.log(myIdentifier + ' left the screen');
   };
 
   return (
-    <>
+    <div className="h-screen overflow-hidden select-none">
       <Header />
       <div className='flex justify-between'>
         <ToastContainer pauseOnFocusLoss={false} limit={3} />
-        <Filters juegoSeleccionado={juegoSeleccionado} setJuegoSeleccionado={setJuegoSeleccionado} />
         <div className='flex mx-auto mb-20 mt-14'>
           <div className='flex flex-col justify-around'>
             <div className='flex justify-center'>
@@ -97,7 +114,7 @@ const Swipe = () => {
             <div className='flex'>
               <div className='self-center mr-5 rounded-full w-12 h-12 hover:bg-red-300'>
                 <div className='ml-2 mt-2'>
-                  <button onClick={() => handleAction(2)} className=''>
+                  <button onClick={() => handleAction2(2)} className=''>
                     <Icon_actions_close_l fill="red" />
                   </button>
                 </div>
@@ -108,7 +125,7 @@ const Swipe = () => {
                   onSwipe={onSwipe}
                   onCardLeftScreen={() => onCardLeftScreen('fooBar')}
                   preventSwipe={['up', 'down']}
-                  className='w-[400px] h-[450px] border-4 border-red-800 bg-red-400 mx-2'
+                  className='w-[1000px] h-[450px] border-4 border-red-800 bg-red-400 mx-2'
                 >
                   <div id="containerSwipe" className='w-full h-full flex flex-col justify-normal'>
                     <img src={usuariosSwipe[currentIndex].imagen || imagenUser} className="w-[96px] h-[96px] rounded-full border-4 border-black mx-auto my-2" />
@@ -118,20 +135,16 @@ const Swipe = () => {
                       <Icon_social_like_m fill="green" />
                     </div>
                     <div className='flex justify-around'>
-                      {juegoSeleccionado === 'Lol' && (
-                        <div id="Lol" className='flex flex-col'>
-                          <p><b>Id:</b> {conexionLOL.riotID}</p>
-                          <p><b>Rank:</b> {conexionLOL.rango} </p>
-                          <p><b>Rol:</b> {conexionLOL.posicion}</p>
-                        </div>
-                      )}
-                      {juegoSeleccionado === 'Valorant' && (
-                        <div id="Valorant" className='flex flex-col'>
+                    <div className='flex flex-col'>
                           <p><b>Id:</b> {conexionValorant.riotID}</p>
                           <p><b>Rank:</b> {conexionValorant.rango}</p>
                           <p><b>Rol:</b> {conexionValorant.posicion} </p>
                         </div>
-                      )}
+                        <div className='flex flex-col'>
+                          <p><b>Id:</b> {conexionLOL.riotID}</p>
+                          <p><b>Rank:</b> {conexionLOL.rango}</p>
+                          <p><b>Rol:</b> {conexionLOL.posicion} </p>
+                        </div>
                     </div>
                     <p className='text-center mt-10'>Total de deslizamientos restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</p>
                   </div>
@@ -139,7 +152,7 @@ const Swipe = () => {
               )}
               <div className='self-center ml-5 rounded-full w-12 h-12 hover:bg-green-300'>
                 <div className='ml-2 mt-2'>
-                  <button onClick={() => handleAction(1)} className=''>
+                  <button onClick={() => handleAction2(1)} className=''>
                     <Icon_social_like_l fill="green" />
                   </button>
                 </div>
@@ -156,7 +169,7 @@ const Swipe = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
