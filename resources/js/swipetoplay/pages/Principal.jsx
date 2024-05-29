@@ -47,6 +47,7 @@ function Principal() {
   return (
     <>
     <Header />
+    <ToastContainer pauseOnFocusLoss={false} limit={3} />
     <div className="App mt-10">
     <img src={textoPagPrincipal}/>
     <div>
