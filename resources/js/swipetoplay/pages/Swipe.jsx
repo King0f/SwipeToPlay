@@ -104,9 +104,9 @@ const Swipe = () => {
       <Header />
       <div className='flex justify-between'>
         <ToastContainer pauseOnFocusLoss={false} limit={3} />
-        <div className='flex mx-auto mb-20 mt-14'>
+        <div className='flex mx-auto mb-15 mt-10'>
           <div className='flex flex-col justify-around'>
-            <div className='flex justify-center'>
+            <div className='flex justify-center mb-2'>
               <img src={flechaIzq} className='w-10 h-10 self-center mx-2' />
               <p className='text-center text-4xl font-Swipe font-semibold text-red-600'>Swipe</p>
               <img src={flechaDer} className='w-10 h-10 self-center mx-2' />
@@ -125,28 +125,40 @@ const Swipe = () => {
                   onSwipe={onSwipe}
                   onCardLeftScreen={() => onCardLeftScreen('fooBar')}
                   preventSwipe={['up', 'down']}
-                  className='w-[1000px] h-[450px] border-4 border-red-800 bg-red-400 mx-2'
+                  className='w-[1000px] h-[450px] mx-2 background-image'
                 >
                   <div id="containerSwipe" className='w-full h-full flex flex-col justify-normal'>
-                    <img src={usuariosSwipe[currentIndex].imagen || imagenUser} className="w-[96px] h-[96px] rounded-full border-4 border-black mx-auto my-2" />
-                    <p className='text-center text-size-xl font-Swipe font-semibold text-black mt-2'>{usuariosSwipe[currentIndex].username}</p>
+                    <img src={usuariosSwipe[currentIndex].imagen || imagenUser} className="w-[96px] h-[96px] rounded-full mx-auto my-3 shadow-custom-circle" />
+                    <p className='text-center text-size-xl font-Swipe font-semibold text-white mt-2'>{usuariosSwipe[currentIndex].username}</p>
                     <div className='flex font-Swipe justify-center mb-4 font-semibold mt-1'>
-                      <p>{usuariosSwipe[currentIndex].likes}</p>
+                      <p className='text-center text-size-l font-Swipe font-semibold text-white mr-1'>{usuariosSwipe[currentIndex].likes}</p>
                       <Icon_social_like_m fill="green" />
                     </div>
-                    <div className='flex justify-around'>
+                    <div className='flex justify-around mt-7'>
                     <div className='flex flex-col'>
-                          <p><b>Id:</b> {conexionValorant.riotID}</p>
-                          <p><b>Rank:</b> {conexionValorant.rango}</p>
-                          <p><b>Rol:</b> {conexionValorant.posicion} </p>
-                        </div>
-                        <div className='flex flex-col'>
-                          <p><b>Id:</b> {conexionLOL.riotID}</p>
-                          <p><b>Rank:</b> {conexionLOL.rango}</p>
-                          <p><b>Rol:</b> {conexionLOL.posicion} </p>
-                        </div>
+  <p className='font-Swipe text-size-l'>
+    <b>Id:</b> {conexionLOL.riotID ? conexionLOL.riotID : 'undefined'}
+  </p>
+  <p className='font-Swipe text-size-l'>
+    <b>Rank:</b> {conexionLOL.rango ? conexionLOL.rango : 'undefined'}
+  </p>
+  <p className='font-Swipe text-size-l'>
+    <b>Rol:</b> {conexionLOL.posicion ? conexionLOL.posicion : 'undefined'}
+  </p>
+</div>
+<div className='flex flex-col'>
+  <p className='font-Swipe text-size-l'>
+    <b>Id:</b> {conexionValorant.riotID ? conexionValorant.riotID : 'undefined'}
+  </p>
+  <p className='font-Swipe text-size-l'>
+    <b>Rank:</b> {conexionValorant.rango ? conexionValorant.rango : 'undefined'}
+  </p>
+  <p className='font-Swipe text-size-l'>
+    <b>Rol:</b> {conexionValorant.posicion ? conexionValorant.posicion : 'undefined'}
+  </p>
+</div>
                     </div>
-                    <p className='text-center mt-10'>Total de deslizamientos restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</p>
+                    <p className='text-center mt-28 font-Swipe font-medium text-white'>Total de deslizamientos restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</p>
                   </div>
                 </TinderCard>
               )}

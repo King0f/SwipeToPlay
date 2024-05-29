@@ -481,8 +481,9 @@ export default {
         'Swipe': ['Poppins', 'sans-serif'],
       },
       boxShadow: {
-        'custom-red': '0 8px 25px 5px rgba(255, 0, 0, 0.6)',
-        'custom-blue': '0 8px 25px 5px rgba(0, 0, 255, 0.6)',
+        'custom-red': '5px 5px 25px 5px rgba(255, 0, 0, 0.6)',
+        'custom-blue': '5px 5px 25px 5px rgba(0, 0, 255, 0.6)',
+        'custom-circle': '0 0px 25px rgba(112, 163, 255, 0.78)',
       },
       fontWeight: {
         'audienseBold': 'bold',

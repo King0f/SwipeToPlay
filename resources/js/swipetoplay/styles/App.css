@@ -187,3 +187,8 @@ a {
     width: 30%; /* Cuando se hace hover, cambia el ancho al 30% */
   }
 
+  .background-image {
+    background-image: url('../../../assets/tarjetta.jpg');
+    background-size: cover;
+    background-position: center;
+  }
