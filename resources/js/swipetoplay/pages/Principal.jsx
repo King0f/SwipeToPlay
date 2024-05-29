@@ -51,8 +51,10 @@ import Footer from '../components/Footer';
     <p className='text-size-l text-center text-gray-500 font-Swipe font-medium'>Superlikes ilimitados</p>
     <p className='text-size-l text-center text-gray-500 font-Swipe font-medium'>Mensajes ilimitados</p>
     </div>
-    <button className='mb-4'><div className='w-44 h-12 m-auto border-red-900 border-2 bg-red-600 hover:bg-red-700 hover:border-red-950 flex justify-center'><p className='self-center text-size-l text-center text-white font-Swipe font-semibold'>Suscribirse</p></div></button>
-    </div>
+
+    <button className='mb-4'><Link to={path + '/ComprarDeluxe'}><div className='w-44 h-12 m-auto border-red-900 border-2 bg-red-600 hover:bg-red-700 hover:border-red-950 flex justify-center'><p className='self-center text-size-l text-center text-white font-Swipe font-semibold'>Suscribirse</p></div></Link></button>
+   
+   </div>
     <div className='w-60 h-80 border-4 self-center flex flex-col justify-between bg-gray-200 border-red-700'>
     <div>
     <p className='font-Swipe font-bold text-size-xl text-red-600 mt-4 text-center '>Premium</p>
@@ -63,7 +65,7 @@ import Footer from '../components/Footer';
     <p className='text-size-m text-center text-gray-500 font-Swipe font-medium'>1 Superlike diario</p>
     <p className='text-size-m text-center text-gray-500 font-Swipe font-medium'>100 mensajes ilimitados</p>
     </div>
-    <button className='mb-4'><div className='w-44 h-12 m-auto border-red-900 border-2 bg-red-600 hover:bg-red-700 hover:border-red-950 flex justify-center'><p className='self-center text-size-l text-center text-white font-Swipe font-semibold'>Suscribirse</p></div></button>
+    <button className='mb-4'><Link to={path + '/ComprarPremium'}><div className='w-44 h-12 m-auto border-red-900 border-2 bg-red-600 hover:bg-red-700 hover:border-red-950 flex justify-center'><p className='self-center text-size-l text-center text-white font-Swipe font-semibold'>Suscribirse</p></div></Link></button>
     </div>
 
     </div>

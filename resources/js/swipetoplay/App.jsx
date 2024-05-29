@@ -11,6 +11,7 @@ import Tarjetas from './pages/Tarjetas.jsx';
 import RiotUser from './pages/RiotUser.jsx';
 import Chats from './pages/Chats.jsx';
 import { apiStore } from './store/apiStore/apiStore.js'
+import Comprar from './pages/Comprar.jsx';
 
 function App() {
   const path =  apiStore.getState().basename;
@@ -26,6 +27,8 @@ function App() {
         <Route path={path + '/Tarjetas'} element={<Tarjetas />}></Route>
         <Route path={path + '/RiotUser'} element={<RiotUser />}></Route>
         <Route path={path + '/Chat'} element={<Chats />}></Route>
+        <Route path={path + '/ComprarPremium'} element={<Comprar product="Subscripción Premium" precio="4.99€/Mes"/>}></Route>
+        <Route path={path + '/ComprarDeluxe'} element={<Comprar product="Subscripción Deluxe" precio="9.99€/Mes"/>}></Route>
       </Routes>
     </>
   )

@@ -5,6 +5,7 @@ export const usuarioStore = create((set) => ({
     usuarioID: [],
     usuarioSwipe: [],
     resetTimer: [],
+    tarjetas: [],
     setear: (user) =>{
         set(() => ({ usuario: user }))
     },
@@ -201,6 +202,38 @@ export const usuarioStore = create((set) => ({
 
         const data = await response.json();
         set({ resetTimer: data }); // Actualizamos el estado directamente aquí
+      } catch (err) {
+        console.error(err);
+        // Puedes manejar el error de alguna manera específica si lo necesitas
+      }
+    },
+    obtenerTarjetas: async () => {
+      try {
+        const localhost = apiStore.getState().localhost;
+          const token = localStorage.getItem('token');
+          const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
+          const response = await fetch(`${localhost}/api/tarjetas`, { method: 'GET', headers: headers })
+          const data = await response.json();
+          set({ tarjetas: data });
+      } catch (err) {
+        console.error(err);
+        // Puedes manejar el error de alguna manera específica si lo necesitas
+      }
+    },
+    guardarTarjeta: async (titular,n_tarjeta,f_caducidad,cvv) => {
+      try {
+        const localhost = apiStore.getState().localhost;
+        const tarjeta = {
+            titular: titular,
+            n_tarjeta: n_tarjeta,
+            f_caducidad: f_caducidad,
+            cvv: cvv
+        }
+        console.log(tarjeta)
+        const token = localStorage.getItem('token');
+        const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
+        const response = await fetch(`${localhost}/api/newTarjeta`, { method: 'POST', headers: headers, body: JSON.stringify(tarjeta) });
+        const data = await response.json();
       } catch (err) {
         console.error(err);
         // Puedes manejar el error de alguna manera específica si lo necesitas

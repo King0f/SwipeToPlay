@@ -12,6 +12,7 @@ import 'boxicons'
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
+
 const Tarjetas = () => {
     const navigate = useNavigate();
     const path = apiStore.getState().basename;
@@ -21,17 +22,14 @@ const Tarjetas = () => {
     const [expDate, setExpDate] = useState('12/24');
     const [ccvNumber, setCcvNumber] = useState('***');
     const [cardName, setCardName] = useState('Nombre Apellido');
-    const [tarjetas, setTarjetas] = useState();
+    /* const [tarjetas, setTarjetas] = useState(); */
+    const {tarjetas, obtenerTarjetas, guardarTarjeta} = usuarioStore((state) => ({
+      tarjetas: state.tarjetas,
+      obtenerTarjetas: state.obtenerTarjetas,
+      guardarTarjeta: state.guardarTarjeta
+    }))
     useEffect(() => {
-      const obtenerTarjetas = async () => {
-          const localhost = apiStore.getState().localhost;
-          const token = localStorage.getItem('token');
-          const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
-          const response = await fetch(`${localhost}/api/tarjetas`, { method: 'GET', headers: headers })
-          const data = await response.json();
-          return data;
-      }
-      obtenerTarjetas().then(data => { setTarjetas(data) }).catch(err => { console.log(err) });
+      obtenerTarjetas()
   }, [actualizar])
     const handleCerrarSesion = () => {
       localStorage.removeItem('token'); // Eliminar el token del localStorage
@@ -39,18 +37,7 @@ const Tarjetas = () => {
     };
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const localhost = apiStore.getState().localhost;
-      const tarjeta = {
-          titular: cardName,
-          n_tarjeta: cardNumber,
-          f_caducidad: expDate,
-          cvv: ccvNumber
-      }
-      console.log(tarjeta)
-      const token = localStorage.getItem('token');
-      const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
-      const response = await fetch(`${localhost}/api/newTarjeta`, { method: 'POST', headers: headers, body: JSON.stringify(tarjeta) });
-      const data = await response.json();
+      guardarTarjeta(cardName,cardNumber,expDate,ccvNumber)
       setActualizar(!actualizar);
       setMostrarFormulario(false); // Ocultar el formulario después de agregar la tarjeta
     };
