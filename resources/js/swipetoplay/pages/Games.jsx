@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Header'
 import Valorant from '../../../assets/Valorant.webp'
 import Lol from '../../../assets/LeagueofLegends.jpg'
+import Footer from '../components/Footer'
 
 const Games = () => {
   return (
@@ -15,6 +16,8 @@ const Games = () => {
   <a target='_blank' href='https://www.leagueoflegends.com/es-es/'><img src={Lol} className='hover:border-2 hover:border-blue-600 w-2/3 m-auto transform transition-transform duration-300 ease-in-out hover:scale-110 hover:shadow-custom hover:shadow-custom-blue'/></a>
   </div>
 </div>
+
+<div className='mt-72'><Footer /></div>
 
     </div>
   )
