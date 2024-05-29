@@ -22,12 +22,16 @@ class UserFactory extends Factory
 
         // Asignamos desplazamientos en base al nivel premium
         $desplazamientos = 0;
+        $n_mensajes = 0;
         if ($lvl_premium == 0) {
             $desplazamientos = 10;
+            $n_mensajes = 25;
         } elseif ($lvl_premium == 1) {
             $desplazamientos = 25;
+            $n_mensajes = 100;
         } elseif ($lvl_premium == 2) {
             $desplazamientos = 0;
+            $n_mensajes = 0;
         }
 
         // Lista de números de teléfono
@@ -39,6 +43,7 @@ class UserFactory extends Factory
             'password' => Hash::make('12345678'),  // Asegurarse que las contraseñas están hasheadas
             'lvl_premium' => $lvl_premium,
             'desplazamientos' => $desplazamientos,
+            'n_mensajes' => $n_mensajes,
             'imagen' => null,
             'likes' => $this->faker->numberBetween(1, 999),  // Dejar el campo de imagen vacío
             'phone' => $this->faker->randomElement($phoneNumbers)  // Teléfono aleatorio

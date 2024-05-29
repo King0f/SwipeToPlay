@@ -12,8 +12,9 @@ const ChatComp = ({ chatId, urlReceived}) => {
         getMensajes: state.getMensajes,
         guardarMensaje: state.guardarMensaje
     }))
-    const {usuario} = usuarioStore((state) => ({
+    const {usuario, obtenerUsuario} = usuarioStore((state) => ({
         usuario: state.usuario,
+        obtenerUsuario: state.obtenerUsuario
     }))
     const photoURL = 'https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png'
     useEffect(() => {
@@ -50,6 +51,7 @@ const ChatComp = ({ chatId, urlReceived}) => {
         if (formValue.trim()) {
             await guardarMensaje(chat, usuario.id, formValue, usuario.username);
             await getMensajes(chat);
+            await obtenerUsuario();
             setFormValue('');
             if (dummy.current) {
                 const scrollableContainer = dummy.current.parentNode; // Asumiendo que el contenedor padre es scrollable

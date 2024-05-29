@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('lvl_premium');
             $table->integer('desplazamientos');
+            $table->integer('n_mensajes');
             $table->string('imagen')->nullable();
             $table->integer('likes');
             $table->string('phone');

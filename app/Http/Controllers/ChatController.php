@@ -7,6 +7,7 @@ use App\Models\Mensajes;
 use Illuminate\Http\Request;
 use App\Models\Chat;
 
+
 class ChatController extends Controller
 {
     function obtenerMensajes($idChat){
@@ -20,6 +21,9 @@ class ChatController extends Controller
         $mensaje->mensaje = $request->mensaje;
         $mensaje->username = $request->username;
         $mensaje->save();
+        $usuario = $request->user();
+        $usuario->n_mensajes = $usuario->n_mensajes - 1;
+        $usuario->save();
         return response("ok",200);
     }
 

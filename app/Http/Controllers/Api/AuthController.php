@@ -41,6 +41,7 @@ class AuthController extends Controller
                 'username' => $request->username,
                 'lvl_premium' => 0,
                 'desplazamientos' => 10,
+                'n_mensajes' => 25,
                 'likes' => 0,
                 'imagen' => null,
                 'email' => $request->email,

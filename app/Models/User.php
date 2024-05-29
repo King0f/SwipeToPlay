@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'lvl_premium',
         'desplazamientos',
+        'n_mensajes',
         'imagen',
         'likes'
     ];

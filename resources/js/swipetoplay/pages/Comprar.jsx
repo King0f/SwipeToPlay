@@ -214,7 +214,7 @@ const Comprar = ({ product, precio }) => {
             </button>
       </div>
           </div>
-          <div className="w-1/2 p-4 border-l">
+          <div className="w-1/2 h-1/2 p-4 border-l ml-4">
             <h2 className="text-2xl font-bold mb-4">Resumen de la Compra</h2>
             <div className="bg-gray-100 p-4 rounded shadow-md mb-4">
               <h3 className="text-lg font-semibold">Producto:</h3>

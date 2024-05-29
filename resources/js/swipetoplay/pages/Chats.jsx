@@ -3,6 +3,7 @@ import { chatStore } from "../store/chatStore/chatStore";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import ChatComp from "../components/ChatComp";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function Chats() {
     const { chats, getChats, obtenerMatchPorChat } = chatStore(state => ({
@@ -63,6 +64,11 @@ function Chats() {
                     ) : "Loading..."}
                 </div>
             ))}
+            <div className="flex items-center p-4 bg-gray-800 hover:bg-gray-700">
+            <div className="flex items-center space-x-4">
+                    <p className="text-white text-lg"><b>Número de mensajes restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.n_mensajes}</b></p>
+            </div>
+            </div>
         </div>
 
             <div className="w-3/4 flex justify-center items-center bg-gray-900 text-white">
@@ -73,6 +79,7 @@ function Chats() {
                 )}
             </div>
         </div>
+    <Footer/>
     </>
     );
 }
