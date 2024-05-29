@@ -8,17 +8,17 @@ use App\Models\Matches;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Service\WhatsAppService;
-use App\Service\MailchimpEmailService;
+use App\Service\BrevoEmailService;
 
 class SwipeController extends Controller
 {
-    private $token = 'EAAGHazWOFisBO3MhZBQZA8VMx8NSVHRtjXdEsZCtYs9KvQI9anSC7sL7BqVchtqRpaKktURX9aZClEymp9ILOuULwb8kzqcLkIqUnz1RAhHV5YVm8XCl0ia6LT2Cb9owfAvrCVJJgaEeB3KPoI3NUDM29SQErJ2rTugZCAoFoEep4XCSkftGq98KXtOo1Owr4HqwGUDEEP1SeBbrOD64uBIDoY5E1TZCok90YZD';
+    private $token = 'EAAGHazWOFisBO0Ecbn2vTTee4nLNCaweJ8DeDY1gGaJiM9OJBuXIlklju0ByYTKsFsqMJG1V5trwzUEn8tLLZAUIJzSJ7WJ98IOkofV50ZB7DPhPZCdxFZCEmaxARJeUtVZB4CUqghxdUDcXworNDaxV5b1T9YqO4b5BXwL6ZAvUPtPgjZAgOM5qi5oRnegH4ZABFXotboSMR0UomMslcFimkf9DAFZABdgtGviwZD';
     
     private $url = 'https://graph.facebook.com/v18.0/239082649298144/messages';
 
-    private $token2 = 'md-SBL9a8HzhDQrHjOU3jeK2A';
+    private $token2 = 'xsmtpsib-3c2702baa954bf64191e63a4909b9c6904ed8f70d24c7bb12a86182a0418d74e-8xAfGTUHq4YjPFLp';
 
-    private $url2 = 'https://mandrillapp.com/api/1.0/messages/send';
+    private $url2 = 'https://api.brevo.com/v3/smtp/email';
 
     function obtenerUsuarioSwipe(Request $request){
         $userId = $request->user()->id;
@@ -115,16 +115,21 @@ class SwipeController extends Controller
     }
 
     function mandarCorreo($usuario, $usuario2){
-        $mailchimpEmailService = new MailchimpEmailService($this->token2, $this->url2);
-        $htmlContentBase = $this->buildEmailContent();
-        $htmlContentVersions = [$htmlContentBase];
-        $users = [$usuario->email, $usuario2->email];
+        $brevoEmailService = new BrevoEmailService($this->token2, $this->url2);
+        $htmlContent = $this->buildEmailContent();
+        $htmlContentBase = $htmlContent;
+        $htmlContentVersions = [];
+        $users = [$usuario, $usuario2];
+        foreach ($users as $user) {
+            $htmlContentVersions[] = $htmlContent;
+        }   
 
-        $mailchimpEmailService->enviarCampaña(
+        $brevoEmailService->enviarCampaña(
+            'licenses',
             'arc00036@gmail.com',
             $htmlContentBase,
             $htmlContentVersions,
-            $users 
+            $users,
         );
     }
 
