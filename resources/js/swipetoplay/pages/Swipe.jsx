@@ -28,6 +28,8 @@ const Swipe = () => {
   const [juegoSeleccionado, setJuegoSeleccionado] = useState('');
   const [conexionLOL, setConexionLOL] = useState([]);
   const [conexionValorant, setConexionValorant] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [usuariosSwipe, setUsuariosSwipe] = useState([]);
 
   async function fetchData() {
     try {
@@ -36,6 +38,7 @@ const Swipe = () => {
       const conexionValorantData = await obtenerConexionValorant(usuarioSwipe.id);
       setConexionLOL(conexionLOLData);
       setConexionValorant(conexionValorantData);
+      setUsuariosSwipe([...usuariosSwipe, usuarioSwipe]);  // Agregar al array de usuarios para swipe
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -56,7 +59,7 @@ const Swipe = () => {
           autoClose: 3000,
         });
       } else {
-        await actionSwipe(usuarioSwipe.id, action);
+        await actionSwipe(usuariosSwipe[currentIndex].id, action);
         fetchData();
       }
     } catch (error) {
@@ -71,6 +74,7 @@ const Swipe = () => {
     } else if (direction === 'left') {
       handleAction(2); // Rechazar
     }
+    setCurrentIndex(currentIndex + 1);
   };
 
   const onCardLeftScreen = (myIdentifier) => {
@@ -98,38 +102,41 @@ const Swipe = () => {
                   </button>
                 </div>
               </div>
-              <TinderCard
-                onSwipe={onSwipe}
-                onCardLeftScreen={() => onCardLeftScreen('fooBar')}
-                preventSwipe={['up', 'down']}
-                className='w-[400px] h-[450px] border-4 border-red-800 bg-red-400 mx-2'
-              >
-                <div id="containerSwipe" className='w-full h-full flex flex-col justify-normal'>
-                  <img src={usuarioSwipe.imagen || imagenUser} className="w-[96px] h-[96px] rounded-full border-4 border-black mx-auto my-2" />
-                  <p className='text-center text-size-xl font-Swipe font-semibold text-black mt-2'>{usuarioSwipe.username}</p>
-                  <div className='flex font-Swipe justify-center mb-4 font-semibold mt-1'>
-                    <p>{usuarioSwipe.likes}</p>
-                    <Icon_social_like_m fill="green" />
+              {currentIndex < usuariosSwipe.length && (
+                <TinderCard
+                  key={usuariosSwipe[currentIndex].id}
+                  onSwipe={onSwipe}
+                  onCardLeftScreen={() => onCardLeftScreen('fooBar')}
+                  preventSwipe={['up', 'down']}
+                  className='w-[400px] h-[450px] border-4 border-red-800 bg-red-400 mx-2'
+                >
+                  <div id="containerSwipe" className='w-full h-full flex flex-col justify-normal'>
+                    <img src={usuariosSwipe[currentIndex].imagen || imagenUser} className="w-[96px] h-[96px] rounded-full border-4 border-black mx-auto my-2" />
+                    <p className='text-center text-size-xl font-Swipe font-semibold text-black mt-2'>{usuariosSwipe[currentIndex].username}</p>
+                    <div className='flex font-Swipe justify-center mb-4 font-semibold mt-1'>
+                      <p>{usuariosSwipe[currentIndex].likes}</p>
+                      <Icon_social_like_m fill="green" />
+                    </div>
+                    <div className='flex justify-around'>
+                      {juegoSeleccionado === 'Lol' && (
+                        <div id="Lol" className='flex flex-col'>
+                          <p><b>Id:</b> {conexionLOL.riotID}</p>
+                          <p><b>Rank:</b> {conexionLOL.rango} </p>
+                          <p><b>Rol:</b> {conexionLOL.posicion}</p>
+                        </div>
+                      )}
+                      {juegoSeleccionado === 'Valorant' && (
+                        <div id="Valorant" className='flex flex-col'>
+                          <p><b>Id:</b> {conexionValorant.riotID}</p>
+                          <p><b>Rank:</b> {conexionValorant.rango}</p>
+                          <p><b>Rol:</b> {conexionValorant.posicion} </p>
+                        </div>
+                      )}
+                    </div>
+                    <p className='text-center mt-10'>Total de deslizamientos restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</p>
                   </div>
-                  <div className='flex justify-around'>
-                    {juegoSeleccionado === 'Lol' && (
-                      <div id="Lol" className='flex flex-col'>
-                        <p><b>Id:</b> {conexionLOL.riotID}</p>
-                        <p><b>Rank:</b> {conexionLOL.rango} </p>
-                        <p><b>Rol:</b> {conexionLOL.posicion}</p>
-                      </div>
-                    )}
-                    {juegoSeleccionado === 'Valorant' && (
-                      <div id="Valorant" className='flex flex-col'>
-                        <p><b>Id:</b> {conexionValorant.riotID}</p>
-                        <p><b>Rank:</b> {conexionValorant.rango}</p>
-                        <p><b>Rol:</b> {conexionValorant.posicion} </p>
-                      </div>
-                    )}
-                  </div>
-                  <p className='text-center mt-10'>Total de deslizamientos restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</p>
-                </div>
-              </TinderCard>
+                </TinderCard>
+              )}
               <div className='self-center ml-5 rounded-full w-12 h-12 hover:bg-green-300'>
                 <div className='ml-2 mt-2'>
                   <button onClick={() => handleAction(1)} className=''>
