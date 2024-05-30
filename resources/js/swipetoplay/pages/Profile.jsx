@@ -83,7 +83,7 @@ const Profile = () => {
 
   <div className="flex w-full p-2">
     <div className="flex flex-col w-1/3">
-      <div className="relative w-1/2 m-auto rounded-full flex items-center justify-center"
+      <div className="relative w-1/2 h-auto m-auto rounded-full flex items-center justify-center"
            onMouseEnter={() => setHovered(true)}
            onMouseLeave={() => setHovered(false)}>
         <img

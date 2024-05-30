@@ -26,7 +26,7 @@ export default function Header() {
     <div className="w-full flex justify-center h-16 bg-black-300 bg-opacity-75">
       <header className="fixed top-0 w-full h-20 clearNav z-50 flex items-center justify-around bg-opacity-35">
         <div className="mx-5 w-1/3">
-          <img src={imagenEjemplo} alt="TextoLogo" onClick={init} />
+          <img src={imagenEjemplo} alt="TextoLogo" onClick={init} className="transform transition-transform duration-300 ease-in-out hover:scale-110" />
         </div>
         {token ? (
           <>
