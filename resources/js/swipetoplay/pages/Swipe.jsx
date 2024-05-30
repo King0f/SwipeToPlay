@@ -127,7 +127,7 @@ const Swipe = () => {
                   onSwipe={onSwipe}
                   onCardLeftScreen={() => onCardLeftScreen('fooBar')}
                   preventSwipe={['up', 'down']}
-                  className='w-[1000px] h-[450px] mx-2 background-image'
+                  className='w-[1000px] h-[450px] mx-2 background-image rounded-xl'
                 >
                   <div id="containerSwipe" className='w-full h-full flex flex-col justify-normal'>
                     <img src={usuariosSwipe[currentIndex].imagen || imagenUser} className="w-[96px] h-[96px] rounded-full mx-auto my-3 shadow-custom-circle" />
@@ -173,7 +173,7 @@ const Swipe = () => {
               </div>
             </div>
             <button>
-              <div className='h-16 bg-yellow-300 w-1/2 mx-auto mt-4 border-2 border-yellow-950 flex justify-center hover:bg-yellow-200 hover:text-red-800'>
+              <div className='h-16 bg-yellow-300 w-1/2 mx-auto mt-4 border-2 border-yellow-950 flex rounded-xl justify-center hover:bg-yellow-200 hover:text-red-800'>
                 <p className='self-center font-swipe text-center font-semibold text-size-2xl'>SUPERLIKE</p>
                 <div className='self-center ml-4'>
                   <Icon_social_pleasures_xl fill='brown' />
