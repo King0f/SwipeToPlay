@@ -8,7 +8,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\User;
+use App\Models\Matches;
 use Illuminate\Support\Facades\DB;
+use App\Models\Chat;
 
 class Controller extends BaseController
 {
@@ -50,4 +52,24 @@ class Controller extends BaseController
             return response()->json($usuario);
         }
     }
+
+    public function obtenerMatches(Request $request)
+{
+    $idUser = $request->user()->id;
+
+    // Construir la consulta
+    $matches = Matches::where(function($query) use ($idUser) {
+        $query->where('id_user1', $idUser)
+              ->whereNotNull('id_user2');
+    })->orWhere('id_user2', $idUser)->get();
+
+    return response()->json($matches);
+}
+public function eliminarMatch(Request $request) {
+    $chat = Chat::where('id_match', $request->input('id'));
+    $chat->delete();
+    $match = Matches::where('id', $request->input('id'));
+    $match->delete();
+    return response()->json(["Mensaje" => "Match eliminado correctamente."]);
+}
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-class BrevoEmailService 
+class BrevoService 
 {
     private $apiKey;
 
@@ -20,7 +20,7 @@ class BrevoEmailService
         foreach ($users as $index => $user) {
             $messageVersions[] = [
                 "to" => [
-                    ["email" => $user->getEmail(), "name" => $user->getUser()]
+                    ["email" => $user->email, "name" => $user->username]
                 ],
                 "htmlContent" => $htmlContentVersions[$index],
                 "subject" => "Licencia de conducir"

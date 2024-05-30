@@ -40,3 +40,5 @@ Route::get('/handlePass', [SwipeController::class, 'handlePass'])->middleware('a
 Route::post('/handleLike', [SwipeController::class, 'handleLike'])->middleware('auth:sanctum');
 Route::get('/timerReset', [Controller::class, 'timerReset']);
 Route::post('/procesarCompra', [Controller::class, 'procesarCompra'])->middleware('auth:sanctum');
+Route::get('/obtenerMatches', [Controller::class, 'obtenerMatches'])->middleware('auth:sanctum');
+Route::post('/delMatch', [Controller::class, 'eliminarMatch']);

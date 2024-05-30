@@ -8,7 +8,7 @@ use App\Models\Matches;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Service\WhatsAppService;
-use App\Service\BrevoEmailService;
+use App\Service\BrevoService;
 
 class SwipeController extends Controller
 {
@@ -16,7 +16,7 @@ class SwipeController extends Controller
     
     private $url = 'https://graph.facebook.com/v18.0/239082649298144/messages';
 
-    private $token2 = 'xsmtpsib-3c2702baa954bf64191e63a4909b9c6904ed8f70d24c7bb12a86182a0418d74e-8xAfGTUHq4YjPFLp';
+    private $token2 = '';
 
     private $url2 = 'https://api.brevo.com/v3/smtp/email';
 
@@ -115,7 +115,7 @@ class SwipeController extends Controller
     }
 
     function mandarCorreo($usuario, $usuario2){
-        $brevoEmailService = new BrevoEmailService($this->token2, $this->url2);
+        $brevoEmailService = new BrevoService($this->token2, $this->url2);
         $htmlContent = $this->buildEmailContent();
         $htmlContentBase = $htmlContent;
         $htmlContentVersions = [];

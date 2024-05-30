@@ -11,6 +11,7 @@ import Icon_social_pleasures_xl from '../components/Icon_social_pleasures_xl';
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import TinderCard from 'react-tinder-card';
+import Footer from '../components/Footer';
 
 const Swipe = () => {
   const { usuario, usuarioSwipe, obtenerUsuarioSwipe, obtenerConexionLOL, obtenerConexionValorant, actionSwipe, swipesResetTimer, resetTimer } = usuarioStore((state) => ({
@@ -100,6 +101,7 @@ const Swipe = () => {
   };
 
   return (
+    <>
     <div className="h-screen overflow-hidden select-none">
       <Header />
       <div className='flex justify-between'>
@@ -182,6 +184,8 @@ const Swipe = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 
