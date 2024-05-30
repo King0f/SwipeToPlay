@@ -109,7 +109,6 @@ const Profile = () => {
 
     <div className="flex flex-col w-2/3 m-auto">
       <p className="text-center font-Swipe text-red-500 text-xl font-extrabold mt-10">Información del Usuario</p>
-      <div className="w-72 h-4 my-5 m-auto"><b>Username: </b>{usuario.username}</div>
       <div className="w-72 h-4 my-5 m-auto"><b>Email: </b>{usuario.email}</div>
       <div className="w-72 h-4 my-5 m-auto"><b>Membresia: </b>
         {(() => {
@@ -125,7 +124,9 @@ const Profile = () => {
           }
         })()}
       </div>
-      <div className="w-72 h-4 my-5 m-auto"><b>Teléfono: </b>{usuario.email}</div>
+      <div className="w-72 h-4 my-5 m-auto"><b>Teléfono: </b>{usuario.phone}</div>
+      <div className="w-72 h-4 my-5 m-auto"><b>Deslizamientos restantes: </b>{usuario.desplazamientos}</div>
+      <div className="w-72 h-4 my-5 m-auto"><b>Mensajes restantes: </b>{usuario.n_mensajes}</div>
     </div>
   </div>
   <div className="mt-72"><Footer /></div>

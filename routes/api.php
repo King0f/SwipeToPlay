@@ -30,6 +30,7 @@ Route::post('/newTarjeta', [AuthController::class, 'agregarTarjeta'])->middlewar
 Route::post('/delTarjeta', [AuthController::class, 'eliminarTarjeta'])->middleware('auth:sanctum');
 Route::post('/subirImagen', [AuthController::class, 'subirImagen'])->middleware('auth:sanctum');
 Route::post('/riotUser', [Controller::class, 'crearConexionRiotUsuario'])->middleware('auth:sanctum');
+Route::post('/modConexion', [Controller::class, 'modificarConexionRiotUsuario'])->middleware('auth:sanctum');
 Route::get('/obtenerMensajes/{idChat}', [ChatController::class, 'obtenerMensajes']);
 Route::get('/obtenerMatchPorChat/{idChat}', [ChatController::class, 'obtenerMatchPorChat']);
 Route::post('/guardarMensaje', [ChatController::class, 'guardarMensaje'])->middleware('auth:sanctum');

@@ -35,6 +35,16 @@ class Controller extends BaseController
         $conexion->save();
         return response("Riot User guardado con exito!",200);
     }
+    public function modificarConexionRiotUsuario(Request $request) {
+        $conexion = Conexiones::find($request->id);
+        $conexion->riotID = $request->riotID;
+        $conexion->juego = $request->juego;
+        $conexion->rango = $request->rango;
+        $conexion->posicion = $request->posicion;
+        $conexion->save();
+
+        return response("Conexión modificada con exito!",200);
+    }
     public function timerReset()
     {
         $eventInfo = DB::select("SELECT LAST_EXECUTED FROM information_schema.EVENTS WHERE EVENT_SCHEMA = 'swipetoplay' AND EVENT_NAME = 'reset_desplazamientos'");

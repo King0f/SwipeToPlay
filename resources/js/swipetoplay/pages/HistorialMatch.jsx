@@ -123,27 +123,6 @@ const HistorialMatch = () => {
                     </div>
                 </div>
             </div>
-            {showPopup && (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div className="bg-white p-5 rounded shadow-lg text-center">
-        <p>¿Deseas eliminar este match?</p>
-        <div className="mt-4 flex justify-center space-x-4">
-          <button
-            onClick={handleDelete}
-            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-500"
-          >
-            Sí
-          </button>
-          <button
-            onClick={handleCancel}
-            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-500"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  )}
             <Footer />
         </div>
     );

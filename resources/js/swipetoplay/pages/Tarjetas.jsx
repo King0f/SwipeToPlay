@@ -272,7 +272,7 @@ const Tarjetas = () => {
     )}
     </div>
 
-<footer><Footer/></footer>
+<footer className="position absolute bottom-0 w-full"><Footer/></footer>
 </div>
     
   )

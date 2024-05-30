@@ -12,12 +12,11 @@ const Configuracion = () => {
     const path = apiStore.getState().basename;
     const [conexionLOL, setConexionLOL] = useState([]);
     const [conexionValorant, setConexionValorant] = useState([]);
-    const {usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant, borrarUsuario} = usuarioStore((state) => ({
+    const {usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant} = usuarioStore((state) => ({
       usuario: state.usuario,
       obtenerUsuario: state.obtenerUsuario,
       obtenerConexionLOL: state.obtenerConexionLOL,
       obtenerConexionValorant: state.obtenerConexionValorant,
-      borrarUsuario: state.borrarUsuario
     }))
     async function fetchData() {
       try {
@@ -34,9 +33,61 @@ const Configuracion = () => {
       fetchData();
     }, []);
     const handleCerrarSesion = () => {
-        localStorage.removeItem('token');
-        borrarUsuario();
-        navigate(path);
+      localStorage.removeItem('token');
+      borrarUsuario();
+      navigate(path);
+    };
+    const handleChangeValorant = (event) => {handleChangePosValorant
+        setConexionValorant({
+          ...conexionValorant,
+          rango: event.target.value,
+        });
+    };
+    const handleChangePosValorant = (event) => {
+        setConexionValorant({
+          ...conexionValorant,
+          posicion: event.target.value,
+        });
+    };
+    const handleChangeUserValorant = (event) => {
+        setConexionValorant({
+          ...conexionValorant,
+          riotID: event.target.value,
+        });
+    };
+    const handleChangeLol = (event) => {
+        setConexionLOL({
+          ...conexionLOL,
+          rango: event.target.value,
+        });
+    };
+    const handleChangePosLol = (event) => {
+        setConexionLOL({
+          ...conexionLOL,
+          posicion: event.target.value,
+        });
+    };
+    const handleChangeUserLol = (event) => {
+        setConexionLOL({
+          ...conexionLOL,
+          riotID: event.target.value,
+        });
+    };
+    const handleSubmitLol = async (e) => {
+        e.preventDefault();
+        const localhost = apiStore.getState().localhost;
+        const conexion = {
+            id: conexionLOL.id,
+            riotID: conexionLOL.riotID,
+            juego: conexionLOL.juego,
+            rango: conexionLOL.rango,
+            posicion: conexionLOL.posicion,
+            id_user: conexionLOL.id_user
+        }
+        const token = localStorage.getItem('token');
+        const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
+        const response = await fetch(`${localhost}/api/modConexion`, { method: 'POST', headers: headers, body: JSON.stringify(conexion) });
+        const data = await response.json();
       };
   return (
     <div className="pt-20">
@@ -81,26 +132,42 @@ const Configuracion = () => {
                             <input
                                 type="text"
                                 value={conexionLOL.riotID || ''}
+                                onChange={handleChangeUserLol}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
                             />
                         </div>
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Rango:</label>
-                            <input
-                                type="email"
-                                value={conexionLOL.rango || ''}
-                                className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
-                            />
+                            <select 
+                                value={conexionLOL.rango}
+                                onChange={handleChangeLol}
+                                className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded">
+                                <option value="Hierro">Hierro</option>
+                                <option value="Bronce">Bronce</option>
+                                <option value="Plata">Plata</option>
+                                <option value="Oro">Oro</option>
+                                <option value="Platino">Platino</option>
+                                <option value="Esmeralda">Esmeralda</option>
+                                <option value="Diamante">Diamante</option>
+                                <option value="Master">Master</option>
+                                <option value="GrandMaster">GrandMaster</option>
+                                <option value="Challenger">Challenger</option>
+                            </select>
                         </div>
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Posición:</label>
-                            <input
-                                type="email"
-                                value={conexionLOL.posicion || ''}
-                                className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
-                            />
+                            <select 
+                                value={conexionLOL.posicion}
+                                onChange={handleChangePosLol}
+                                className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded">
+                                <option value="Top">Top</option>
+                                <option value="Jungla">Jungla</option>
+                                <option value="Medio">Medio</option>
+                                <option value="AD Carry">AD Carry</option>
+                                <option value="Soporte">Soporte</option>
+                            </select>
                         </div>
-                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50">Modificar conexión</button>
+                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50" onSubmit={handleSubmitLol}>Modificar conexión</button>
                     </form>
                 </div>
                 <div className="bg-cover bg-center  rounded-2xl mb-10" style={{ backgroundImage: `url(../storage/imagenes/background-valorant.jpg)`, width: '728px', height: '410px' }}>
@@ -111,24 +178,38 @@ const Configuracion = () => {
                             <input
                                 type="text"
                                 value={conexionValorant.riotID || ''}
+                                onChange={handleChangeUserValorant}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
                             />
                         </div>
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Rango:</label>
-                            <input
-                                type="email"
-                                value={conexionValorant.rango || ''}
-                                className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
-                            />
+                            <select 
+                                value={conexionValorant.rango}
+                                onChange={handleChangeValorant}
+                                className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded">
+                                <option value="Hierro">Hierro</option>
+                                <option value="Bronce">Bronce</option>
+                                <option value="Plata">Plata</option>
+                                <option value="Oro">Oro</option>
+                                <option value="Platino">Platino</option>
+                                <option value="Esmeralda">Esmeralda</option>
+                                <option value="Diamante">Diamante</option>
+                                <option value="Inmortal">Inmortal</option>
+                                <option value="Radiant">Radiant</option> 
+                            </select>
                         </div>
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Posición:</label>
-                            <input
-                                type="email"
-                                value={conexionValorant.posicion || ''}
-                                className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
-                            />
+                            <select 
+                                value={conexionValorant.posicion}
+                                onChange={handleChangePosValorant}
+                                className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded">
+                                <option value="Duelista">Duelista</option>
+                                <option value="Iniciador">Iniciador</option>
+                                <option value="Centinela">Centinela</option>
+                                <option value="Controlador">Controlador</option>
+                            </select>
                         </div>
                         <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50">Modificar conexión</button>
                     </form>
@@ -155,8 +236,8 @@ const Configuracion = () => {
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Teléfono:</label>
                             <input
-                                type="email"
-                                value={usuario.email}
+                                type="text"
+                                value={usuario.phone}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
                             />
                         </div>
