@@ -31,8 +31,12 @@ const Tarjetas = () => {
       }
       obtenerTarjetas().then(data => { setTarjetas(data) }).catch(err => { console.log(err) });
     }, [actualizar])
+    const {borrarUsuario} = usuarioStore((state) => ({
+      borrarUsuario: state.borrarUsuario
+    }))
     const handleCerrarSesion = () => {
       localStorage.removeItem('token');
+      borrarUsuario();
       navigate(path);
     };
     const handleCardClick = (id) => {

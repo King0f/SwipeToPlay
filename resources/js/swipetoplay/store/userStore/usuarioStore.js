@@ -258,5 +258,8 @@ export const usuarioStore = create((set) => ({
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         set({usuario: data}); 
-    }
+    },
+    borrarUsuario: () =>{
+      set(() => ({ usuario: [] }))
+  },
 }) )

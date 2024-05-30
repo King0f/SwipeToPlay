@@ -19,8 +19,9 @@ const HistorialMatch = () => {
         getMatches: state.getMatches,
         delMatch: state.delMatch,
     }));
-    const { usuario } = usuarioStore((state) => ({
+    const { usuario,borrarUsuario } = usuarioStore((state) => ({
         usuario: state.usuario,
+        borrarUsuario: state.borrarUsuario
     }));
 
     useEffect(() => {
@@ -29,8 +30,9 @@ const HistorialMatch = () => {
 
     const handleCerrarSesion = () => {
         localStorage.removeItem('token');
+        borrarUsuario();
         navigate(path);
-    };
+      };
 
     const getGameName = (gameId) => {
         const gameNames = {

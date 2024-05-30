@@ -16,10 +16,11 @@ const Profile = () => {
     const navigate = useNavigate();
     const [hovered, setHovered] = useState(false)
     const path = apiStore.getState().basename;
-    const {usuario, obtenerUsuario, guardarFotoPerfil} = usuarioStore((state) => ({
+    const {usuario, obtenerUsuario, guardarFotoPerfil, borrarUsuario} = usuarioStore((state) => ({
       usuario: state.usuario,
       obtenerUsuario: state.obtenerUsuario,
-      guardarFotoPerfil: state.guardarFotoPerfil
+      guardarFotoPerfil: state.guardarFotoPerfil,
+      borrarUsuario: state.borrarUsuario
     }))
     useEffect(() => {
       obtenerUsuario();
@@ -42,7 +43,8 @@ const Profile = () => {
       }
     };
     const handleCerrarSesion = () => {
-      localStorage.removeItem('token'); // Eliminar el token del localStorage
+      localStorage.removeItem('token');
+      borrarUsuario();
       navigate(path);
     };
   return (
