@@ -75,7 +75,7 @@ const Configuracion = () => {
             <div className="flex flex-wrap justify-center gap-8 p-4">
                 <div className="bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(../storage/imagenes/background-lol.jpg)`, width: '728px', height: '410px' }}>
                     <form className="w-full h-full flex flex-col justify-center items-center bg-opacity-70 bg-gray-800 rounded">
-                        <h2 className="text-white text-2xl mb-4"><b>League Of Legens</b></h2>
+                        <h2 className="text-white text-2xl mb-4"><b>League Of Legends</b></h2>
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Nombre de usuario:</label>
                             <input
