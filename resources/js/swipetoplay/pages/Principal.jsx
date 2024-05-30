@@ -16,8 +16,7 @@ function Principal() {
     const path = apiStore.getState().basename;
     const token = !!localStorage.getItem('token');
     const popUpNotLogged = () => {
-        toast.warning("Necesitas tener una cuenta y estar logeado para entrar a esta página.",
-          { position: 'top-left', theme: 'light', transition: Zoom, autoClose: 3000, })
+        navigate(path + "/Login");
       };
     const {usuario, obtenerUsuario} = usuarioStore((state) => ({
         usuario: state.usuario,

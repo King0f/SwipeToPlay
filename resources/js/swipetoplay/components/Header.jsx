@@ -13,7 +13,7 @@ export default function Header() {
   const location = useLocation();  // Obtener la ruta actual
   const popUpNotLogged = () => {
     toast.warning("Necesitas tener una cuenta y estar logeado para entrar a esta página.",
-      { position: 'top-left', theme: 'light', transition: Zoom, autoClose: 3000, })
+      { position: 'top-left', theme: 'light', transition: Zoom, })
   };
 
   const init = () => {
@@ -81,19 +81,19 @@ export default function Header() {
 
               <div className="">
                 <div className={`text-black font-Swipe nav-link`}>
-                  <Link><button onClick={popUpNotLogged}>Start Swiping</button></Link>
+                  <button onClick={popUpNotLogged}>Start Swiping</button>
                 </div>
               </div>
 
               <div className="">
                 <div className={`text-black font-Swipe nav-link`}>
-                  <Link><button onClick={popUpNotLogged}>Games</button></Link>
+                  <button onClick={popUpNotLogged}>Games</button>
                 </div>
               </div>
 
               <div className="">
                 <div className={`text-black font-Swipe nav-link`}>
-                  <Link><button onClick={popUpNotLogged}>Start Chatting</button></Link>
+                  <button onClick={popUpNotLogged}>Start Chatting</button>
                 </div>
               </div>
             </>
