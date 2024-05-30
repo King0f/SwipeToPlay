@@ -138,7 +138,7 @@ const Configuracion = () => {
                         </div>
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Rango:</label>
-                            <select 
+                            <select
                                 value={conexionLOL.rango}
                                 onChange={handleChangeLol}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded">
@@ -156,7 +156,7 @@ const Configuracion = () => {
                         </div>
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Posición:</label>
-                            <select 
+                            <select
                                 value={conexionLOL.posicion}
                                 onChange={handleChangePosLol}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded">
@@ -184,7 +184,7 @@ const Configuracion = () => {
                         </div>
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Rango:</label>
-                            <select 
+                            <select
                                 value={conexionValorant.rango}
                                 onChange={handleChangeValorant}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded">
@@ -196,12 +196,12 @@ const Configuracion = () => {
                                 <option value="Esmeralda">Esmeralda</option>
                                 <option value="Diamante">Diamante</option>
                                 <option value="Inmortal">Inmortal</option>
-                                <option value="Radiant">Radiant</option> 
+                                <option value="Radiant">Radiant</option>
                             </select>
                         </div>
                         <div className="mb-4 w-3/4">
                             <label className="block text-white text-sm font-bold mb-2">Posición:</label>
-                            <select 
+                            <select
                                 value={conexionValorant.posicion}
                                 onChange={handleChangePosValorant}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded">

@@ -114,7 +114,7 @@ const Tarjetas = () => {
   <div className="bg-white flex flex-wrap justify-center gap-8 mr-20 ml-20 mb-40">
   {tarjetas?.map((tarjeta) => (
     <div key={tarjeta.id} className="w-96 h-56 bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 cursor-pointer"
-    onClick={() => handleCardClick(tarjeta.id)}>  
+    onClick={() => handleCardClick(tarjeta.id)}>
       <img className="object-cover w-full h-full rounded-xl" src="https://i.imgur.com/kGkSg1v.png" alt="tarjeta" />
       <div className="w-full px-8 absolute top-8">
         <div className="flex justify-between">
@@ -274,7 +274,7 @@ const Tarjetas = () => {
 
 <footer className="position absolute bottom-0 w-full"><Footer/></footer>
 </div>
-    
+
   )
 }
 
