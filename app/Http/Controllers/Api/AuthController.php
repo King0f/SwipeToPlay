@@ -43,6 +43,7 @@ class AuthController extends Controller
                 'desplazamientos' => 10,
                 'n_mensajes' => 25,
                 'likes' => 0,
+                'phone' => $request->phone,
                 'imagen' => null,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
