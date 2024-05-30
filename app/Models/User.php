@@ -25,7 +25,8 @@ class User extends Authenticatable
         'desplazamientos',
         'n_mensajes',
         'imagen',
-        'likes'
+        'likes',
+        'phone'
     ];
 
     /**

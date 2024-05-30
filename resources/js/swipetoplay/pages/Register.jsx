@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
 import { apiStore } from "../store/apiStore/apiStore";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function Register() {
 
@@ -11,6 +13,7 @@ function Register() {
     const [formData, setFormData] = useState({
     username: "",
     email: "",
+    phone: "",
     password: "",
     });
 
@@ -33,6 +36,7 @@ function Register() {
       const user = {
         username: formData.username,
         email: formData.email,
+        phone: `+34${formData.phone.replace(/\s+/g, '')}`,
         password: formData.password,
       };
 
@@ -66,6 +70,7 @@ function Register() {
 
     return (
       <>
+      <Header />
         <div className="relative h-screen bg-cover bg-center flex items-center justify-center bg-white">
           <div className="relative z-10 bg-gray-600 p-8 rounded-md shadow-md w-96 text-white">
             <h2 className="text-2xl font-bold mb-4 text-white ml-28">Registro</h2>
@@ -93,6 +98,17 @@ function Register() {
                 />
               </div>
               <div className="mb-4">
+                <label htmlFor="phone" className="block text-white text-sm font-medium mb-2">Teléfono:</label>
+                <input
+                  type="phone"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border bg-gray-700 rounded-md text-white"
+                />
+              </div>
+              <div className="mb-4">
                 <label htmlFor="password" className="block text-white text-sm font-medium mb-2">Contraseña:</label>
                 <input
                   type="password"
@@ -112,6 +128,7 @@ function Register() {
             </div>
           </div>
         </div>
+        <Footer/>
       </>
     );
   }

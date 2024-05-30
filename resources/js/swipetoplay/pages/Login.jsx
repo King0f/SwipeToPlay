@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
 import { apiStore } from "../store/apiStore/apiStore";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function Login() {
 
@@ -61,6 +63,7 @@ function Login() {
 
     return (
       <>
+      <Header />
         <div className="relative h-screen bg-cover bg-center flex items-center justify-center">
           <div className="relative z-10 bg-gray-600 bg-opacity-90 p-8 rounded-md shadow-md w-96">
             <h2 className="text-2xl font-bold mb-4 text-white text-center">Inicio sesión</h2>
@@ -96,6 +99,7 @@ function Login() {
             </div>
           </div>
         </div>
+        <Footer/>
       </>
     );
   }
