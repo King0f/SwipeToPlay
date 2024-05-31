@@ -32,10 +32,15 @@ export default {
         's': 8,
         'm': 12,
         'l': 16,
-        'xl': 20
+        'xl': 20,
+        custom: '12px',
       },
 
       colors: {
+        primary: '#212121',
+        highlight: '#ff0000',
+        customGray: '#5f5f5f',
+        customRedLight: '#ff0000',
         'Acquamarine':{
           10: '#EFF7F6',
           20: '#DDEEEC',
@@ -479,26 +484,45 @@ export default {
       },
       fontFamily: {
         'Swipe': ['Poppins', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        'sofia-pro': ['Sofia Pro', 'sans-serif'],
       },
       boxShadow: {
         'custom-red': '5px 5px 25px 5px rgba(255, 0, 0, 0.6)',
         'custom-blue': '5px 5px 25px 5px rgba(0, 0, 255, 0.6)',
         'custom-circle': '0 0px 25px rgba(112, 163, 255, 0.78)',
+        custom: '6px 6px 14px 1px rgba(0, 0, 0, 0.16)',
       },
       fontWeight: {
         'audienseBold': 'bold',
         'audienseSemiBold': '600',
       },
-
+      
+      flex: {
+        '1/6': '0 0 16.67%',
+      },
+      maxWidth: {
+        '1/6': '16.67%',
+      },
+      padding: {
+        '3.5': '15px',
+      },
+      margin: {
+        '3.5': '15px',
+      },
       fontSize:{
         'size-xs': '10px',
         'size-s': '12px',
         'size-m': '14px',
         'size-l': '16px',
+        'size-ml': '18px',
         'size-xl': '20px',
         'size-2xl': '24px',
         'size-3xl': '32px',
         'size-4xl': '46px',
+        'heading-super': '75px',
+        'heading': '38px',
+        'custom-sm': '16px',
       },
 
       lineHeight: {
@@ -510,6 +534,8 @@ export default {
         '2xl': '28px',
         '3xl': '36px',
         '4xl': '50px',
+        'heading-super': '76px',
+        'custom': '24px',
       },
 
     },

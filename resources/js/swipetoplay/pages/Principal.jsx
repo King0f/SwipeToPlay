@@ -36,14 +36,14 @@ function Principal() {
             if (usuario.lvl_premium == lvl) {
                 toast.error("Usted ya tiene el nivel de suscripción premium.", {position: 'top-left', theme:'light', transition: Zoom, autoClose: 3000});
             } else {
-                toast.dismiss(); // Cancela todos los toasts antes de navegar
+                toast.dismiss(); 
                 navigate(path + '/ComprarPremium');
             }
         } else if (lvl == 2) {
             if (usuario.lvl_premium == lvl) {
                 toast.error("Usted ya tiene el nivel de suscripción deluxe.", {position: 'top-left', theme:'light', transition: Zoom, autoClose: 3000});
             } else {
-                toast.dismiss(); // Cancela todos los toasts antes de navegar
+                toast.dismiss(); 
                 navigate(path + '/ComprarDeluxe');
             }
         }
@@ -53,8 +53,90 @@ function Principal() {
     <>
     <Header />
     <ToastContainer pauseOnFocusLoss={false} limit={3} />
-    <div className="App mt-10">
-    <img src={textoPagPrincipal}/>
+    <div>
+    <div className="min-h-[70vh] flex items-center justify-center bg-gray-100 p-4">
+    <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-3 gap-4 px-12"> 
+        <div className="flex flex-col justify-center text-center md:text-left pt-6 md:pt-0"> 
+        <h1 className="font-montserrat font-extrabold text-heading-super md:text-heading-super leading-heading-super text-primary tracking-wide">
+            <span className="text-highlight">Swipe</span> to find <span className="text-highlight">your</span> next <span className="text-highlight">partner</span>
+          </h1>
+        </div>
+        <div className="hidden md:block"></div>
+        {token ? (
+        <div className="relative flex justify-center items-center">
+          <div className="bg-white text-customGray p-4 rounded-custom shadow-custom w-full md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto"> {/* Ajusté la anchura máxima */}
+            <Link to={path + '/Swipe'} className="block w-full text-customGray no-underline hover:bg-customRedLight hover:text-black p-2 rounded cursor-pointer">
+              <div className="flex items-center mb-4">
+                <span role="img" aria-label="swipe card" className="mr-2">🃏</span>
+                <span className="font-sofia-pro text-xl font-semibold">Try Swipe</span>
+              </div>
+            </Link>
+            <Link to={path + '/Chat'} className="block w-full text-customGray no-underline hover:bg-customRedLight hover:text-black p-2 rounded cursor-pointer">
+              <div className="flex items-center mb-4">
+                <span role="img" aria-label="chatting" className="mr-2">💬</span>
+                <span className="font-sofia-pro text-xl font-semibold">Start Chatting</span>
+              </div>
+            </Link>
+            <Link to={path + '/Profile'} className="block w-full text-customGray no-underline hover:bg-customRedLight hover:text-black p-2 rounded cursor-pointer">
+              <div className="flex items-center">
+                <span role="img" aria-label="profile" className="mr-2">👤</span>
+                <span className="font-sofia-pro text-xl font-semibold">Customize Profile</span>
+              </div>
+            </Link>
+          </div>
+        </div>) : (
+        <div className="relative flex justify-center items-center">
+          <div className="bg-white text-customGray p-4 rounded-custom shadow-custom w-full md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto min-h-[60vh]"> {/* Ajusté la anchura máxima */}
+            <a onClick={popUpNotLogged} className="block w-full text-customGray no-underline hover:bg-customRedLight hover:text-black p-2 rounded cursor-pointer">
+              <div className="flex items-center mb-4">
+                <span role="img" aria-label="swipe card" className="mr-2">🃏</span>
+                <span className="font-sofia-pro text-xl font-semibold">Try Swipe</span>
+              </div>
+            </a>
+            <a onClick={popUpNotLogged} className="block w-full text-customGray no-underline hover:bg-customRedLight hover:text-black p-2 rounded cursor-pointer">
+              <div className="flex items-center mb-4">
+                <span role="img" aria-label="chatting" className="mr-2">💬</span>
+                <span className="font-sofia-pro text-xl font-semibold">Start Chatting</span>
+              </div>
+            </a>
+            <Link to={path + '/Login'} className="block w-full text-customGray no-underline hover:bg-customRedLight hover:text-black p-2 rounded cursor-pointer">
+              <div className="flex items-center">
+                <span role="img" aria-label="profile" className="mr-2">👤</span>
+                <span className="font-sofia-pro text-xl font-semibold">Create Profile</span>
+              </div>
+            </Link>
+          </div>
+        </div>)
+        }
+      </div>
+    </div>
+    <div className="relative max-h-[100vh] bg-cover bg-center bg-gray-900 text-white p-6">
+  <div className="flex items-center justify-center ml-16 py-32">
+    <img
+      src="../imagenes/lolval.jpg"
+      alt="Imagen de Valorant y League of Legends"
+      className="w-1/2 h-auto mr-12 rounded-xl"
+      style={{ maxWidth: '90%', maxHeight: '90%' }}
+    />
+    <div className='mt-24 ml-10 mr-20 text-center'>
+    <h2 className="text-4xl font-bold mb-4"><b className="text-highlight">Find</b> someone to play with.</h2>
+    <p>Explore the entire League of Legends and Valorant community on our page.</p>
+    <br/>
+    <h2 className="text-4xl font-bold mb-4">Play while <b className="text-highlight">having fun</b>.</h2>
+    <p>Enhance your experience by playing with people at your skill level.</p>
+    <br/>
+    <h2 className="text-4xl font-bold mb-4"><b className="text-highlight">Communicate</b> with your teammates.</h2>
+    <p>Chat with the people you match with and start playing!</p>
+    <br/>
+    <button className="botonInicio text-white font-bold py-3 px-6 rounded mt-4"   
+        onClick={() => {navigate(path + '/Swipe')}}
+    >
+        Start Swiping
+  </button>
+</div>
+  </div>
+</div>
+
     {token ? (
     <>
     <div>
