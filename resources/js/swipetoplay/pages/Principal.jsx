@@ -86,7 +86,7 @@ function Principal() {
           </div>
         </div>) : (
         <div className="relative flex justify-center items-center">
-          <div className="bg-white text-customGray p-4 rounded-custom shadow-custom w-full md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto min-h-[60vh]"> {/* Ajusté la anchura máxima */}
+          <div className="bg-white text-customGray p-4 rounded-custom shadow-custom w-full md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto"> {/* Ajusté la anchura máxima */}
             <a onClick={popUpNotLogged} className="block w-full text-customGray no-underline hover:bg-customRedLight hover:text-black p-2 rounded cursor-pointer">
               <div className="flex items-center mb-4">
                 <span role="img" aria-label="swipe card" className="mr-2">🃏</span>
