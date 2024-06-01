@@ -15,10 +15,10 @@ const Tarjetas = () => {
     const path = apiStore.getState().basename;
     const [actualizar, setActualizar] = useState(false);
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
-    const [cardNumber, setCardNumber] = useState('XXXX XXXX XXXX XXXX');
-    const [expDate, setExpDate] = useState('12/24');
-    const [ccvNumber, setCcvNumber] = useState('***');
-    const [cardName, setCardName] = useState('Nombre Apellido');
+    const [cardNumber, setCardNumber] = useState('');
+    const [expDate, setExpDate] = useState('');
+    const [ccvNumber, setCcvNumber] = useState('');
+    const [cardName, setCardName] = useState('');
     const [tarjetas, setTarjetas] = useState();
     useEffect(() => {
       const obtenerTarjetas = async () => {
@@ -77,10 +77,10 @@ const Tarjetas = () => {
     };
 
   return (
-    <div className="pt-20">
+    <div className="mt-20">
   <Header />
   <div className="flex w-full p-2 justify-center">
-    <div className="fixed left-5 flex flex-col p-2 border-2 border-red-300 rounded justify-center transform -translate-y-1/2 top-1/3">
+    <div className="bg-white fixed left-5 flex flex-col p-2 border-2 border-red-300 rounded justify-center transform -translate-y-1/2 top-1/3">
       <Link to={path + "/Profile"}>
         <button className="flex p-2 hover:bg-red-400 rounded">
           <box-icon name="user"></box-icon>
@@ -272,7 +272,7 @@ const Tarjetas = () => {
     )}
     </div>
 
-<footer className="position absolute bottom-0 w-full"><Footer/></footer>
+<div className="position-absolute bottom-0 w-full"><Footer/></div>
 </div>
 
   )

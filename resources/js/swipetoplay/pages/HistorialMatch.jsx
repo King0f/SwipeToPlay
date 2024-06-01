@@ -55,7 +55,7 @@ const HistorialMatch = () => {
     return (
         <div className="pt-20">
             <Header />
-            <div className="fixed top-1/3 left-5 transform -translate-y-1/2 flex flex-col p-2 border-2 border-red-300 rounded items-center">
+            <div className="bg-white fixed top-1/3 left-5 transform -translate-y-1/2 flex flex-col p-2 border-2 border-red-300 rounded items-center">
                 <Link to={path + "/Profile"}>
                     <button className="flex p-2 hover:bg-red-400 rounded">
                         <box-icon name="user"></box-icon>
