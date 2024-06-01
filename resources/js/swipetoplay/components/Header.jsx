@@ -35,72 +35,71 @@ export default function Header() {
         </div>
         {token ? (
           <>
-           <div className="md:hidden">
-          <button
-            onClick={toggleMenu}
-            className="text-black focus:outline-none"
+          <ToastContainer pauseOnFocusLoss={false} limit={3} />
+          <div className="md:hidden mr-4">
+        <button
+          onClick={toggleMenu}
+          className="text-black focus:outline-none"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-            <div className={`${isOpen ? '' : 'md:flex hidden'}`}>
-              <div
-                onClick={() => navigate(path)}
-                className={`text-black font-Swipe ${isActive(path)} nav-link`}
-              >
-                <Link to={path}>Inicio</Link>
-              </div>
+            {isOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
+      </div>
+          <Link to={path} className={`${isOpen ? 'bg-gray-200  text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '80px' }}>
+          <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
+            <box-icon name='home' ></box-icon>
+              <button className="ml-2">Inicio</button>
             </div>
+          </Link>
 
-            <div className={`${isOpen ? '' : 'md:flex hidden'}`}>
-              <div
-                onClick={() => navigate(path + "/Swipe")}
-                className={`text-black font-Swipe ${isActive(path + "/Swipe")} nav-link`}
-              >
-                <Link to={path + "/Swipe"}>Start Swiping</Link>
-              </div>
+          <Link to={path + '/Swipe'} className={`${isOpen ? 'bg-gray-200 text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '120px' }} >
+          <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
+          <box-icon name='sort' rotate='90' ></box-icon>
+              <button className="ml-2">Swipe</button>
             </div>
+          </Link>
 
-            <div className={`${isOpen ? '' : 'md:flex hidden'}`}>
-              <div
-                onClick={() => navigate(path + "/games")}
-                className={`text-black font-Swipe ${isActive(path + "/games")} nav-link`}
-              >
-                <Link to={path + "/games"}>Games</Link>
-              </div>
+          <Link to={path + '/Games'} className={`${isOpen ? 'bg-gray-200  text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '160px' }}>
+          <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
+            <box-icon name='joystick'></box-icon>
+              <button className="ml-2">Juegos</button>
             </div>
+          </Link>
 
-            <div className={`${isOpen ? '' : 'md:flex hidden'}`}>
-              <div
-                onClick={() => navigate(path + "/Chat")}
-                className={`text-black font-Swipe ${isActive(path + "/Chat")} nav-link`}
-              >
-                <Link to={path + "/Chat"}>Start Chatting</Link>
-              </div>
+          <Link to={path + '/Chat'} className={`${isOpen ? 'bg-gray-200 text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '202px' }}>
+          <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
+            <box-icon name='chat'></box-icon>
+              <button className="ml-2" onClick={popUpNotLogged}>Chats</button>
             </div>
-          </>
+          </Link>
+          <Link to={path + '/Profile'} className={`${isOpen ? 'rounded-b-xl bg-gray-800 text-white w-full absolute left-60 p-5' : 'md:hidden md:flex hidden'}`} style={{ top: '250px' }}>
+          <div className="text-white font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
+          <box-icon name='user' color='#ffffff'></box-icon>
+            <button className="ml-2">Perfil</button>
+          </div>
+        </Link>
+        </>
         )
           : (
             <>
@@ -135,13 +134,12 @@ export default function Header() {
               </svg>
             </button>
           </div>
-              <div className={`${isOpen ? 'bg-gray-200  text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '80px' }}>
-              <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
-                <box-icon name='home' ></box-icon>
-                  <Link className="ml-2" to={path}>Inicio</Link>
-                </div>
+            <Link to={path} className={`${isOpen ? 'bg-gray-200  text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '80px' }}>
+            <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
+              <box-icon name='home' ></box-icon>
+                <button className="ml-2">Inicio</button>
               </div>
-
+            </Link>
               <div className={`${isOpen ? 'bg-gray-200 text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '120px' }} >
               <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
               <box-icon name='sort' rotate='90' ></box-icon>
