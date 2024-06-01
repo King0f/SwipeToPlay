@@ -12,11 +12,12 @@ const Configuracion = () => {
     const path = apiStore.getState().basename;
     const [conexionLOL, setConexionLOL] = useState([]);
     const [conexionValorant, setConexionValorant] = useState([]);
-    const {usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant} = usuarioStore((state) => ({
+    const {usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant, borrarUsuario} = usuarioStore((state) => ({
       usuario: state.usuario,
       obtenerUsuario: state.obtenerUsuario,
       obtenerConexionLOL: state.obtenerConexionLOL,
       obtenerConexionValorant: state.obtenerConexionValorant,
+      borrarUsuario: state.borrarUsuario
     }))
     async function fetchData() {
       try {

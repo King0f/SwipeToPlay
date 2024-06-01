@@ -40,7 +40,7 @@ export default {
         primary: '#212121',
         highlight: '#ff0000',
         customGray: '#5f5f5f',
-        customRedLight: '#ff4444',
+        customRedLight: 'rgb(248 113 113)',
         'Acquamarine':{
           10: '#EFF7F6',
           20: '#DDEEEC',
