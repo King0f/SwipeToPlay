@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import Header from '../components/Header'
+import LateralNavP from '../components/LateralNavP'
 import {useNavigate } from "react-router-dom";
 import { apiStore } from "../store/apiStore/apiStore";
 import 'boxicons'
@@ -33,44 +34,10 @@ const Conexiones = () => {
     useEffect(() => {
       fetchData();
     }, []);
-    const handleCerrarSesion = () => {
-        localStorage.removeItem('token');
-        borrarUsuario();
-        navigate(path);
-      };
   return (
     <div className="pt-20">
             <Header />
-            <div className=" bg-white fixed top-1/3 left-5 transform -translate-y-1/2 flex flex-col p-2 border-2 border-red-300 rounded items-center">
-                <Link to={path + "/Profile"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="user"></box-icon>
-                    </button>
-                </Link>
-                <Link to={path + "/Tarjetas"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="credit-card"></box-icon>
-                    </button>
-                </Link>
-                <Link to={path + "/Conexiones"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="link-alt"></box-icon>
-                    </button>
-                </Link>
-                <Link to={path + "/HistorialMatch"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="heart"></box-icon>
-                    </button>
-                </Link>
-                <Link to={path + "/Configuracion"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="cog"></box-icon>
-                    </button>
-                </Link>
-                <button onClick={handleCerrarSesion} className="flex p-2 hover:bg-red-400 rounded">
-                    <box-icon name="log-out"></box-icon>
-                </button>
-            </div>
+            <LateralNavP />
 
             <div className="flex flex-wrap justify-center gap-8 p-4">
                 <div className="bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(../storage/imagenes/background-lol.jpg)`, width: '728px', height: '410px' }}>

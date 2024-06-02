@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import Header from '../components/Header'
+import LateralNavP from '../components/LateralNavP'
 import imagenEjemplo from '../../../assets/textoLogo.png'
 import imagenUser from '../../../assets/profile.jpg'
 import conectarLol from '../../../assets/conectarLol.jpg'
@@ -42,45 +43,10 @@ const Profile = () => {
         guardarFotoPerfil(file); // Suponiendo que esta función maneja la actualización
       }
     };
-    const handleCerrarSesion = () => {
-      localStorage.removeItem('token');
-      borrarUsuario();
-      navigate(path);
-    };
   return (
     <div className="pt-20">
-  <Header />
-  <div className="fixed bg-white top-1/3 left-5 transform -translate-y-1/2 flex flex-col p-2 border-2 border-red-300 rounded items-center">
-    <Link to={path + "/Profile"}>
-      <button className="flex p-2 hover:bg-red-400 rounded">
-        <box-icon name="user"></box-icon>
-      </button>
-    </Link>
-    <Link to={path + "/Tarjetas"}>
-      <button className="flex p-2 hover:bg-red-400 rounded">
-        <box-icon name="credit-card"></box-icon>
-      </button>
-    </Link>
-    <Link to={path + "/Conexiones"}>
-      <button className="flex p-2 hover:bg-red-400 rounded">
-        <box-icon name="link-alt"></box-icon>
-      </button>
-    </Link>
-    <Link to={path + "/HistorialMatch"}>
-      <button className="flex p-2 hover:bg-red-400 rounded">
-        <box-icon name="heart"></box-icon>
-      </button>
-    </Link>
-    <Link to={path + "/Configuracion"}>
-      <button className="flex p-2 hover:bg-red-400 rounded">
-        <box-icon name="cog"></box-icon>
-      </button>
-    </Link>
-    <button onClick={handleCerrarSesion} className="flex p-2 hover:bg-red-400 rounded">
-      <box-icon name="log-out"></box-icon>
-    </button>
-  </div>
-
+      <Header />
+      <LateralNavP />
   <div className="flex w-full p-2">
     <div className="flex flex-col w-1/3">
       <div className="relative w-1/2 h-auto m-auto rounded-full flex items-center justify-center"
