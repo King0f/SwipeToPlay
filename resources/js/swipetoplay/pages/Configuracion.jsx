@@ -13,6 +13,7 @@ const Configuracion = () => {
     const path = apiStore.getState().basename;
     const [conexionLOL, setConexionLOL] = useState([]);
     const [conexionValorant, setConexionValorant] = useState([]);
+    const [user, setUsuario] = useState([]);
     const {usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant, borrarUsuario} = usuarioStore((state) => ({
       usuario: state.usuario,
       obtenerUsuario: state.obtenerUsuario,
@@ -23,6 +24,7 @@ const Configuracion = () => {
     async function fetchData() {
       try {
         obtenerUsuario();
+        setUsuario(usuario);
         const conexionLOLData = await obtenerConexionLOL(usuario.id);
         const conexionValorantData = await obtenerConexionValorant(usuario.id);
         setConexionLOL(conexionLOLData);
@@ -34,7 +36,25 @@ const Configuracion = () => {
     useEffect(() => {
       fetchData();
     }, []);
-    const handleChangeValorant = (event) => {handleChangePosValorant
+    const handleChangeUsername = (event) => {
+        setUsuario({
+          ...user,
+          username: event.target.value,
+        });
+    };
+    const handleChangeEmail = (event) => {
+        setUsuario({
+          ...user,
+          email: event.target.value,
+        });
+    };
+    const handleChangePhone = (event) => {
+        setUsuario({
+          ...user,
+          phone: event.target.value,
+        });
+    };
+    const handleChangeValorant = (event) => {
         setConexionValorant({
           ...conexionValorant,
           rango: event.target.value,
@@ -78,14 +98,41 @@ const Configuracion = () => {
             riotID: conexionLOL.riotID,
             juego: conexionLOL.juego,
             rango: conexionLOL.rango,
-            posicion: conexionLOL.posicion,
-            id_user: conexionLOL.id_user
+            posicion: conexionLOL.posicion
         }
         const token = localStorage.getItem('token');
         const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
         const response = await fetch(`${localhost}/api/modConexion`, { method: 'POST', headers: headers, body: JSON.stringify(conexion) });
-        const data = await response.json();
-      };
+        navigate(path + "/Conexiones");
+    };
+    const handleSubmitValorant = async (e) => {
+        e.preventDefault();
+        const localhost = apiStore.getState().localhost;
+        const conexion = {
+            id: conexionValorant.id,
+            riotID: conexionValorant.riotID,
+            juego: conexionValorant.juego,
+            rango: conexionValorant.rango,
+            posicion: conexionValorant.posicion
+        }
+        const token = localStorage.getItem('token');
+        const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
+        const response = await fetch(`${localhost}/api/modConexion`, { method: 'POST', headers: headers, body: JSON.stringify(conexion) });
+        navigate(path + "/Conexiones");
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const localhost = apiStore.getState().localhost;
+        const usermod = {
+            username: usuario.username,
+            email: usuario.email,
+            phone: usuario.phone
+        }
+        const token = localStorage.getItem('token');
+        const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
+        const response = await fetch(`${localhost}/api/modConexion`, { method: 'POST', headers: headers, body: JSON.stringify(usermod) });
+        navigate(path + "/Profile");
+    };
   return (
     <div className="pt-20">
             <Header />
@@ -134,7 +181,7 @@ const Configuracion = () => {
                                 <option value="Soporte">Soporte</option>
                             </select>
                         </div>
-                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50" onSubmit={handleSubmitLol}>Modificar conexión</button>
+                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50" onClick={handleSubmitLol}>Modificar conexión</button>
                     </form>
                 </div>
                 <div className="bg-cover bg-center  rounded-2xl mb-10" style={{ backgroundImage: `url(../storage/imagenes/background-valorant.jpg)`, width: '728px', height: '410px' }}>
@@ -178,7 +225,7 @@ const Configuracion = () => {
                                 <option value="Controlador">Controlador</option>
                             </select>
                         </div>
-                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50">Modificar conexión</button>
+                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50" onClick={handleSubmitValorant}>Modificar conexión</button>
                     </form>
                 </div>
                 <div className="bg-cover bg-center rounded-2xl mb-20" style={{ backgroundImage: `url(../storage/imagenes/background-perfil.jpg)`, width: '728px', height: '410px' }}>
@@ -188,7 +235,8 @@ const Configuracion = () => {
                             <label className="block text-white text-sm font-bold mb-2">Nombre de usuario:</label>
                             <input
                                 type="text"
-                                value={usuario.username}
+                                value={user.username}
+                                onChange={handleChangeUsername}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
                             />
                         </div>
@@ -196,7 +244,8 @@ const Configuracion = () => {
                             <label className="block text-white text-sm font-bold mb-2">Email:</label>
                             <input
                                 type="email"
-                                value={usuario.email}
+                                onChange={handleChangeEmail}
+                                value={user.email}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
                             />
                         </div>
@@ -204,11 +253,12 @@ const Configuracion = () => {
                             <label className="block text-white text-sm font-bold mb-2">Teléfono:</label>
                             <input
                                 type="text"
-                                value={usuario.phone}
+                                onChange={handleChangePhone}
+                                value={user.phone}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
                             />
                         </div>
-                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50">Modificar perfil</button>
+                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50"  onClick={handleSubmit}>Modificar perfil</button>
                     </form>
                 </div>
             </div>

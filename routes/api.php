@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/register', [AuthController::class, 'createUser']);
+Route::post('/modUser', [AuthController::class, 'modUser'])->middleware('auth:sanctum');
 Route::post('/login', [AuthController::class, 'loginUser']);
 Route::get('/user', [Controller::class, 'obtenerUsuario'])->middleware('auth:sanctum');
 Route::get('/userSwipe', [SwipeController::class, 'obtenerUsuarioSwipe'])->middleware('auth:sanctum');

@@ -73,7 +73,8 @@ const Tarjetas = () => {
     };
 
   return (
-    <div className="mt-20">
+    <>
+    <div className="min-h-[52.4vh]">
       <Header />
       <div className="flex w-full p-2 justify-center">
       <LateralNavP />
@@ -239,9 +240,9 @@ const Tarjetas = () => {
         )}
         </div>
 
-        <div className="position-absolute bottom-0 w-full"><Footer/></div>
-</div>
-
+      </div>
+      <Footer className="w-full mt-auto"/>
+    </>
   )
 }
 

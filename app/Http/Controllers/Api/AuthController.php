@@ -62,6 +62,16 @@ class AuthController extends Controller
             ], 500);
         }
     }
+    public function modificarUser(Request $request)
+    {
+        $usuario = $request->user();
+        $usuario->username = $request->username;
+        $usuario->email = $request->email;
+        $usuario->phone = $request->phone;
+        $usuario->save();
+
+        return response("Usuario modificado con exito!",200);
+    }
     public function subirImagen(Request $request){
         try {
             $user = $request->user();
