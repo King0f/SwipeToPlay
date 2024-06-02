@@ -14,12 +14,12 @@ const Configuracion = () => {
     const [conexionLOL, setConexionLOL] = useState([]);
     const [conexionValorant, setConexionValorant] = useState([]);
     const [user, setUsuario] = useState([]);
-    const {usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant, borrarUsuario} = usuarioStore((state) => ({
+    const {usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant, modificarUsuario} = usuarioStore((state) => ({
       usuario: state.usuario,
       obtenerUsuario: state.obtenerUsuario,
       obtenerConexionLOL: state.obtenerConexionLOL,
       obtenerConexionValorant: state.obtenerConexionValorant,
-      borrarUsuario: state.borrarUsuario
+      modificarUsuario: state.modificarUsuario
     }))
     async function fetchData() {
       try {
@@ -122,15 +122,7 @@ const Configuracion = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const localhost = apiStore.getState().localhost;
-        const usermod = {
-            username: usuario.username,
-            email: usuario.email,
-            phone: usuario.phone
-        }
-        const token = localStorage.getItem('token');
-        const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
-        const response = await fetch(`${localhost}/api/modConexion`, { method: 'POST', headers: headers, body: JSON.stringify(usermod) });
+        modificarUsuario(user.username,user.email,user.phone)
         navigate(path + "/Profile");
     };
   return (

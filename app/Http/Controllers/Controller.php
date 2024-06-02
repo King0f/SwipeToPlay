@@ -20,6 +20,14 @@ class Controller extends BaseController
 
         return response()->json($usuario);
     }
+    public function modificarUsuario(Request $request) {
+        $usuario = $request->user();
+        $usuario->username = $request->input('username');
+        $usuario->email = $request->input('email');
+        $usuario->phone = $request->input('phone');
+        $usuario->save();
+        return response()->json($usuario);
+    }
     public function obtenerUsuarioByID($id) {
     $usuario = User::find($id);
     return response()->json($usuario);

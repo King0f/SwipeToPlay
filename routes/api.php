@@ -44,3 +44,4 @@ Route::get('/timerReset', [Controller::class, 'timerReset']);
 Route::post('/procesarCompra', [Controller::class, 'procesarCompra'])->middleware('auth:sanctum');
 Route::get('/obtenerMatches', [Controller::class, 'obtenerMatches'])->middleware('auth:sanctum');
 Route::post('/delMatch', [Controller::class, 'eliminarMatch']);
+Route::post('/modificarUsuario', [Controller::class, 'modificarUsuario'])->middleware('auth:sanctum');

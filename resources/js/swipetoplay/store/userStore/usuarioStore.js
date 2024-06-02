@@ -239,6 +239,24 @@ export const usuarioStore = create((set) => ({
         // Puedes manejar el error de alguna manera específica si lo necesitas
       }
     },
+    modificarUsuario: async (username,email,phone) => {
+      try {
+        const localhost = apiStore.getState().localhost;
+        const user = {
+            username: username,
+            email: email,
+            phone: phone
+        }
+        const token = localStorage.getItem('token');
+        const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });
+        const response = await fetch(`${localhost}/api/modificarUsuario`, { method: 'POST', headers: headers, body: JSON.stringify(user) });
+        const data = await response.json();
+        set({usuario: data}); 
+      } catch (err) {
+        console.error(err);
+        // Puedes manejar el error de alguna manera específica si lo necesitas
+      }
+    },
     procesarCompra: async (action) => {
       const localhost = apiStore.getState().localhost;
       const token = localStorage.getItem('token');
