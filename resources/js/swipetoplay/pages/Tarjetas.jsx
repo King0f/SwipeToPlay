@@ -239,7 +239,7 @@ const Tarjetas = () => {
         )}
         </div>
 
-        <div className="position-absolute bottom-0 w-full"><Footer/></div>
+        <div className="position-x-absolute bottom-0 w-full"><Footer/></div>
 </div>
 
   )

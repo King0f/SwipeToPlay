@@ -74,8 +74,8 @@ const ChatComp = ({ chatId, urlReceived}) => {
         <div ref={dummy}></div>
         </main>
         <form onSubmit={handleSubmit} className="chatform">
-            <input value={formValue} onChange={(e) => setFormValue(e.target.value)} className="chatinput"></input> 
-            <button type="submit" className="chatbutton"> 📩 </button>
+            <input value={formValue} onChange={(e) => setFormValue(e.target.value)} className="chatinput rounded"></input> 
+            <button type="submit" className="chatbutton rounded"> 📩 </button>
         </form>
         </section>
         </div>
