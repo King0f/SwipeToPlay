@@ -2,11 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import Header from '../components/Header'
 import LateralNavP from '../components/LateralNavP'
-import imagenEjemplo from '../../../assets/textoLogo.png'
 import imagenUser from '../../../assets/profile.jpg'
-import conectarLol from '../../../assets/conectarLol.jpg'
-import conectarValo from '../../../assets/conectarValo.jpg'
-import conectarDiscord from '../../../assets/conectarDiscord.jpg'
 import {useNavigate } from "react-router-dom";
 import { apiStore } from "../store/apiStore/apiStore";
 import 'boxicons'
@@ -26,21 +22,14 @@ const Profile = () => {
     useEffect(() => {
       obtenerUsuario();
     }, []);
-    const home = () => {
-        navigate(path);
-    };
     const fileInputRef = useRef(null);
-
-    // Función para abrir el selector de archivos
     const handleEditPictureClick = () => {
       fileInputRef.current.click();
     };
-
-    // Función para manejar cuando un archivo es seleccionado
     const handleFileChange = (event) => {
       const file = event.target.files[0];
       if (file) {
-        guardarFotoPerfil(file); // Suponiendo que esta función maneja la actualización
+        guardarFotoPerfil(file); 
       }
     };
   return (

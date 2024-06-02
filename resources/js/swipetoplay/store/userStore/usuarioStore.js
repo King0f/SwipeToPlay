@@ -76,7 +76,7 @@ export const usuarioStore = create((set) => ({
       }
   
       const data = await response.json();
-      set({ usuario: data })
+      set({usuario: data});
     },
     obtenerUsuarioSwipe: async () => {
       try {

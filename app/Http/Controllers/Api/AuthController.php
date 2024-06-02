@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Tarjeta;
+use Illuminate\Support\Facades\Storage;
 
 
 class AuthController extends Controller
@@ -75,16 +76,22 @@ class AuthController extends Controller
     public function subirImagen(Request $request){
         try {
             $user = $request->user();
+            $oldImagePath = str_replace('../storage/', 'public/', $user->imagen);
+            $dateTime = (new \DateTime())->format('Ymd_His');
             $request->validate([
                 'file' => 'required|image'
             ]);
             $path = $request->file('file')->storeAs(
                 'public/imagenes',
-                $user->id . '.' . $request->file('file')->getClientOriginalExtension()
+                $user->id . "_" . $dateTime . '.' . $request->file('file')->getClientOriginalExtension()
             );
             $user->imagen = str_replace('public/', '../storage/', $path);
             $user->save();
-    
+
+            if ($oldImagePath && Storage::exists($oldImagePath)) {
+                Storage::delete($oldImagePath);
+            }
+
             return response()->json($user);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
