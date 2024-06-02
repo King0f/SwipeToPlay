@@ -9,7 +9,7 @@
   margin-top: 1%;
   height: 100%; /* Asegura que ocupe todo el alto disponible */
   width: 100%; /* Asegura que ocupe todo el ancho disponible */
-  background-color: rgba(135, 17, 17, 0.706); /* Fondo del componente */
+  background-color: #1a1115; /* Fondo del componente */
   color: white; /* Color del texto */
   
 }
@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  background-color: rgba(135, 17, 17, 0.706);
+  background-color: #1a1115;
 }
 
 .chatmain {
@@ -37,11 +37,11 @@
 }
 
 .chatmain::-webkit-scrollbar-track {
-  background: #3b1616;
+  background: rgb(17 24 39);;
 }
 
 .chatmain::-webkit-scrollbar-thumb {
-  background: #451818;
+  background: rgb(17 24 39);;
 }
 
 .chatform {
@@ -49,7 +49,7 @@
   padding: 10px;
   /* position: relative; */
   bottom: 0;
-  background-color: rgb(52, 13, 13);
+  background-color: #1a1115;
   display: flex;
   font-size: 1.5rem;
 }
@@ -101,11 +101,14 @@
   max-width: 80%; /* Restringe el ancho para hacer espacio para la imagen */
   word-wrap: break-word;
   margin: 0; /* Elimina márgenes por defecto */
-  font-family: cursive;
+  font-family:'sofia-pro';
 }
-@media (min-width: 400px) { /* Tablets y desktops pequeños */
+@media (min-width: 400px) { 
 .chatp {
     max-width: 12rem;
+}
+.chatinput{
+  margin-right: 1.5%;
 }
 .chatbutton {
   width: 10%;
@@ -123,17 +126,26 @@
 .chatp {
     max-width: 15rem;
 }
+.chatinput{
+  margin-right: 1.5%;
+}
 }
 
 @media (min-width: 992px) { /* Desktops medianos */
 .chatp {
     max-width: 30rem;
 }
+.chatinput{
+  margin-right: 1.2%;
+}
 }
 
 @media (min-width: 1200px) { /* Desktops grandes */
 .chatp {
     max-width: 50rem; /* Se puede mantener en unidades absolutas si se prefiere */
+}
+.chatinput{
+  margin-right: 1%;
 }
 }
 
@@ -161,12 +173,12 @@ padding-bottom: 0.8rem; /* Espacio debajo de cada mensaje */
   justify-content: space-between; /* Espacia el mensaje y la hora */
 }
 .sent .chatp {
-background: #176ba7;
+background: #075e54;
 color: white;
 }
 .received p {
-  background: #e5e5ea;
-  color: rgb(44, 136, 38);
+  background: 	#0f1929;
+  color: white;
 
 }
 

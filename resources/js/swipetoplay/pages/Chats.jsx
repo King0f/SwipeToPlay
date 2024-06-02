@@ -86,7 +86,7 @@ function Chats() {
                 </div>
             </div>
 
-            <div className="w-full flex justify-center items-center bg-gray-900 text-white">
+            <div className="w-full flex justify-center items-center bg-[#1a1115] text-white">
                 {selectedChatId ? (
                     <ChatComp chatId={selectedChatId} urlReceived={userDetails[selectedChatId].imagePath || 'https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png'} />
                 ) : (
