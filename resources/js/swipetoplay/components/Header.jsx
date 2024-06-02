@@ -163,7 +163,7 @@ export default function Header() {
               <Link to={path + '/Login'} className={`${isOpen ? 'rounded-b-xl bg-gray-800 text-white w-full absolute left-60 p-5' : 'md:hidden md:flex hidden'}`} style={{ top: '250px' }}>
               <div className="text-white font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
               <box-icon name='user' color='#ffffff'></box-icon>
-                <button className="ml-2">Login/Register</button>
+                <button className="ml-2">Login</button>
               </div>
             </Link>
             </>

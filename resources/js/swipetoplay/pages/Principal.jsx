@@ -71,7 +71,7 @@ function Principal() {
             <Link to={path + '/Profile'} className="block w-full text-customGray no-underline hover:bg-customRedLight hover:text-black p-2 rounded cursor-pointer">
               <div className="flex items-center p-2">
               <box-icon name='user'></box-icon>
-                <span className="ml-2 font-sofia-pro text-xl font-semibold">Customize Profile</span>
+                <span className="ml-2 font-sofia-pro text-xl font-semibold">Modificar Perfil</span>
               </div>
             </Link>
           </div>
@@ -153,10 +153,10 @@ function Principal() {
     <div class="grid lg:grid-cols-3 md:px-64 p-10 text-zinc-800">
     <div class="flex flex-col items-center bg-slate-100 p-6 mb-10 md:mb-0 rounded-lg shadow-lg max-w-xs">
         <div>
-            <h2 class="font-extrabold text-3xl text-center mb-2">Default</h2>
+            <h2 class="font-extrabold text-3xl text-center mb-2">Básica</h2>
             <p class="opacity-60 text-center">Opciones gratuitas al crear una cuenta</p>
             <div class="flex flex-col items-center my-8">
-                <p class="font-extrabold text-4xl">Free</p>
+                <p class="font-extrabold text-4xl">Gratis</p>
             </div>
         </div>
         <div class="flex flex-col gap-1">
@@ -187,7 +187,7 @@ function Principal() {
             <div class="flex justify-center mt-8">
             <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded mt-4"   
             >
-                Default
+                Por defecto
             </button>
             </div>
         </div>

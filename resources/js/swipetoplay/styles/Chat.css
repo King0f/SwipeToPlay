@@ -47,7 +47,7 @@
 .chatform {
   width: 100%; /* Ajusta el ancho para compensar el padding */
   padding: 10px;
-  position: relative;
+  /* position: relative; */
   bottom: 0;
   background-color: rgb(52, 13, 13);
   display: flex;
@@ -75,7 +75,7 @@
   background-color: #342828;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 28px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -114,6 +114,11 @@
 
 }
 }
+@media (min-width: 300px) { /* Tablets y desktops pequeños */
+  .chatp {
+      max-width: 10rem;
+  }
+  }
 @media (min-width: 768px) { /* Tablets y desktops pequeños */
 .chatp {
     max-width: 15rem;

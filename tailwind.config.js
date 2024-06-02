@@ -487,6 +487,13 @@ export default {
         montserrat: ['Montserrat', 'sans-serif'],
         'sofia-pro': ['Sofia Pro', 'sans-serif'],
       },
+      screens: {
+        'tres': '300px',
+        'cuatro': '400px',
+        '360':'360px',
+        '390':'390px',
+        '430':'430px',
+      },
       boxShadow: {
         'custom-red': '5px 5px 25px 5px rgba(255, 0, 0, 0.6)',
         'custom-blue': '5px 5px 25px 5px rgba(0, 0, 255, 0.6)',

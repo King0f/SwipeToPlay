@@ -239,7 +239,6 @@ const Tarjetas = () => {
           </main>
         )}
         </div>
-
       </div>
       <Footer className="w-full mt-auto"/>
     </>
