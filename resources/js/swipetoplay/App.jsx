@@ -16,11 +16,13 @@ import Chats from './pages/Chats.jsx';
 import { apiStore } from './store/apiStore/apiStore.js'
 import Comprar from './pages/Comprar.jsx';
 import Games from './pages/Games.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 
 function App() {
   const path =  apiStore.getState().basename;
   return (
     <>
+    <ScrollToTop />
       <Routes>
         <Route path={path} element={<Principal />}></Route>
         <Route path={path + '/Testing'} element={<Testing />}></Route>
