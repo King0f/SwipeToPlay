@@ -493,6 +493,7 @@ export default {
         '360':'360px',
         '390':'390px',
         '430':'430px',
+        '450':'450px',
       },
       boxShadow: {
         'custom-red': '5px 5px 25px 5px rgba(255, 0, 0, 0.6)',

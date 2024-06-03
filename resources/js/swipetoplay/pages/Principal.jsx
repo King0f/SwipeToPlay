@@ -55,7 +55,7 @@ function Principal() {
         <div className="hidden md:block"></div>
         {token ? (
         <div className="relative flex justify-center items-center">
-          <div className="bg-white text-customGray p-4 rounded-custom shadow-custom w-full md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto"> {/* Ajusté la anchura máxima */}
+          <div className="bg-white text-customGray p-4 rounded-custom shadow-custom w-full md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto text-center"> {/* Ajusté la anchura máxima */}
             <Link to={path + '/Swipe'} className="block w-full text-customGray no-underline hover:bg-customRedLight hover:text-black p-2 rounded cursor-pointer">
               <div className="flex items-center p-2">
                 <box-icon name='sort' rotate='90' ></box-icon>
@@ -102,11 +102,11 @@ function Principal() {
       </div>
     </div>
     <div className="relative md:max-h-[100vh] bg-cover bg-center bg-gray-900 text-white p-6">
-      <div className="flex flex-col md:flex-row items-center justify-center md:ml-16 md:py-24 py-8">
+      <div className="flex flex-col lg:flex-row items-center justify-center md:ml-16 lg:py-24 py-8">
         <img
           src="../imagenes/lolval.jpg"
           alt="Imagen de Valorant y League of Legends"
-          className="w-full md:w-1/2 h-auto mb-4 md:mb-0 md:mr-12 rounded-xl shadow-custom max-w-90 max-h-90"
+          className="w-full lg:w-1/2 h-auto mb-4 lg:mb-0 md:mr-12 rounded-xl shadow-custom max-w-90 max-h-90"
         />
         <div className="text-center md:ml-10 md:mr-20">
           <h2 className="md:text-4xl text-2xl font-bold mb-4">
@@ -145,46 +145,46 @@ function Principal() {
 
     {token ? (
       <div className='bg-gray-300 py-10 md:py-0 md:pt-24 md:pb-28'>
-      <div className="flex flex-col justify-center items-center text-center md:text-left pt-4 md:pt-0 md:my-4"> 
-        <h1 className="font-montserrat font-extrabold text-[30px] md:text-5xl md:leading-heading-super text-primary tracking-wide">
-            Descubre nuestras <span className="text-highlight">suscripciones</span>
+      <div className="flex flex-col justify-center items-center text-center md:text-center pt-4 md:pt-0 md:my-4"> 
+        <h1 className="font-montserrat font-extrabold text-[30px] md:leading-heading-super text-primary tracking-wide">
+            Descubre nuestras <span className="text-highlight"></span>
           </h1>
         </div>
-    <div class="grid lg:grid-cols-3 md:px-64 p-10 text-zinc-800">
-    <div class="flex flex-col items-center bg-slate-100 p-6 mb-10 md:mb-0 rounded-lg shadow-lg max-w-xs">
+    <div className="grid lg:grid-cols-3 xl:px-64 p-10 text-zinc-800">
+    <div className="flex flex-col items-center bg-slate-100 p-6 mb-10 md:mb-0 rounded-lg shadow-lg max-w-xs">
         <div>
-            <h2 class="font-extrabold text-3xl text-center mb-2">Básica</h2>
-            <p class="opacity-60 text-center">Opciones gratuitas al crear una cuenta</p>
-            <div class="flex flex-col items-center my-8">
-                <p class="font-extrabold text-4xl">Gratis</p>
+            <h2 className="font-extrabold text-3xl text-center mb-2">Básica</h2>
+            <p className="opacity-60 text-center">Opciones gratuitas al crear una cuenta</p>
+            <div className="flex flex-col items-center my-8">
+                <p className="font-extrabold text-4xl">Gratis</p>
             </div>
         </div>
-        <div class="flex flex-col gap-1">
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+        <div className="flex flex-col gap-1">
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>10 Swipes cada media hora</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p clasclassNames="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>25 Mensajes al dia</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clipRule="evenodd"></path>
                 </svg>
                 <s>Superlikes</s>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clipRule="evenodd"></path>
                 </svg>
                 <s>Notificaciones al hacer Match</s>
             </p>
-            <div class="flex justify-center mt-8">
+            <div className="flex justify-center mt-8">
             <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded mt-4"   
             >
                 Por defecto
@@ -192,49 +192,49 @@ function Principal() {
             </div>
         </div>
     </div>
-    <div class="flex flex-col items-center bg-gradient-to-br from-red-200 via-red-300 to-red-400 p-8 rounded-lg shadow-lg relative border-8 border-red-500 max-w-sm mb-10 md:mb-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-20 h-20 absolute -top-11 -left-11 fill-red-400">
-            <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" clip-rule="evenodd"></path>
+    <div className="flex flex-col items-center bg-gradient-to-br from-red-200 via-red-300 to-red-400 p-8 rounded-lg shadow-lg relative border-8 border-red-500 max-w-sm mb-10 md:mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-20 h-20 absolute -top-11 -left-11 fill-red-400">
+            <path fillRule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" clipRule="evenodd"></path>
         </svg>
-        <p class="mono text-sm absolute -top-4 bg-red-400 text-zinc-100 py-0.5 px-2 font-bold tracking-wider rounded">POPULAR</p>
+        <p className="mono text-sm absolute -top-4 bg-red-400 text-zinc-100 py-0.5 px-2 font-bold tracking-wider rounded">POPULAR</p>
         <div>
-            <div class="flex gap-4 justify-center">
-                <p class="font-extrabold text-3xl mb-2">Deluxe</p>
+            <div className="flex gap-4 justify-center">
+                <p className="font-extrabold text-3xl mb-2">Deluxe</p>
             </div>
-            <p class="opacity-60 text-center">Para las personas mas exigentes</p>
-            <div class="flex gap-4 justify-center">
-                <div class="flex flex-col items-center my-8">
-                    <p class="font-extrabold text-4xl">€9.99</p>
-                    <p class="text-sm opacity-60">/mes</p>
+            <p className="opacity-60 text-center">Para las personas mas exigentes</p>
+            <div className="flex gap-4 justify-center">
+                <div className="flex flex-col items-center my-8">
+                    <p className="font-extrabold text-4xl">€9.99</p>
+                    <p className="text-sm opacity-60">/mes</p>
                 </div>
             </div>
         </div>
-        <div class="flex flex-col gap-1">
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2 fill-red-600">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+        <div className="flex flex-col gap-1">
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2 fill-red-600">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>Swipes ILIMITADOS</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2 fill-red-600">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2 fill-red-600">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>Mensajes ILIMITADOS</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2 fill-red-600">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2 fill-red-600">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>Superlikes INFINITOS</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2 fill-red-600">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2 fill-red-600">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>Notificaciones en Whatsapp y Gmail al hacer match</b>
             </p>
-            <div class="flex justify-center mt-8">
+            <div className="flex justify-center mt-8">
             <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-3 px-6 rounded mt-4"   
               onClick={() => {comprobarLvlPremium(2)}}
             >
@@ -243,41 +243,41 @@ function Principal() {
             </div>
         </div>
     </div>
-    <div class="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs md:ml-14">
+    <div className="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs md:ml-14">
     <div>
-            <h2 class="font-extrabold text-3xl text-center mb-2">Premium</h2>
-            <p class="opacity-60 text-center">La opción de pago mas básica</p>
-            <div class="flex flex-col items-center my-8">
-            <p class="font-extrabold text-4xl">€4.99</p>
-                    <p class="text-sm opacity-60">/mes</p>
+            <h2 className="font-extrabold text-3xl text-center mb-2">Premium</h2>
+            <p className="opacity-60 text-center">La opción de pago mas básica</p>
+            <div className="flex flex-col items-center my-8">
+            <p className="font-extrabold text-4xl">€4.99</p>
+                    <p className="text-sm opacity-60">/mes</p>
             </div>
         </div>
-        <div class="flex flex-col gap-1">
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+        <div className="flex flex-col gap-1">
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>25 Swipes cada media hora</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>100 Mensajes al dia</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>1 Superlike diario</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clipRule="evenodd"></path>
                 </svg>
                 <s>Notificaciones al hacer Match</s>
             </p>
-            <div class="flex justify-center mt-8">
+            <div className="flex justify-center mt-8">
             <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-3 px-6 rounded mt-4"   
               onClick={() => {comprobarLvlPremium(1)}}
             >
@@ -291,46 +291,46 @@ function Principal() {
     ) : (
     <>
      <div className='bg-gray-300 py-10 md:py-0 md:pt-24 md:pb-28'>
-      <div className="flex flex-col justify-center items-center text-center md:text-left pt-4 md:pt-0 md:my-4"> 
+      <div className="flex flex-col justify-center items-center text-center md:text-center xl:text-left pt-4 md:pt-0 md:my-4"> 
         <h1 className="font-montserrat font-extrabold text-[30px] md:text-5xl md:leading-heading-super text-primary tracking-wide">
             Descubre nuestras <span className="text-highlight">suscripciones</span>
           </h1>
         </div>
-    <div class="grid lg:grid-cols-3 md:px-64 p-10 text-zinc-800">
-    <div class="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs mb-10 md:mb-0">
-        <div>
-            <h2 class="font-extrabold text-3xl text-center mb-2">Default</h2>
-            <p class="opacity-60 text-center">Opciones gratuitas al crear una cuenta</p>
-            <div class="flex flex-col items-center my-8">
-                <p class="font-extrabold text-4xl">Free</p>
+    <div className="grid xl:grid-cols-3 2xl:px-64 p-10 text-zinc-800 cuatro:justify-center xl:grid-cols-3">
+    <div className="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs mb-10 xl:mb-0 md:ml-8 cuatro:ml-4 450:ml-6 2xl:ml-0">
+    <div>
+            <h2 className="font-extrabold text-3xl text-center mb-2">Básica</h2>
+            <p className="opacity-60 text-center">Opciones gratuitas al crear una cuenta</p>
+            <div className="flex flex-col items-center my-8">
+                <p className="font-extrabold text-4xl">Gratis</p>
             </div>
         </div>
-        <div class="flex flex-col gap-1">
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+        <div className="flex flex-col gap-1">
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>10 Swipes cada media hora</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>25 Mensajes al dia</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clipRule="evenodd"></path>
                 </svg>
                 <s>Superlikes</s>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clipRule="evenodd"></path>
                 </svg>
                 <s>Notificaciones al hacer Match</s>
             </p>
-            <div class="flex justify-center mt-8">
+            <div className="flex justify-center mt-8">
             <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-3 px-6 rounded mt-4"   
               onClick={() => {navigate(path + '/Login')}}
             >
@@ -339,49 +339,49 @@ function Principal() {
             </div>
         </div>
     </div>
-    <div class="flex flex-col items-center bg-gradient-to-br from-red-200 via-red-300 to-red-400 p-8 rounded-lg shadow-lg relative border-8 border-red-500 max-w-sm mb-10 md:mb-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-20 h-20 absolute -top-11 -left-11 fill-red-400">
-            <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" clip-rule="evenodd"></path>
+    <div className="flex flex-col items-center bg-gradient-to-br from-red-200 via-red-300 to-red-400 p-8 rounded-lg shadow-lg relative border-8 border-red-500 max-w-sm mb-10 xl:mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-20 h-20 absolute -top-11 -left-11 fill-red-400">
+            <path fillRule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" clipRule="evenodd"></path>
         </svg>
-        <p class="mono text-sm absolute -top-4 bg-red-400 text-zinc-100 py-0.5 px-2 font-bold tracking-wider rounded ">POPULAR</p>
+        <p className="mono text-sm absolute -top-4 bg-red-400 text-zinc-100 py-0.5 px-2 font-bold tracking-wider rounded ">POPULAR</p>
         <div>
-            <div class="flex gap-4 justify-center">
-                <p class="font-extrabold text-3xl mb-2">Deluxe</p>
+            <div className="flex gap-4 justify-center">
+                <p className="font-extrabold text-3xl mb-2">Deluxe</p>
             </div>
-            <p class="opacity-60 text-center">Para las personas mas exigentes</p>
-            <div class="flex gap-4 justify-center">
-                <div class="flex flex-col items-center my-8">
-                    <p class="font-extrabold text-4xl">€9.99</p>
-                    <p class="text-sm opacity-60">/mes</p>
+            <p className="opacity-60 text-center">Para las personas mas exigentes</p>
+            <div className="flex gap-4 justify-center">
+                <div className="flex flex-col items-center my-8">
+                    <p className="font-extrabold text-4xl">€9.99</p>
+                    <p className="text-sm opacity-60">/mes</p>
                 </div>
             </div>
         </div>
-        <div class="flex flex-col gap-1">
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2 fill-red-600">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+        <div className="flex flex-col gap-1">
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2 fill-red-600">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>Swipes ILIMITADOS</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2 fill-red-600">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2 fill-red-600">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>Mensajes ILIMITADOS</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2 fill-red-600">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2 fill-red-600">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>Superlikes INFINITOS</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2 fill-red-600">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2 fill-red-600">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>Notificaciones en Whatsapp y Gmail al hacer match</b>
             </p>
-            <div class="flex justify-center mt-8">
+            <div className="flex justify-center mt-8">
             <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-3 px-6 rounded mt-4"   
               onClick={popUpNotLogged}
             >
@@ -390,41 +390,41 @@ function Principal() {
             </div>
         </div>
     </div>
-    <div class="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs md:ml-14">
+    <div className="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs xl:ml-14 md:ml-8 cuatro:ml-4 450:ml-6 2xl:ml-12">
     <div>
-            <h2 class="font-extrabold text-3xl text-center mb-2">Premium</h2>
-            <p class="opacity-60 text-center">La opción de pago mas básica</p>
-            <div class="flex flex-col items-center my-8">
-            <p class="font-extrabold text-4xl">€4.99</p>
-                    <p class="text-sm opacity-60">/mes</p>
+            <h2 className="font-extrabold text-3xl text-center mb-2">Premium</h2>
+            <p className="opacity-60 text-center">La opción de pago mas básica</p>
+            <div className="flex flex-col items-center my-8">
+            <p className="font-extrabold text-4xl">€4.99</p>
+                    <p className="text-sm opacity-60">/mes</p>
             </div>
         </div>
-        <div class="flex flex-col gap-1">
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+        <div className="flex flex-col gap-1">
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>25 Swipes cada media hora</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>100 Mensajes al dia</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
                 <b>1 Superlike diario</b>
             </p>
-            <p class="flex items-center text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-4 h-4 mr-2">
-                    <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clip-rule="evenodd"></path>
+            <p className="flex items-center text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
+                    <path fillRule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.75C6.072 21.75 2.25 17.928 2.25 12S6.072 2.25 12 2.25 21.75 6.072 21.75 12 17.928 21.75 12 21.75zM15.53 8.47a.75.75 0 00-1.06 0L12 10.94l-2.47-2.47a.75.75 0 00-1.06 1.06L10.94 12l-2.47 2.47a.75.75 0 101.06 1.06L12 13.06l2.47 2.47a.75.75 0 101.06-1.06L13.06 12l2.47-2.47a.75.75 0 000-1.06z" clipRule="evenodd"></path>
                 </svg>
                 <s>Notificaciones al hacer Match</s>
             </p>
-            <div class="flex justify-center mt-8">
+            <div className="flex justify-center mt-8">
             <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-3 px-6 rounded mt-4"   
               onClick={popUpNotLogged}
             >
