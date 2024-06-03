@@ -194,3 +194,32 @@ a {
     background-position: center;
   }
 
+  @keyframes swipe-left {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(-20deg) translateX(-100vw);
+    }
+  }
+  
+  @keyframes swipe-right {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(20deg) translateX(100vw);
+    }
+  }
+  
+  .swipe {
+    transition: transform 0.1s ease-in-out;
+  }
+  
+  .swipe-left {
+    animation: swipe-left 0.3s forwards;
+  }
+  
+  .swipe-right {
+    animation: swipe-right 0.3s forwards;
+  }

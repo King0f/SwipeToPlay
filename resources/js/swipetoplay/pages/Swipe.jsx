@@ -29,6 +29,7 @@ const Swipe = () => {
   const [conexionValorant, setConexionValorant] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [usuariosSwipe, setUsuariosSwipe] = useState([]);
+  const [swipeDirection, setSwipeDirection] = useState(null);
 
   async function fetchData() {
     try {
@@ -48,7 +49,7 @@ const Swipe = () => {
   }, []);
 
   const handleAction = async (action) => {
-    console.log(usuariosSwipe[currentIndex].username);
+    console.log(usuarioSwipe.username);
     try {
       if (usuario.desplazamientos <= 0 && usuario.lvl_premium !== 2) {
         toast.error("No tienes deslizamientos suficientes para realizar esta acción.", {
@@ -59,6 +60,7 @@ const Swipe = () => {
           autoClose: 3000,
         });
       } else {
+        console.log(usuarioSwipe.id, action)
         await actionSwipe(usuarioSwipe.id, action);
         fetchData();
       }
@@ -70,14 +72,18 @@ const Swipe = () => {
   const onSwipe = (direction) => {
     console.log('You swiped: ' + direction);
     if (direction === 'right') {
+      setSwipeDirection(direction);
       handleAction(1); // Aceptar
     } else if (direction === 'left') {
+      setSwipeDirection(direction);
       handleAction(2); // Rechazar
     }
     setCurrentIndex(currentIndex + 1);
   };
 
-  const onCardLeftScreen = (myIdentifier) => {
+  const onCardLeftScreen = () => {
+    setSwipeDirection(null);
+    onCardLeftScreen('fooBar');
   };
 
   return (
@@ -105,12 +111,14 @@ const Swipe = () => {
                 <TinderCard
                   key={usuariosSwipe[currentIndex].id}
                   onSwipe={onSwipe}
-                  onCardLeftScreen={() => onCardLeftScreen('fooBar')}
+                  onCardLeftScreen={() => onCardLeftScreen()}
                   preventSwipe={['up', 'down']}
-                  className='w-[1000px] h-[450px] mx-2 background-image rounded-xl'
+                  className={`w-[1000px] h-[450px] mx-2 background-image rounded-xl ${
+                    swipeDirection === 'left' ? 'swipe-left' : swipeDirection === 'right' ? 'swipe-right' : 'swipe'
+                  }`}
                 >
                   <div id="containerSwipe" className='w-full h-full flex flex-col justify-normal'>
-                    <img src={usuariosSwipe[currentIndex].imagen || imagenUser} className="w-[96px] h-[96px] rounded-full mx-auto my-3 shadow-custom-circle" />
+                    <img src={usuarioSwipe.imagen || imagenUser} className="w-[96px] h-[96px] rounded-full mx-auto my-3 shadow-custom-circle" />
                     <p className='text-center text-size-xl font-Swipe font-semibold text-white mt-2'>{usuarioSwipe.username}</p>
                     <div className='flex font-Swipe justify-center mb-4 font-semibold mt-1'>
                       <p className='text-center text-size-l font-Swipe font-semibold text-white mr-1'>{usuarioSwipe.likes}</p>
