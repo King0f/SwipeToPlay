@@ -145,14 +145,14 @@ function Principal() {
 
     {token ? (
       <div className='bg-gray-300 py-10 md:py-0 md:pt-24 md:pb-28'>
-      <div className="flex flex-col justify-center items-center text-center md:text-center pt-4 md:pt-0 md:my-4"> 
-        <h1 className="font-montserrat font-extrabold text-[30px] md:leading-heading-super text-primary tracking-wide">
-            Descubre nuestras <span className="text-highlight"></span>
+      <div className="flex flex-col justify-center items-center text-center md:text-center xl:text-left pt-4 md:pt-0 md:my-4"> 
+        <h1 className="font-montserrat font-extrabold text-[30px] md:text-5xl md:leading-heading-super text-primary tracking-wide">
+            Descubre nuestras <span className="text-highlight">suscripciones</span>
           </h1>
         </div>
-    <div className="grid lg:grid-cols-3 xl:px-64 p-10 text-zinc-800">
-    <div className="flex flex-col items-center bg-slate-100 p-6 mb-10 md:mb-0 rounded-lg shadow-lg max-w-xs">
-        <div>
+    <div className="grid xl:grid-cols-3 2xl:px-64 p-10 text-zinc-800 cuatro:justify-center xl:grid-cols-3">
+    <div className="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs mb-10 xl:mb-0 md:ml-8 cuatro:ml-4 450:ml-6 2xl:ml-0">
+    <div>
             <h2 className="font-extrabold text-3xl text-center mb-2">Básica</h2>
             <p className="opacity-60 text-center">Opciones gratuitas al crear una cuenta</p>
             <div className="flex flex-col items-center my-8">
@@ -166,7 +166,7 @@ function Principal() {
                 </svg>
                 <b>10 Swipes cada media hora</b>
             </p>
-            <p clasclassNames="flex items-center text-sm">
+            <p className="flex items-center text-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-4 h-4 mr-2">
                     <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd"></path>
                 </svg>
@@ -192,11 +192,11 @@ function Principal() {
             </div>
         </div>
     </div>
-    <div className="flex flex-col items-center bg-gradient-to-br from-red-200 via-red-300 to-red-400 p-8 rounded-lg shadow-lg relative border-8 border-red-500 max-w-sm mb-10 md:mb-0">
+    <div className="flex flex-col items-center bg-gradient-to-br from-red-200 via-red-300 to-red-400 p-8 rounded-lg shadow-lg relative border-8 border-red-500 max-w-sm mb-10 xl:mb-0">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="w-20 h-20 absolute -top-11 -left-11 fill-red-400">
             <path fillRule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" clipRule="evenodd"></path>
         </svg>
-        <p className="mono text-sm absolute -top-4 bg-red-400 text-zinc-100 py-0.5 px-2 font-bold tracking-wider rounded">POPULAR</p>
+        <p className="mono text-sm absolute -top-4 bg-red-400 text-zinc-100 py-0.5 px-2 font-bold tracking-wider rounded ">POPULAR</p>
         <div>
             <div className="flex gap-4 justify-center">
                 <p className="font-extrabold text-3xl mb-2">Deluxe</p>
@@ -238,12 +238,12 @@ function Principal() {
             <button className="bg-red-600 hover:bg-red-800 text-white font-bold py-3 px-6 rounded mt-4"   
               onClick={() => {comprobarLvlPremium(2)}}
             >
-              Suscribirse
+                Suscribirse
             </button>
             </div>
         </div>
     </div>
-    <div className="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs md:ml-14">
+    <div className="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs xl:ml-14 md:ml-8 cuatro:ml-4 450:ml-6 2xl:ml-12">
     <div>
             <h2 className="font-extrabold text-3xl text-center mb-2">Premium</h2>
             <p className="opacity-60 text-center">La opción de pago mas básica</p>
