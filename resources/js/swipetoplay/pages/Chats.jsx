@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { chatStore } from "../store/chatStore/chatStore";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import ChatComp from "../components/ChatComp";
+import {ToastContainer} from 'react-toastify'
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -49,6 +50,7 @@ function Chats() {
     return (
     <>
     <Header />
+    <ToastContainer pauseOnFocusLoss={false} limit={3} />
     <div className="h-[93.05vh] sm:h-[90.05vh] tres:h-[90.4vh] 390:h-[92.4vh] cuatro:h-[92.9vh] 430:h-[93.1vh] 360:h-[91.4vh]  md:h-[93.75vh] lg:h-[95.3vh] xl:h-[93vh] w-full bg-black">
         <div className="flex h-[92.4vh] md:h-[92vh] lg:h-[91vh] tres:h-[89.9vh] 390:h-[92vh] 360:h-[90.9vh] cuatro:h-[92vh] 430:h-[92.5vh] lg:h-[94.5vh] xl:h-[91.4vh] bg-black">
             {/* Botón de menú (visible solo en móviles) */}

@@ -3,6 +3,7 @@ import { usuarioStore } from "../store/userStore/usuarioStore"
 import "../styles/Chat.css"
 import { useState, useEffect, useRef } from "react"
 import MensajeComp from "./MensajeComp"
+import {ToastContainer, Zoom, toast } from 'react-toastify'
 const ChatComp = ({ chatId, urlReceived}) => {
     const dummy = useRef()
     const [formValue, setFormValue] = useState('');
@@ -48,7 +49,10 @@ const ChatComp = ({ chatId, urlReceived}) => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (formValue.trim()) {
+        if(usuario.lvl_premium != 2 && usuario.n_mensajes == 0){
+            toast.error("0 Mensajes restantes.Necesita esperar una dia para mandar su mensaje.", {position: 'top-left', theme:'light', transition: Zoom, autoClose: 3000});
+        }else{
+            if (formValue.trim()) {
             await guardarMensaje(chat, usuario.id, formValue, usuario.username);
             await getMensajes(chat);
             await obtenerUsuario();
@@ -62,10 +66,11 @@ const ChatComp = ({ chatId, urlReceived}) => {
                   behavior: 'smooth'
                 });
               }
-        }
+        }}
     }
     return (
         <div className="chatApp">
+            <ToastContainer pauseOnFocusLoss={false} limit={3} />
         <section>
         <main className="chatmain">
         {mensajes && mensajes.map((msg, index) => (
