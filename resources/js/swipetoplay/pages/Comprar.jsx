@@ -97,7 +97,6 @@ const Comprar = ({ product, precio }) => {
   return (
     <>
       <Header />
-      <ToastContainer pauseOnFocusLoss={false} limit={3} />
       <div className="min-h-screen flex justify-center items-center bg-gray-100">
         <div className="bg-white shadow-md rounded-lg p-6 max-w-4xl w-full flex">
           <div className="w-1/2 p-4">
