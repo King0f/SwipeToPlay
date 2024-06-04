@@ -74,7 +74,7 @@ const Tarjetas = () => {
 
   return (
     <>
-    <div className="min-h-[52.4vh]">
+    <div className="min-h-[52.4vh] mt-10">
       <Header />
       <div className="flex w-full p-2 justify-center">
       <LateralNavP />
