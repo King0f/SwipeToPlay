@@ -20,36 +20,37 @@ export default function LateralNavP() {
   };
   return (
     <>
-      <div className="bg-white fixed top-1/3 left-5 transform -translate-y-1/2 flex flex-col p-2 border-2 border-red-300 rounded items-center">
-                <Link to={path + "/Profile"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="user"></box-icon>
-                    </button>
-                </Link>
-                <Link to={path + "/Tarjetas"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="credit-card"></box-icon>
-                    </button>
-                </Link>
-                <Link to={path + "/Conexiones"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="link-alt"></box-icon>
-                    </button>
-                </Link>
-                <Link to={path + "/HistorialMatch"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="heart"></box-icon>
-                    </button>
-                </Link>
-                <Link to={path + "/Configuracion"}>
-                    <button className="flex p-2 hover:bg-red-400 rounded">
-                        <box-icon name="cog"></box-icon>
-                    </button>
-                </Link>
-                <button onClick={handleCerrarSesion} className="flex p-2 hover:bg-red-400 rounded">
-                    <box-icon name="log-out"></box-icon>
-                </button>
-            </div>
+      <div className="bg-white tres:justify-center tres:m-0 lg:fixed md:top-1/3 md:left-5 transform -translate-y-1/2 flex sm:flex-row lg:flex-col p-2 border-2 border-red-300 rounded items-center">
+  <Link to={path + "/Profile"}>
+    <button className="flex p-2 hover:bg-red-400 rounded">
+      <box-icon name="user"></box-icon>
+    </button>
+  </Link>
+  <Link to={path + "/Tarjetas"}>
+    <button className="flex p-2 hover:bg-red-400 rounded">
+      <box-icon name="credit-card"></box-icon>
+    </button>
+  </Link>
+  <Link to={path + "/Conexiones"}>
+    <button className="flex p-2 hover:bg-red-400 rounded">
+      <box-icon name="link-alt"></box-icon>
+    </button>
+  </Link>
+  <Link to={path + "/HistorialMatch"}>
+    <button className="flex p-2 hover:bg-red-400 rounded">
+      <box-icon name="heart"></box-icon>
+    </button>
+  </Link>
+  <Link to={path + "/Configuracion"}>
+    <button className="flex p-2 hover:bg-red-400 rounded">
+      <box-icon name="cog"></box-icon>
+    </button>
+  </Link>
+  <button onClick={handleCerrarSesion} className="flex p-2 hover:bg-red-400 rounded">
+    <box-icon name="log-out"></box-icon>
+  </button>
+</div>
+
     </>
   );
 }

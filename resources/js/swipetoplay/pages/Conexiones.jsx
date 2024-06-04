@@ -35,11 +35,12 @@ const Conexiones = () => {
       fetchData();
     }, []);
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-gray-200">
             <Header />
-            <LateralNavP />
-
-            <div className="flex flex-wrap justify-center gap-8 p-4 my-20">
+            <div className="flex w-full justify-center">
+                <LateralNavP />
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 p-4 my-10">
                 <div className="bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(../storage/imagenes/background-lol.jpg)`, width: '728px', height: '410px' }}>
                     <form className="w-full h-full flex flex-col justify-center items-center bg-opacity-70 bg-gray-800 rounded">
                         <h2 className="text-white text-2xl mb-4"><b>League Of Legends</b></h2>

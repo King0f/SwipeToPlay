@@ -33,26 +33,29 @@ const Profile = () => {
       }
     };
   return (
-    <div className="pt-20">
+    <div className="bg-gray-200 pt-20">
       <Header />
+      <div className="flex w-full justify-center">
       <LateralNavP />
-  <div className="flex w-full p-2">
-    <div className="flex flex-col w-1/3">
-      <div className="relative w-1/2 h-auto m-auto rounded-full flex items-center justify-center"
+      </div>
+  <div className="lg:flex w-full p-2 ">
+    <div className="flex flex-col 2xl:w-1/3 md:ml-20 xl:py-10">
+    <h2 className="text-center font-montserrat text-red-500 my-4  xl:hidden text-[22px]">Cambiar foto de perfil</h2>
+      <div className="relative 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 m-auto rounded-full flex items-center justify-center shadow-custom"
            onMouseEnter={() => setHovered(true)}
            onMouseLeave={() => setHovered(false)}>
         <img
           src={usuario.imagen || imagenUser}
-          className="rounded-full h-64 w-64 border-2 border-black"
+          className="rounded-full 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 border-2 border-black"
           onClick={handleEditPictureClick}
         />
         {hovered && (
-          <span className="absolute flex items-center justify-center bg-gray-100 bg-opacity-70 h-64 w-64 p-2 rounded-full text-2xl cursor-pointer" onClick={handleEditPictureClick}>
+          <span className="absolute flex items-center justify-center bg-gray-100 bg-opacity-70 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 p-2 rounded-full text-2xl cursor-pointer tres:hidden xl:flex" onClick={handleEditPictureClick}>
             <b>Cambiar imagen</b>
           </span>
         )}
       </div>
-      <p className="text-center font-Swipe text-red-400 font-bold mt-5">{usuario.username}</p>
+      <p className="text-center text-red-400 font-bold mt-6 text-[22px]">{usuario.username}</p>
       <input
         type="file"
         ref={fileInputRef}
@@ -62,10 +65,10 @@ const Profile = () => {
       />
     </div>
 
-    <div className="flex flex-col w-2/3 m-auto">
-      <p className="text-center font-Swipe text-red-500 text-xl font-extrabold mt-10">Información del Usuario</p>
-      <div className="w-72 h-4 my-5 m-auto"><b>Email: </b>{usuario.email}</div>
-      <div className="w-72 h-4 my-5 m-auto"><b>Membresia: </b>
+    <div className="flex items-center justify-center flex-col xl:ml-10 xl:py-10">
+      <p className="text-center font-Swipe text-red-500 text-xl font-extrabold mt-10 text-[26px]">Información del Usuario</p>
+      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Email</b> <br/> {usuario.email}</div>
+      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Membresia</b> <br/> 
         {(() => {
           switch (usuario.lvl_premium) {
             case 0:
@@ -79,9 +82,9 @@ const Profile = () => {
           }
         })()}
       </div>
-      <div className="w-72 h-4 my-5 m-auto"><b>Teléfono: </b>{usuario.phone}</div>
-      <div className="w-72 h-4 my-5 m-auto"><b>Deslizamientos restantes: </b>{usuario.desplazamientos}</div>
-      <div className="w-72 h-4 my-5 m-auto"><b>Mensajes restantes: </b>{usuario.n_mensajes}</div>
+      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Teléfono </b>  <br/>  {usuario.phone}</div>
+      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Deslizamientos restantes </b> <br/> {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</div>
+      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Mensajes restantes</b> <br/> {usuario.n_mensajes}</div>
     </div>
   </div>
   <div className="mt-72"><Footer /></div>

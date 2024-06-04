@@ -101,7 +101,7 @@ function Principal() {
         }
       </div>
     </div>
-    <div className="relative md:max-h-[100vh] bg-cover bg-center bg-gray-900 text-white p-6">
+    <div className="relative md:max-h-[100vh] bg-cover bg-center  bg-gray-900 text-white p-6">
       <div className="flex flex-col lg:flex-row items-center justify-center md:ml-16 lg:py-24 py-8">
         <img
           src="../imagenes/lolval.jpg"

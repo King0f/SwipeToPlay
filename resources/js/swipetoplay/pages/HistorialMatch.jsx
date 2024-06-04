@@ -67,14 +67,15 @@ const HistorialMatch = () => {
         setShowPopup(false);
     };
     return (
-        <div>
+        <div className="bg-gray-200 pt-20 overflow-x-hidden">
             <Header />
-            <LateralNavP />
-
-            <div className="flex flex-wrap justify-center gap-8 p-4 my-20">
+            <div className="flex w-full justify-center">
+                <LateralNavP />
+            </div>
+            <div className="flex flex-wrap  justify-center gap-8 p-4 my-20">
                 <div className="flex justify-center items-center min-h-3.5 bg-cover bg-center rounded-md" style={{ backgroundImage: `url(../storage/imagenes/background-historialmatch.jpg)` }}>
-                    <div className="bg-white bg-opacity-80 rounded-md shadow-lg p-6 mt-4 mb-24 max-w-4xl w-full">
-                        <table className="min-w-full divide-y divide-gray-200 md text-center">
+                    <div className="bg-white bg-opacity-80 rounded-md shadow-lg p-6 mb-24 md:max-w-4xl tres:max-w-4xl">
+                        <table className="divide-y divide-gray-200 md text-center">
                             <thead>
                                 <tr>
                                     <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha de creación</th>

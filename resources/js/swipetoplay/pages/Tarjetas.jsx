@@ -73,13 +73,13 @@ const Tarjetas = () => {
     };
 
   return (
-    <>
-    <div className="min-h-[52.4vh] mt-10">
-      <Header />
+    <div className="bg-gray-200 pt-36">
       <div className="flex w-full p-2 justify-center">
       <LateralNavP />
       </div>
-      <div className="bg-white flex flex-wrap justify-center gap-8 mr-20 ml-20 mb-40">
+    <div className="min-h-[52.4vh]">
+      <Header />
+      <div className="bg-gray-200 flex flex-wrap justify-center gap-8 mr-20 ml-20 mb-20">
       {tarjetas?.map((tarjeta) => (
         <div key={tarjeta.id} className="w-96 h-56 bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 cursor-pointer"
         onClick={() => handleCardClick(tarjeta.id)}>
@@ -135,12 +135,12 @@ const Tarjetas = () => {
     </div>
         <div className="mb-5">
         {!mostrarFormulario && (
-          <div className="flex justify-center mt-16">
+          <div className="flex justify-center">
             <button onClick={() => setMostrarFormulario(true)} className="bg-stone-500 text-white p-2 rounded hover:bg-red-500 w-50">Añadir Tarjeta</button>
           </div>
         )}
         {mostrarFormulario && (
-          <main className="flex items-center justify-center min-h-screen p-6">
+          <main className="flex items-center justify-center p-6">
             <form className="bg-white w-full max-w-3xl mx-auto px-4 py-8 shadow-md rounded-md flex flex-col items-center" onSubmit={handleSubmit}>
               <div className="w-full max-w-md">
                 <div className="mb-4">
@@ -241,7 +241,7 @@ const Tarjetas = () => {
         </div>
       </div>
       <Footer className="w-full mt-auto"/>
-    </>
+    </div>
   )
 }
 
