@@ -113,11 +113,11 @@ const Swipe = () => {
                   onSwipe={onSwipe}
                   onCardLeftScreen={() => onCardLeftScreen()}
                   preventSwipe={['up', 'down']}
-                  className={`w-[1000px] h-[450px] mx-2 background-image rounded-xl ${
+                  className={`w-[1000px] h-[450px] mx-2 bg-gradient-to-r from-gray-600 to-gray-500 rounded-xl ${
                     swipeDirection === 'left' ? 'swipe-left' : swipeDirection === 'right' ? 'swipe-right' : 'swipe'
                   }`}
                 >
-                  <div id="containerSwipe" className='w-full h-full flex flex-col justify-normal'>
+                  <div className='w-full h-full flex flex-col justify-normal'>
                     <img src={usuarioSwipe.imagen || imagenUser} className="w-[96px] h-[96px] rounded-full mx-auto my-3 shadow-custom-circle" />
                     <p className='text-center text-size-xl font-Swipe font-semibold text-white mt-2'>{usuarioSwipe.username}</p>
                     <div className='flex font-Swipe justify-center mb-4 font-semibold mt-1'>
