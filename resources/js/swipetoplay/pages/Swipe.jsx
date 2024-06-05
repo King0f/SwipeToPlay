@@ -79,18 +79,6 @@ const Swipe = () => {
     }
   };
 
-  const onSwipe = (direction) => {
-    console.log('You swiped: ' + direction);
-    if (direction === 'right') {
-      setSwipeDirection(direction);
-      handleAction(1); // Aceptar
-    } else if (direction === 'left') {
-      setSwipeDirection(direction);
-      handleAction(2); // Rechazar
-    }
-    setCurrentIndex(currentIndex + 1);
-  };
-
   const onCardLeftScreen = () => {
     setSwipeDirection(null);
     onCardLeftScreen('fooBar');
@@ -100,17 +88,29 @@ const Swipe = () => {
   const [swiped, setSwiped] = useState(false);
 
   const handleDragEnd = (event, info) => {
-    if (info.offset.x > 5) {
-      controls.start({ x: '5vw', opacity: 0, transition: { duration: 0.01, ease: "easeOut" } });
-      handleAction(1); 
-      setSwiped(true);
-    } else if (info.offset.x < -5) {
-      controls.start({ x: '-5vw', opacity: 0, transition: { duration: 0.01, ease: "easeOut" } });
-      handleAction(2);
-      setSwiped(true);
-    } else {
-      controls.start({ x: 0, transition: { duration: 0.01, ease: "easeOut" } });
-    }
+    // Set a reasonable threshold for swipe detection
+    if (info.offset.x > 50) { // Threshold for a "right swipe"
+      controls.start({
+          x: '100vw', 
+          opacity: 0, 
+          transition: { duration: 0.3, ease: "easeOut" }
+      }).then(() => {
+          handleAction(1); // Accept action
+          setSwiped(false); // Reset swipe state
+      });
+  } else if (info.offset.x < -50) { // Threshold for a "left swipe"
+      controls.start({
+          x: '-100vw', 
+          opacity: 0, 
+          transition: { duration: 0.3, ease: "easeOut" }
+      }).then(() => {
+          handleAction(2); // Reject action
+          setSwiped(false); // Reset swipe state
+      });
+  } else {
+      // If not swiped far enough, return to original position
+      controls.start({ x: 0, opacity: 1, transition: { duration: 0.2, ease: "easeOut" } });
+  }
   };
 
   if (swiped) {
