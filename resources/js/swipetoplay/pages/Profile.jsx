@@ -33,60 +33,71 @@ const Profile = () => {
       }
     };
   return (
-    <div className="bg-gray-200 pt-20">
+    <div className="bg-gray-200 pt-20 ">
       <Header />
       <div className="flex w-full justify-center">
       <LateralNavP />
       </div>
-  <div className="lg:flex w-full p-2 ">
-    <div className="flex flex-col 2xl:w-1/3 md:ml-20 xl:py-10">
-    <h2 className="text-center font-montserrat text-red-500 my-4  xl:hidden text-[22px]">Cambiar foto de perfil</h2>
-      <div className="relative 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 m-auto rounded-full flex items-center justify-center shadow-custom"
-           onMouseEnter={() => setHovered(true)}
-           onMouseLeave={() => setHovered(false)}>
-        <img
-          src={usuario.imagen || imagenUser}
-          className="rounded-full 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 border-2 border-black"
-          onClick={handleEditPictureClick}
+      <div className="xl:flex w-full p-4 font-montserrat">
+      <div className="flex flex-col 2xl:w-1/3 md:ml-18 xl:ml-24 xl:py-10 xl:px-10 items-center bg-black p-4 rounded-md shadow-custom border-1 border-gray-400">
+        <h2 className="text-center font-montserrat text-red-100 my-4 xl:hidden text-[22px]">Cambiar foto de perfil</h2>
+        <div className="relative 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 m-auto rounded-full flex items-center justify-center shadow-custom"
+             onMouseEnter={() => setHovered(true)}
+             onMouseLeave={() => setHovered(false)}>
+          <img
+            src={usuario.imagen || imagenUser}
+            className="rounded-full 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 border-2 border-white shadow-md shadow-gray"
+            onClick={handleEditPictureClick}
+          />
+          {hovered && (
+            <span className="absolute flex items-center justify-center bg-gray-100 bg-opacity-70 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 p-2 rounded-full text-2xl cursor-pointer tres:hidden xl:flex" onClick={handleEditPictureClick}>
+              <b>Cambiar imagen</b>
+            </span>
+          )}
+        </div>
+        <p className="text-center text-red-100 font-bold mt-4 mb-8 text-[24px]">{usuario.username}</p>
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          style={{ display: 'none' }}
+          accept="image/*"
         />
-        {hovered && (
-          <span className="absolute flex items-center justify-center bg-gray-100 bg-opacity-70 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 p-2 rounded-full text-2xl cursor-pointer tres:hidden xl:flex" onClick={handleEditPictureClick}>
-            <b>Cambiar imagen</b>
-          </span>
-        )}
       </div>
-      <p className="text-center text-red-400 font-bold mt-6 text-[22px]">{usuario.username}</p>
-      <input
-        type="file"
-        ref={fileInputRef}
-        onChange={handleFileChange}
-        style={{ display: 'none' }}
-        accept="image/*"
-      />
-    </div>
 
-    <div className="flex items-center justify-center flex-col xl:ml-10 xl:py-10">
-      <p className="text-center font-Swipe text-red-500 text-xl font-extrabold mt-10 text-[26px]">Información del Usuario</p>
-      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Email</b> <br/> {usuario.email}</div>
-      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Membresia</b> <br/> 
-        {(() => {
-          switch (usuario.lvl_premium) {
-            case 0:
-              return <span>Suscripción Básica</span>;
-            case 1:
-              return <span>Suscripción Premium</span>;
-            case 2:
-              return <span>Suscripción Deluxe</span>;
-            default:
-              return <span>Valor no reconocido</span>;
-          }
-        })()}
+      <div className="flex flex-col xl:py-10 tres:py-4 tres:pb-10 w-full xl:w-2/3 bg-gradient-to-l from-red-200 via-red-300 to-red-400 p-4 rounded-md shadow-custom border-1 border-gray-400">
+        <p className="text-center text-black text-xl font-extrabold mt-6 xl:mb-6 xl:text-[30px] tres:text-[26px]">Información del Usuario</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 px-4">
+          <div className="w-full p-4 bg-white shadow-custom rounded-md">
+            <b>Email</b> <br /> <span className="font-Swipe">{usuario.email}</span>
+          </div>
+          <div className="w-full p-4 bg-white shadow-custom rounded-md">
+            <b>Membresia</b> <br /> <span className="font-Swipe">{(() => {
+              switch (usuario.lvl_premium) {
+                case 0:
+                  return <span>Suscripción Básica</span>;
+                case 1:
+                  return <span>Suscripción Premium</span>;
+                case 2:
+                  return <span>Suscripción Deluxe</span>;
+                default:
+                  return <span>Valor no reconocido</span>;
+              }
+            })()}</span> 
+            
+          </div>
+          <div className="w-full p-4 bg-white shadow-custom rounded-md">
+            <b>Teléfono</b> <br /> <span className="font-Swipe">{usuario.phone}</span>
+          </div>
+          <div className="w-full p-4 bg-white shadow-custom rounded-md">
+            <b>Deslizamientos restantes</b> <br /> <span className="font-Swipe">{usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</span>
+          </div>
+          <div className="w-full p-4 bg-white shadow-custom rounded-md">
+            <b>Mensajes restantes</b> <br />  <span className="font-Swipe">{usuario.n_mensajes}</span>
+          </div>
+        </div>
       </div>
-      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Teléfono </b>  <br/>  {usuario.phone}</div>
-      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Deslizamientos restantes </b> <br/> {usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</div>
-      <div className="w-72 h-4 my-6 m-auto text-[18px]"><b>Mensajes restantes</b> <br/> {usuario.n_mensajes}</div>
     </div>
-  </div>
   <div className="mt-72"><Footer /></div>
 </div>
 

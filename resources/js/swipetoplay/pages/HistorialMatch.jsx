@@ -78,10 +78,10 @@ const HistorialMatch = () => {
                         <table className="divide-y divide-gray-200 md text-center">
                             <thead>
                                 <tr>
-                                    <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha de creación</th>
-                                    <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usuario</th>
-                                    <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Juego</th>
-                                    <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Borrar Match</th>
+                                    <th className="sm:px-6 tres:px-3 py-3 bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wider text-center tres:text-[10px] sm:text-[13px]">Fecha de creación</th>
+                                    <th className="sm:px-6 tres:px-3 py-3 bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wider text-center tres:text-[10px] sm:text-[13px]">Usuario</th>
+                                    <th className="sm:px-6 tres:px-3 py-3 bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wider text-center tres:text-[10px] sm:text-[13px]">Juego</th>
+                                    <th className="sm:px-6 tres:px-3 py-3 bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wider text-center tres:text-[10px] sm:text-[13px]">Borrar Match</th>
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
@@ -90,17 +90,17 @@ const HistorialMatch = () => {
                                      const user = users[displayUserId];
                                     return (
                                         <tr key={match.id}>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            <td className="sm:px-6 tres:px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center tres:text-[9px] sm:text-[12px]">
                                             {match.created_at ? format(parseISO(match.created_at), 'dd/MM/yyyy') : ''}
                                             </td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <td className="sm:px-6 tres:px-3 py-4 whitespace-nowrap text-sm text-gray-500 text-center tres:text-[9px] sm:text-[12px]">
                                             {user ? user.username : 'Cargando...'}
                                             </td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <td className="sm:px-6 tres:px-3 py-4 whitespace-nowrap text-sm text-gray-500 text-center tres:text-[9px] sm:text-[12px]">
                                             {getGameName(match.id_juego)}
                                             </td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50" onClick={() => {handleClick(match.id)}}>Borrar Match</button>
+                                            <td className="sm:px-6 tres:px-3 py-4 whitespace-nowrap text-sm text-gray-500 text-center tres:text-[9px] sm:text-[12px]">
+                                            <button className="bg-red-500 text-white p-2 rounded hover:bg-red-600 w-50" onClick={() => {handleClick(match.id)}}>Borrar Match</button>
                                             </td>
                                         </tr>
                                     );
@@ -123,7 +123,7 @@ const HistorialMatch = () => {
               </button>
               <button
                 onClick={handleCancel}
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-500"
+                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-500"
               >
                 No
               </button>

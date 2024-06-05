@@ -150,7 +150,7 @@ function Principal() {
             Descubre nuestras <span className="text-highlight">suscripciones</span>
           </h1>
         </div>
-    <div className="grid xl:grid-cols-3 2xl:px-64 p-10 text-zinc-800 cuatro:justify-center xl:grid-cols-3 xl:ml-4 2xl:ml-0">
+    <div className="grid 2xl:px-64 p-10 text-zinc-800 cuatro:justify-center xl:grid-cols-3 xl:ml-4 2xl:ml-0">
     <div className="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs mb-10 xl:mb-0 md:ml-8 cuatro:ml-4 450:ml-6 2xl:ml-0">
     <div>
             <h2 className="font-extrabold text-3xl text-center mb-2">Básica</h2>
@@ -296,7 +296,7 @@ function Principal() {
             Descubre nuestras <span className="text-highlight">suscripciones</span>
           </h1>
         </div>
-    <div className="grid xl:grid-cols-3 2xl:px-64 p-10 text-zinc-800 cuatro:justify-center xl:grid-cols-3 xl:ml-4 2xl:ml-0">
+    <div className="grid 2xl:px-64 p-10 text-zinc-800 cuatro:justify-center xl:grid-cols-3 xl:ml-4 2xl:ml-0">
     <div className="flex flex-col items-center bg-slate-100 p-6 rounded-lg shadow-lg max-w-xs mb-10 xl:mb-0 md:ml-8 cuatro:ml-4 450:ml-6 2xl:ml-0">
     <div>
             <h2 className="font-extrabold text-3xl text-center mb-2">Básica</h2>
