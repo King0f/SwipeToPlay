@@ -20,7 +20,7 @@ export default function LateralNavP() {
   };
   return (
     <>
-      <div className="bg-white tres:justify-center tres:m-0 lg:fixed md:top-1/3 md:left-5 transform -translate-y-1/2 flex sm:flex-row lg:flex-col p-2 border-2 border-red-300 rounded items-center">
+      <div className="bg-white tres:justify-center tres:m-0 xl:fixed md:top-1/3 md:left-5 transform -translate-y-1/2 flex sm:flex-row xl:flex-col p-2 border-2 border-red-300 rounded items-center">
   <Link to={path + "/Profile"}>
     <button className="flex p-2 hover:bg-red-400 rounded">
       <box-icon name="user"></box-icon>
