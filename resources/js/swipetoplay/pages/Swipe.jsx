@@ -88,11 +88,53 @@ const Swipe = () => {
 
   return (
     <>
+    
+
     <div className="h-screen overflow-hidden select-none">
       <Header />
-      <div className='flex justify-between'>
+        {/* <div className='flex justify-between'>
+          <div class="w-64 p-4 rounded-lg bg-gray-100 shadow-md mt-40" style={{ backgroundImage: `url(../storage/imagenes/background-valorant2.jpg)`, width: '310px', height: '528px' }}>
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 rounded-full bg-blue-500"></div>
+              <div>
+                <h2 class="text-lg font-semibold">Nombre de Usuario</h2>
+                <p class="text-gray-600">Descripción breve</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <img src="imagen-de-perfil.jpg" alt="Imagen de perfil" class="w-full rounded-lg"/>
+            </div>
+            <div class="mt-4">
+              <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Me gusta</button>
+              <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md ml-2 hover:bg-gray-400">Pasar</button>
+            </div>
+        </div> */}
+        <div className='my-20 flex justify-center'>
+          <div className="flex flex-col max-w-md max-h-md mx-auto text-white shadow-lg rounded-md overflow-hidden transform transition-transform hover:scale-105 cursor-pointer" style={{ backgroundImage: `url(../storage/imagenes/valorant3.png)`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center'}}>
+            <div className='flex p-4 items-center'>
+              <img className="w-32 h-32 rounded-full mr-4" src='../storage/imagenes/1.jpg' alt="User" />
+              <div className="flex flex-col justify-center">
+                <h2 className="text-3xl font-semibold text-white">usuario</h2>
+              </div>
+            </div>
+            <div className="px-16 mt-16 mb-48 flex-grow ">
+              <p className="text-red text-sm mt-2"><b>Esto es una descripción de prueba para ver como podría quedar una real con tamaño definido</b></p>
+            </div>
+            <div className="bg-opacity-10 bg-gray-200 p-16 mt-auto flex flex-col items-center">
+              <h3 className="text-white font-bold my-1">Juego: <span className="font-normal">gameName</span></h3>
+              <h3 className="text-white font-bold my-1">Rango: <span className="font-normal">rank</span></h3>
+              <h3 className="text-white font-bold my-1">Posición: <span className="font-normal">position</span></h3>
+            </div>
+          </div>
+        </div>
+
+
+
         <ToastContainer pauseOnFocusLoss={false} limit={3} />
-        <div className='flex mx-auto mb-15 mt-10'>
+        {/* <div className='flex mx-auto mb-15 mt-10'>
           <div className='flex flex-col justify-around'>
             <div className='flex justify-center mb-2'>
               <img src={flechaIzq} className='w-10 h-10 self-center mx-2' />
@@ -159,8 +201,8 @@ const Swipe = () => {
                   </button>
                 </div>
               </div>
-            </div>
-            <button>
+            </div> */}
+            {/* <button>
               <div className='h-16 bg-yellow-300 w-1/2 mx-auto mt-4 border-2 border-yellow-950 flex rounded-xl justify-center hover:bg-yellow-200 hover:text-red-800'>
                 <p className='self-center font-swipe text-center font-semibold text-size-2xl'>SUPERLIKE</p>
                 <div className='self-center ml-4'>
@@ -169,8 +211,8 @@ const Swipe = () => {
               </div>
             </button>
           </div>
-        </div>
-      </div>
+        </div> 
+      </div>*/}
     </div>
     <Footer />
     </>
