@@ -98,7 +98,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
-  <div className="mt-72"><Footer /></div>
+  <div className="xl:mt-72 tres:mt-24"><Footer /></div>
 </div>
 
 
