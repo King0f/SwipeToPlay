@@ -22,18 +22,41 @@ class SwipeController extends Controller
 
     function obtenerUsuarioSwipe(Request $request){
         $userId = $request->user()->id;
-        // Cuenta todos los usuarios
-        $totalUsuarios = User::count();
-
+        $usuariosSwipe = $request->input('usersSwipe', []);
+    
+        // Cuenta todos los usuarios, excluyendo el usuario actual
+        $totalUsuarios = User::where('id', '!=', $userId)->count();
+    
         if ($totalUsuarios == 0) {
             return response()->json(['error' => 'No hay usuarios disponibles'], 404);
         }
-
-        $randomIndex = rand(1, $totalUsuarios) - 1; 
-        $usuarioAleatorio = User::skip($randomIndex)->whereNot("id",$userId)->first();
-
-        // Devuelve el usuario aleatorio
-        return response()->json($usuarioAleatorio); 
+    
+        if ($totalUsuarios <= 10) {
+            // Si hay 10 o menos usuarios disponibles, devuelve todos excepto el usuario actual
+            $usuarios = User::where('id', '!=', $userId)
+                            ->whereNotIn('id', $usuariosSwipe)
+                            ->get();
+    
+            return response()->json($usuarios);
+        }
+        $usuariosAleatorios = [];
+        $intentos = 0;
+        while (count($usuariosAleatorios) < 10 && $intentos < 100) {
+            $randomIndex = rand(0, $totalUsuarios - 1); 
+            $usuarioAleatorio = User::skip($randomIndex)
+                                    ->where('id', '!=', $userId)
+                                    ->whereNotIn('id', $usuariosSwipe)
+                                    ->first();
+    
+            if ($usuarioAleatorio && !in_array($usuarioAleatorio->id, array_column($usuariosAleatorios, 'id'))) {
+                $usuariosAleatorios[] = $usuarioAleatorio;
+            }
+            $intentos++;
+        }
+        if (count($usuariosAleatorios) < 10) {
+            return response()->json(['error' => 'No se pudieron encontrar suficientes usuarios únicos'], 500);
+        }
+        return response()->json($usuariosAleatorios); 
     }
 
     function obtenerConexionLOL($id){
@@ -41,6 +64,17 @@ class SwipeController extends Controller
         if ($conexion){
             return response()->json($conexion);
         }else{
+            return response()->json(['mensaje' => 'No existe ninguna cuenta de League of Legends guardada en el sistema para este usuario']);
+        }
+    }
+
+    function obtenerConexion($id){
+        $conexion = Conexiones::where('id_user', $id)->inRandomOrder()->first();
+        if ($conexion) {
+            // Si hay una conexión, devuelve esa conexión en formato JSON
+            return response()->json($conexion);
+        } else {
+            // Si no hay conexiones, devuelve un mensaje indicando el problema
             return response()->json(['mensaje' => 'No existe ninguna cuenta de League of Legends guardada en el sistema para este usuario']);
         }
     }

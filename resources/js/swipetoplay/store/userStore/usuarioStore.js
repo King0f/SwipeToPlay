@@ -3,12 +3,15 @@ import { apiStore } from "../apiStore/apiStore";
 export const usuarioStore = create((set) => ({
     usuario: [],
     usuarioID: [],
-    usuarioSwipe: [],
+    usuariosSwipe: [[]],
     resetTimer: [],
     tarjetas: [],
     setear: (user) =>{
         set(() => ({ usuario: user }))
     },
+    setUsuariosSwipe: (nuevosUsuarios) =>{
+      set(() => ({ usuariosSwipe: nuevosUsuarios }))
+  },
     obtenerUsuarioById: async (id) => {
       try {
         const localhost = apiStore.getState().localhost;
@@ -78,7 +81,32 @@ export const usuarioStore = create((set) => ({
       const data = await response.json();
       set({usuario: data});
     },
-    obtenerUsuarioSwipe: async () => {
+    obtenerUsuariosSwipe: async (usersSwipe) => {
+      try {
+      const localhost = apiStore.getState().localhost;
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('No token found');
+        const payload = {
+          usersSwipe: usersSwipe,
+        };
+        const headers = new Headers({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        });
+        const response = await fetch(`${localhost}/api/userSwipe`, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(payload)
+        });
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        set({usuariosSwipe: data}); 
+      } catch (err) {
+        console.error(err);
+        // Puedes manejar el error de alguna manera específica si lo necesitas
+      }
+    },
+    obtenerConexion: async (id) => {
       try {
         const localhost = apiStore.getState().localhost;
         const token = localStorage.getItem('token');
@@ -88,14 +116,14 @@ export const usuarioStore = create((set) => ({
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         });
-        const response = await fetch(`${localhost}/api/userSwipe`, {
+        const response = await fetch(`${localhost}/api/obtenerConexion/${id}`, {
           method: 'GET',
           headers: headers
         });
         if (!response.ok) throw new Error('Network response was not ok');
 
         const data = await response.json();
-        set({ usuarioSwipe: data }); // Actualizamos el estado directamente aquí
+        return data; 
       } catch (err) {
         console.error(err);
         // Puedes manejar el error de alguna manera específica si lo necesitas

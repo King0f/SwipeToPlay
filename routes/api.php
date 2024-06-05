@@ -24,7 +24,7 @@ Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/modUser', [AuthController::class, 'modUser'])->middleware('auth:sanctum');
 Route::post('/login', [AuthController::class, 'loginUser']);
 Route::get('/user', [Controller::class, 'obtenerUsuario'])->middleware('auth:sanctum');
-Route::get('/userSwipe', [SwipeController::class, 'obtenerUsuarioSwipe'])->middleware('auth:sanctum');
+Route::post('/userSwipe', [SwipeController::class, 'obtenerUsuarioSwipe'])->middleware('auth:sanctum');
 Route::get('/user/{id}', [Controller::class, 'obtenerUsuarioByID']);
 Route::get('/tarjetas', [AuthController::class, 'obtenerTarjetas'])->middleware('auth:sanctum');
 Route::post('/newTarjeta', [AuthController::class, 'agregarTarjeta'])->middleware('auth:sanctum');
@@ -36,6 +36,7 @@ Route::get('/obtenerMensajes/{idChat}', [ChatController::class, 'obtenerMensajes
 Route::get('/obtenerMatchPorChat/{idChat}', [ChatController::class, 'obtenerMatchPorChat']);
 Route::post('/guardarMensaje', [ChatController::class, 'guardarMensaje'])->middleware('auth:sanctum');
 Route::get('/obtenerChats', [ChatController::class, 'obtenerChats'])->middleware('auth:sanctum');
+Route::get('/obtenerConexion/{id}', [SwipeController::class, 'obtenerConexion']);
 Route::get('/obtenerConexionLOL/{id}', [SwipeController::class, 'obtenerConexionLOL']);
 Route::get('/obtenerConexionValorant/{id}', [SwipeController::class, 'obtenerConexionValorant']);
 Route::get('/handlePass', [SwipeController::class, 'handlePass'])->middleware('auth:sanctum');
