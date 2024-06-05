@@ -110,26 +110,32 @@ const Swipe = () => {
             </div>
         </div> */}
         <div className='my-20 flex justify-center'>
-          <div className="flex flex-col max-w-md max-h-md mx-auto text-white shadow-lg rounded-md overflow-hidden transform transition-transform hover:scale-105 cursor-pointer" style={{ backgroundImage: `url(../storage/imagenes/valorant3.png)`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center'}}>
+          <div className="flex flex-col max-w-md pb-64 mx-auto text-white shadow-lg rounded-md overflow-hidden transform transition-transform hover:scale-105 cursor-pointer" 
+            style={{ 
+              backgroundImage: `url(../storage/imagenes/valorant3.png)`,
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center'
+            }}
+          >
             <div className='flex p-4 items-center'>
               <img className="w-32 h-32 rounded-full mr-4" src='../storage/imagenes/1.jpg' alt="User" />
               <div className="flex flex-col justify-center">
-                <h2 className="text-3xl font-semibold text-white">usuario</h2>
+                <h2 className="text-3xl font-montserrat text-white">usuario</h2>
               </div>
             </div>
-            <div className="px-16 mt-16 mb-48 flex-grow ">
-              <p className="text-red text-sm mt-2"><b>Esto es una descripción de prueba para ver como podría quedar una real con tamaño definido</b></p>
+            <div className="px-16 mt-4 mb-auto">
+              <h3 className="text-white font-montserrat my-1">Descripción:</h3>
+              <p className="text-white text-Swipe mt-2">Esto es una descripción de prueba para ver como podría quedar una real con tamaño definido</p>
             </div>
-            <div className="bg-opacity-10 bg-gray-200 p-16 mt-auto flex flex-col items-center">
-              <h3 className="text-white font-bold my-1">Juego: <span className="font-normal">gameName</span></h3>
-              <h3 className="text-white font-bold my-1">Rango: <span className="font-normal">rank</span></h3>
-              <h3 className="text-white font-bold my-1">Posición: <span className="font-normal">position</span></h3>
+            <div className="bg-opacity-10 bg-gray-800 mt-10 p-4 flex flex-col items-center justify-center">
+              <h3 className="text-white font-montserrat mt-1">Juego: </h3><span className="font-Swipe mb-1">gameName</span>
+              <h3 className="text-white font-montserrat mt-1">Rango: </h3><span className="font-Swipe mb-1">rank</span>
+              <h3 className="text-white font-montserrat mt-1">Posición: </h3><span className="font-Swipe mb-1">position</span>
             </div>
           </div>
         </div>
+
 
 
 
