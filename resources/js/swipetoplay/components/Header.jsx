@@ -90,7 +90,7 @@ export default function Header() {
           <Link to={path + '/Chat'} className={`${isOpen ? 'bg-gray-200 text-white w-full absolute left-60 p-5' : 'md:flex hidden mr-6 xl:mr-0'}`} style={{ top: '202px' }}>
           <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
             <box-icon name='chat'></box-icon>
-              <button className="ml-2" onClick={popUpNotLogged}>Chats</button>
+              <button className="ml-2">Chats</button>
             </div>
           </Link>
           <Link to={path + '/Profile'} className={`${isOpen ? 'rounded-b-xl bg-gray-800 text-white w-full absolute left-60 p-5' : 'md:hidden md:flex hidden'}`} style={{ top: '250px' }}>
@@ -134,27 +134,27 @@ export default function Header() {
               </svg>
             </button>
           </div>
-            <Link to={path} className={`${isOpen ? 'bg-gray-200  text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '80px' }}>
+            <Link to={path} className={`${isOpen ? 'bg-gray-200  text-white w-full absolute left-60 p-5' : 'md:flex hidden mr-6 xl:mr-0'}`} style={{ top: '80px' }}>
             <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
               <box-icon name='home' ></box-icon>
                 <button className="ml-2">Inicio</button>
               </div>
             </Link>
-              <div className={`${isOpen ? 'bg-gray-200 text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '120px' }} >
+              <div className={`${isOpen ? 'bg-gray-200 text-white w-full absolute left-60 p-5' : 'md:flex hidden mr-6 xl:mr-0'}`} style={{ top: '120px' }} >
               <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
               <box-icon name='sort' rotate='90' ></box-icon>
                   <button className="ml-2" onClick={popUpNotLogged}>Swipe</button>
                 </div>
               </div>
 
-              <div className={`${isOpen ? 'bg-gray-200  text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '160px' }}>
+              <div className={`${isOpen ? 'bg-gray-200  text-white w-full absolute left-60 p-5' : 'md:flex hidden mr-6 xl:mr-0'}`} style={{ top: '160px' }}>
               <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
                 <box-icon name='joystick'></box-icon>
                   <button className="ml-2" onClick={popUpNotLogged}>Juegos</button>
                 </div>
               </div>
 
-              <div className={`${isOpen ? 'bg-gray-200 text-white w-full absolute left-60 p-5' : 'md:flex hidden'}`} style={{ top: '202px' }}>
+              <div className={`${isOpen ? 'bg-gray-200 text-white w-full absolute left-60 p-5' : 'md:flex hidden mr-6 xl:mr-0'}`} style={{ top: '202px' }}>
               <div className="text-black font-Swipe nav-link" style={{ display: 'flex', alignItems: 'center' }}>
                 <box-icon name='chat'></box-icon>
                   <button className="ml-2" onClick={popUpNotLogged}>Chats</button>
