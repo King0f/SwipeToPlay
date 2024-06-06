@@ -58,7 +58,6 @@ const Swipe = () => {
   }, [currentIndex, usuariosSwipe]); 
 
   const handleAction = async (action) => {
-    console.log(usuariosSwipe[currentIndex].username);
     try {
       if (usuario.desplazamientos <= 0 && usuario.lvl_premium !== 2) {
         toast.error("No tienes deslizamientos suficientes para realizar esta acción.", {
@@ -70,9 +69,36 @@ const Swipe = () => {
         });
       } else {
         console.log(usuariosSwipe[currentIndex].id, action)
-        await actionSwipe(usuariosSwipe[currentIndex].id, action);
+        await actionSwipe(usuariosSwipe[currentIndex].id, action,conexion.juego);
         setCurrentIndex(currentIndex + 1);
         fetchData();
+      }
+    } catch (error) {
+      console.error("Error handling action:", error);
+    }
+  };
+
+  const handleSuperLike = async () => {
+    try {
+      if (usuario.superlikes <= 0 && usuario.lvl_premium !== 2) {
+        toast.error("No tienes superlikes suficientes para realizar esta acción.", {
+          position: 'top-right',
+          className: 'foo-bar',
+          theme: 'light',
+          transition: Zoom,
+          autoClose: 3000,
+        });
+      } else {
+        await actionSuperlike(usuariosSwipe[currentIndex].id,conexion.juego);
+        setCurrentIndex(currentIndex + 1);
+        fetchData();
+        toast.success("Has usado un superlike. Mira la página de chats y empieza a jugar!", {
+          position: 'top-right',
+          className: 'foo-bar',
+          theme: 'light',
+          transition: Zoom,
+          autoClose: 3000,
+        });
       }
     } catch (error) {
       console.error("Error handling action:", error);
@@ -190,10 +216,9 @@ const Swipe = () => {
             </div>
             <button>
               <div className='h-16 bg-yellow-300 w-1/2 mx-auto mt-4 border-2 border-yellow-950 flex rounded-xl justify-center hover:bg-yellow-200 hover:text-red-800'>
-                <p className='self-center font-swipe text-center font-semibold text-size-2xl'>SUPERLIKE</p>
-                <div className='self-center ml-4'>
-                  <Icon_social_pleasures_xl fill='brown' />
-                </div>
+              <button onClick={() => handleSuperLike()} className=''>
+                    <box-icon name='like' type='solid' color='#079225' ></box-icon>
+              </button>
               </div>
             </button>
           </div>

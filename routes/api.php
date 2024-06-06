@@ -46,3 +46,4 @@ Route::post('/procesarCompra', [Controller::class, 'procesarCompra'])->middlewar
 Route::get('/obtenerMatches', [Controller::class, 'obtenerMatches'])->middleware('auth:sanctum');
 Route::post('/delMatch', [Controller::class, 'eliminarMatch']);
 Route::post('/modificarUsuario', [Controller::class, 'modificarUsuario'])->middleware('auth:sanctum');
+Route::post('/handleSuperlike', [SwipeController::class, 'handleSuperlike'])->middleware('auth:sanctum');

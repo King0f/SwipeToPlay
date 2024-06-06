@@ -26,12 +26,15 @@ class UserFactory extends Factory
         if ($lvl_premium == 0) {
             $desplazamientos = 10;
             $n_mensajes = 25;
+            $superlikes = 0;
         } elseif ($lvl_premium == 1) {
             $desplazamientos = 25;
             $n_mensajes = 100;
+            $superlikes = 1;
         } elseif ($lvl_premium == 2) {
             $desplazamientos = 0;
             $n_mensajes = 0;
+            $superlikes = 0;
         }
 
         // Lista de números de teléfono
@@ -47,7 +50,8 @@ class UserFactory extends Factory
             'imagen' => null,
             'likes' => $this->faker->numberBetween(1, 999),  // Dejar el campo de imagen vacío
             'phone' => $this->faker->randomElement($phoneNumbers),  // Teléfono aleatorio
-            'descripcion' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lectus tellus, viverra non cursus sit amet, pretium quis elit. Sed et risus nibh. Fusce ligula lectus.'
+            'descripcion' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lectus tellus, viverra non cursus sit amet, pretium quis elit. Sed et risus nibh. Fusce ligula lectus.',
+            'superlikes' => $superlikes,
         ];
     }
 
