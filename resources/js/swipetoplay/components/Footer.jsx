@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <>
-<div className='bg-black h-[400px] flex'>
+<div className='bg-black h-[400px] tres:hidden md:flex'>
         <div className='flex flex-col'>
         <img src={textoLogo2} className='ml-20 pt-10'/>
         <p className='font-Swipe text-center text-size-xl text-white font-medium mt-20'>Questions, feedback or need help?</p>
@@ -43,7 +43,7 @@ const Footer = () => {
         <p className='w-min mx-auto font-Swipe text-center text-size-l text-white mt-5 font-medium hover:cursor-pointer transform transition-transform duration-300 ease-in-out hover:scale-110' onClick={chats}>Chats</p>
         </div>
     </div>
-    <div className='bg-black pb-5'><p className='font-Swipe text-size-l text-center text-white'> ©2024 SwipeToPlay technologies.  All rights reserved.</p></div>
+    <div className='bg-black pb-5 tres:hidden md:flex'><p className='font-Swipe text-size-l text-center text-white'> ©2024 SwipeToPlay technologies.  All rights reserved.</p></div>
 </>
   )
 }

@@ -92,10 +92,10 @@ const Profile = () => {
                     <b>Deslizamientos restantes</b> <br /> <span className="font-Swipe">{usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</span>
                 </div>
                 <div className="w-full p-4 bg-white shadow-custom rounded-md ">
-                    <b>Mensajes restantes</b> <br /> <span className="font-Swipe">{usuario.n_mensajes}</span>
+                    <b>Mensajes restantes</b> <br /> <span className="font-Swipe">{usuario.lvl_premium === 2 ? '∞' : usuario.n_mensajes}</span>
                 </div>
                 <div className="w-full p-4 bg-white shadow-custom rounded-md ">
-                    <b>Superlikes restantes</b> <br /> <span className="font-Swipe">{usuario.superlikes}</span>
+                    <b>Superlikes restantes</b> <br /> <span className="font-Swipe">{usuario.lvl_premium === 2 ? '∞' : usuario.superlikes}</span>
                 </div>
                 <div className="col-span-1 md:col-span-2 flex justify-center">
                     <div className="w-full p-6 bg-white shadow-custom rounded-md text-center">
