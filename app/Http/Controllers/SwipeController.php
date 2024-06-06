@@ -177,6 +177,8 @@ class SwipeController extends Controller
         $match = new Matches();
         $match->id_user1 = $usuario->id;
         $match->id_user2 = $userSwipe->id;
+        $match->id_juego = $request->juego;
+        $match->save();
         $fecha = new DateTime();
         $meses = [
         1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril',
@@ -195,12 +197,10 @@ class SwipeController extends Controller
                     'fecha' => $formatoFecha,
                     'juego' => $juego,
                 ];
-        $match->id_juego = $request->juego;
-        $match->save();
         $chat = new Chat();
         $chat->id_match = $match->id;
         $chat->save();
-        $this->mandarWhatssap($usuario, $userSwipe);
+        /* $this->mandarWhatssap($usuario, $userSwipe); */
         Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
         Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
         return response()->json($usuario);

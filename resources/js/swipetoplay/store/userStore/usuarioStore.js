@@ -184,6 +184,7 @@ export const usuarioStore = create((set) => ({
             idUser: idUser,
             juego: juego
         };
+
         const headers = new Headers({
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
