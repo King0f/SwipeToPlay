@@ -113,6 +113,15 @@ const Swipe = () => {
   }
   };
 
+  const MAX_LENGTH = 100;
+
+    const getDescripcionCortada = (text) => {
+        if (text.length > MAX_LENGTH) {
+            return text.substring(0, MAX_LENGTH) + '...';
+        }
+        return text;
+    };
+
   if (swiped) {
     return null;
   }
@@ -120,7 +129,7 @@ const Swipe = () => {
     <>
     
 
-    <div className="h-screen overflow-hidden select-none">
+    <div className="h-screen overflow-hidden select-none bg-gray-100">
       <Header />
         <div className='flex justify-between'>
         <ToastContainer pauseOnFocusLoss={false} limit={3} />
@@ -162,12 +171,12 @@ const Swipe = () => {
                 </div>
                 <div className="px-16 mt-4 mb-auto">
                     <h3 className="text-white font-montserrat my-1">Descripción:</h3>
-                    <p className="text-white text-Swipe mt-2"></p>
+                    <p className="text-white text-Swipe mt-2">{getDescripcionCortada(usuariosSwipe[currentIndex].descripcion)}</p>
                 </div>
                 <div className="bg-opacity-10 bg-gray-800 mt-10 p-4 flex flex-col items-center justify-center">
-                    <h3 className="text-white font-montserrat mt-1">Juego: </h3><span className="font-Swipe mb-1">{conexion.riotID ? conexion.riotID : 'cargando...'}</span>
-                    <h3 className="text-white font-montserrat mt-1">Rango: </h3><span className="font-Swipe mb-1">{conexion.rango ? conexion.rango : 'cargando...'}</span>
-                    <h3 className="text-white font-montserrat mt-1">Posición: </h3><span className="font-Swipe mb-1">{conexion.posicion ? conexion.riotID : 'cargando...'}</span>
+                    <h3 className="text-white font-montserrat mt-1">Juego</h3><span className="font-Swipe mb-1">{conexion.riotID ? conexion.riotID : 'cargando...'}</span>
+                    <h3 className="text-white font-montserrat mt-1">Rango</h3><span className="font-Swipe mb-1">{conexion.rango ? conexion.rango : 'cargando...'}</span>
+                    <h3 className="text-white font-montserrat mt-1">Posición</h3><span className="font-Swipe mb-1">{conexion.posicion ? conexion.riotID : 'cargando...'}</span>
                 </div>
                 </motion.div>
               )}

@@ -46,7 +46,8 @@ class UserFactory extends Factory
             'n_mensajes' => $n_mensajes,
             'imagen' => null,
             'likes' => $this->faker->numberBetween(1, 999),  // Dejar el campo de imagen vacío
-            'phone' => $this->faker->randomElement($phoneNumbers)  // Teléfono aleatorio
+            'phone' => $this->faker->randomElement($phoneNumbers),  // Teléfono aleatorio
+            'descripcion' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lectus tellus, viverra non cursus sit amet, pretium quis elit. Sed et risus nibh. Fusce ligula lectus.'
         ];
     }
 

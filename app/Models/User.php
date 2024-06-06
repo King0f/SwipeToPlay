@@ -26,7 +26,8 @@ class User extends Authenticatable
         'n_mensajes',
         'imagen',
         'likes',
-        'phone'
+        'phone',
+        'descripcion',
     ];
 
     /**

@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('swipemail', function () {
+    return view('swipemail');
+});
+
 Route::get('/swipetoplay', function () {
     return view('swipetoplay');
 })->name("swipetoplay");

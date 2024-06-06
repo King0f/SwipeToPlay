@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SwipeMail;
 use App\Models\Chat;
 use App\Models\Conexiones;
 use App\Models\Matches;
+use DateTime;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Service\WhatsAppService;
-use App\Service\BrevoService;
+use Illuminate\Support\Facades\Mail;
 
 class SwipeController extends Controller
 {
@@ -103,8 +105,27 @@ class SwipeController extends Controller
             $chat = new Chat();
             $chat->id_match = $match->id;
             $chat->save();
+            $fecha = new DateTime();
+                $meses = [
+                    1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril',
+                    5 => 'Mayo', 6 => 'Junio', 7 => 'Julio', 8 => 'Agosto',
+                    9 => 'Septiembre', 10 => 'Octubre', 11 => 'Noviembre', 12 => 'Diciembre'
+                ];
+                $numeroMes = (int)$fecha->format('m');
+                $nombreMes = $meses[$numeroMes];
+                $formatoFecha = 'Día ' . $fecha->format('d') . ' de ' . $nombreMes . ' de ' . $fecha->format('Y');
+            if($match->id_juego == 1){
+                $juego = 'League of Legends';
+            }else{
+                $juego = 'Valorant';
+            }
+            $informacionAdicional = [
+                'fecha' => $formatoFecha,
+                'juego' => $juego,
+            ];
             $this->mandarWhatssap($usuario, $userSwipe);
-            $this->mandarCorreo($usuario, $userSwipe);
+            Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
+            Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
         }else{
             $match = Matches::where('id_user1', $userSwipe->id)->where('usuario_esperado', $usuario->id)->first();
             if ($match){
@@ -114,8 +135,28 @@ class SwipeController extends Controller
                 $chat = new Chat();
                 $chat->id_match = $match->id;
                 $chat->save();
+                $fecha = new DateTime();
+                $meses = [
+                    1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril',
+                    5 => 'Mayo', 6 => 'Junio', 7 => 'Julio', 8 => 'Agosto',
+                    9 => 'Septiembre', 10 => 'Octubre', 11 => 'Noviembre', 12 => 'Diciembre'
+                ];
+                $numeroMes = (int)$fecha->format('m');
+                $nombreMes = $meses[$numeroMes];
+                $formatoFecha = 'Día ' . $fecha->format('d') . ' de ' . $nombreMes . ' de ' . $fecha->format('Y');
+                if($match->id_juego == 1){
+                    $juego = 'League of Legends';
+                }else{
+                    $juego = 'Valorant';
+                }
+                $informacionAdicional = [
+                    'fecha' => $formatoFecha,
+                    'juego' => $juego,
+                ];
                 $this->mandarWhatssap($usuario, $userSwipe);
-                $this->mandarCorreo($usuario, $userSwipe);
+                Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
+                Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
+
             }else{
                 $match = new Matches();
                 $match->id_user1 = $usuario->id;
@@ -148,40 +189,4 @@ class SwipeController extends Controller
         $whatsAppService->enviarMensaje($usuario2->phone, 'swipe', 'es', $datosDinamicos2);
     }
 
-    function mandarCorreo($usuario, $usuario2){
-        $brevoEmailService = new BrevoService($this->token2, $this->url2);
-        $htmlContent = $this->buildEmailContent();
-        $htmlContentBase = $htmlContent;
-        $htmlContentVersions = [];
-        $users = [$usuario, $usuario2];
-        foreach ($users as $user) {
-            $htmlContentVersions[] = $htmlContent;
-        }   
-
-        $brevoEmailService->enviarCampaña(
-            'licenses',
-            'arc00036@gmail.com',
-            $htmlContentBase,
-            $htmlContentVersions,
-            $users,
-        );
-    }
-
-    private function buildEmailContent(): string
-    {
-        $htmlContent = '
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Swipe to play</title>
-        </head>
-        <body>
-            <p>Hola,</p>
-            <p>Tienes un nuevo match!</p>
-            <p>No lo hagas esperar y disfrutad vuestras partidas.</p>
-        </body>
-        </html>';
-
-        return $htmlContent;
-    }
 }

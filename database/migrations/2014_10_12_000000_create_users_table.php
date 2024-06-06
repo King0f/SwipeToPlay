@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('imagen')->nullable();
             $table->integer('likes');
             $table->string('phone');
+            $table->string('descripcion');
             $table->rememberToken();
             $table->timestamps();
         });
