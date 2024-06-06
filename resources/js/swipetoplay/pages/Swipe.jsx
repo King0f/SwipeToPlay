@@ -149,7 +149,7 @@ const Swipe = () => {
                 </div>
               </div>
               {currentIndex < usuariosSwipe.length && (
-                <motion.div className="flex flex-col w-[448px] pb-52 mx-auto text-white shadow-lg rounded-md overflow-hidden transform transition-transform cursor-pointer" 
+                <motion.div className="flex flex-col w-[448px] pb-36 mx-auto text-white shadow-lg rounded-md overflow-hidden transform transition-transform cursor-pointer" 
                 style={{ 
                   backgroundImage: `url(../storage/imagenes/${conexion.juego == 'Valorant' ? 'valorant3.png' : 'lol2.png'})`,
                     backgroundSize: 'cover',
@@ -169,11 +169,11 @@ const Swipe = () => {
                     <h2 className="text-2xl font-montserrat text-white">{usuariosSwipe[currentIndex].username}</h2>
                     <h3 className="text-xl font-Swipe text-white">{usuariosSwipe[currentIndex].likes}</h3><box-icon name='heart' type='solid' color='#d80707' ></box-icon>
                 </div>
-                <div className="px-16 mt-4 mb-auto">
+                <div className="px-16">
                     <h3 className="text-white font-montserrat my-1">Descripción:</h3>
                     <p className="text-white text-Swipe mt-2">{getDescripcionCortada(usuariosSwipe[currentIndex].descripcion)}</p>
                 </div>
-                <div className="bg-opacity-10 bg-gray-800 mt-10 p-4 flex flex-col items-center justify-center">
+                <div className="bg-opacity-10 bg-gray-800 flex flex-col items-center justify-center">
                     <h3 className="text-white font-montserrat mt-1">Juego</h3><span className="font-Swipe mb-1">{conexion.riotID ? conexion.riotID : 'cargando...'}</span>
                     <h3 className="text-white font-montserrat mt-1">Rango</h3><span className="font-Swipe mb-1">{conexion.rango ? conexion.rango : 'cargando...'}</span>
                     <h3 className="text-white font-montserrat mt-1">Posición</h3><span className="font-Swipe mb-1">{conexion.posicion ? conexion.riotID : 'cargando...'}</span>
