@@ -25,6 +25,7 @@ class Controller extends BaseController
         $usuario->username = $request->input('username');
         $usuario->email = $request->input('email');
         $usuario->phone = $request->input('phone');
+        $usuario->descripcion = $request->input('descripcion');
         $usuario->save();
         return response()->json($usuario);
     }

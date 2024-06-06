@@ -66,37 +66,41 @@ const Profile = () => {
       </div>
 
       <div className="flex flex-col xl:py-10 tres:py-4 tres:pb-10 w-full xl:w-2/3 bg-gradient-to-l from-red-200 via-red-300 to-red-400 p-4 rounded-md shadow-custom border-1 border-gray-400">
-        <p className="text-center text-black text-xl font-extrabold mt-6 xl:mb-6 xl:text-[30px] tres:text-[26px]">Información del Usuario</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 px-4">
-          <div className="w-full p-4 bg-white shadow-custom rounded-md">
-            <b>Email</b> <br /> <span className="font-Swipe">{usuario.email}</span>
-          </div>
-          <div className="w-full p-4 bg-white shadow-custom rounded-md">
-            <b>Membresia</b> <br /> <span className="font-Swipe">{(() => {
-              switch (usuario.lvl_premium) {
-                case 0:
-                  return <span>Suscripción Básica</span>;
-                case 1:
-                  return <span>Suscripción Premium</span>;
-                case 2:
-                  return <span>Suscripción Deluxe</span>;
-                default:
-                  return <span>Valor no reconocido</span>;
-              }
-            })()}</span> 
-            
-          </div>
-          <div className="w-full p-4 bg-white shadow-custom rounded-md">
-            <b>Teléfono</b> <br /> <span className="font-Swipe">{usuario.phone}</span>
-          </div>
-          <div className="w-full p-4 bg-white shadow-custom rounded-md">
-            <b>Deslizamientos restantes</b> <br /> <span className="font-Swipe">{usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</span>
-          </div>
-          <div className="w-full p-4 bg-white shadow-custom rounded-md">
-            <b>Mensajes restantes</b> <br />  <span className="font-Swipe">{usuario.n_mensajes}</span>
-          </div>
-        </div>
-      </div>
+            <p className="text-center text-black text-xl font-extrabold mt-6 xl:mb-6 xl:text-[30px] tres:text-[26px]">Información del Usuario</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 px-4">
+                <div className="w-full p-4 bg-white shadow-custom rounded-md">
+                    <b>Email</b> <br /> <span className="font-Swipe">{usuario.email}</span>
+                </div>
+                <div className="w-full p-4 bg-white shadow-custom rounded-md">
+                    <b>Membresia</b> <br /> <span className="font-Swipe">{(() => {
+                        switch (usuario.lvl_premium) {
+                            case 0:
+                                return <span>Suscripción Básica</span>;
+                            case 1:
+                                return <span>Suscripción Premium</span>;
+                            case 2:
+                                return <span>Suscripción Deluxe</span>;
+                            default:
+                                return <span>Valor no reconocido</span>;
+                        }
+                    })()}</span>
+                </div>
+                <div className="w-full p-4 bg-white shadow-custom rounded-md">
+                    <b>Teléfono</b> <br /> <span className="font-Swipe">{usuario.phone}</span>
+                </div>
+                <div className="w-full p-4 bg-white shadow-custom rounded-md">
+                    <b>Deslizamientos restantes</b> <br /> <span className="font-Swipe">{usuario.lvl_premium === 2 ? '∞' : usuario.desplazamientos}</span>
+                </div>
+                <div className="w-full p-4 bg-white shadow-custom rounded-md ">
+                    <b>Mensajes restantes</b> <br /> <span className="font-Swipe">{usuario.n_mensajes}</span>
+                </div>
+                <div className="col-span-1 md:col-span-2 flex justify-center">
+                    <div className="w-full p-6 bg-white shadow-custom rounded-md text-center">
+                        <b>Descripción</b> <br /> <span className="font-Swipe text-lg">{usuario.descripcion}</span>
+                    </div>
+                </div>
+            </div>
+        </div>  
     </div>
   <div className="xl:mt-72 tres:mt-24"><Footer /></div>
 </div>

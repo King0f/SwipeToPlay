@@ -267,13 +267,14 @@ export const usuarioStore = create((set) => ({
         // Puedes manejar el error de alguna manera específica si lo necesitas
       }
     },
-    modificarUsuario: async (username,email,phone) => {
+    modificarUsuario: async (username,email,phone,descripcion) => {
       try {
         const localhost = apiStore.getState().localhost;
         const user = {
             username: username,
             email: email,
-            phone: phone
+            phone: phone,
+            descripcion: descripcion
         }
         const token = localStorage.getItem('token');
         const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` });

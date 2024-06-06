@@ -69,6 +69,7 @@ class AuthController extends Controller
         $usuario->username = $request->username;
         $usuario->email = $request->email;
         $usuario->phone = $request->phone;
+        $usuario->descripcion = $request->descripcion;
         $usuario->save();
 
         return response("Usuario modificado con exito!",200);

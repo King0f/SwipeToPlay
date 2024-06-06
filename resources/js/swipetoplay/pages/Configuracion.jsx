@@ -54,6 +54,12 @@ const Configuracion = () => {
           phone: event.target.value,
         });
     };
+    const handleChangeDescripcion = (event) => {
+        setUsuario({
+          ...user,
+          descripcion: event.target.value,
+        });
+    };
     const handleChangeValorant = (event) => {
         setConexionValorant({
           ...conexionValorant,
@@ -122,7 +128,7 @@ const Configuracion = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        modificarUsuario(user.username,user.email,user.phone)
+        modificarUsuario(user.username,user.email,user.phone,user.descripcion)
         navigate(path + "/Profile");
     };
   return (
@@ -222,7 +228,7 @@ const Configuracion = () => {
                         <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50" onClick={handleSubmitValorant}>Modificar conexión</button>
                     </form>
                 </div>
-                <div className="bg-cover bg-center rounded-2xl mb-20" style={{ backgroundImage: `url(../storage/imagenes/background-perfil.jpg)`, width: '728px', height: '410px' }}>
+                <div className="bg-cover bg-center rounded-2xl mb-20" style={{ backgroundImage: `url(../storage/imagenes/background-perfil.jpg)`, width: '728px', height: '600px' }}>
                     <form className="w-full h-full flex flex-col justify-center items-center bg-opacity-70 bg-gray-800 rounded">
                         <h2 className="text-white text-2xl mb-4"><b>Perfil</b></h2>
                         <div className="mb-4 w-3/4">
@@ -251,6 +257,14 @@ const Configuracion = () => {
                                 value={user.phone}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded"
                             />
+                        </div>
+                        <div className="mb-4 w-3/4">
+                            <label className="block text-white text-sm font-bold mb-2">Descripción:</label>
+                            <textarea
+                                onChange={handleChangeDescripcion}
+                                value={user.descripcion}
+                                className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded h-32"
+                                />
                         </div>
                         <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50"  onClick={handleSubmit}>Modificar perfil</button>
                     </form>
