@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('n_mensajes');
             $table->string('imagen')->nullable();
             $table->integer('likes');
+            $table->integer('superlikes');
             $table->string('phone');
             $table->string('descripcion');
             $table->rememberToken();

@@ -44,10 +44,12 @@ class AuthController extends Controller
                 'desplazamientos' => 10,
                 'n_mensajes' => 25,
                 'likes' => 0,
+                'superlikes' => 0,
                 'phone' => $request->phone,
                 'imagen' => null,
                 'email' => $request->email,
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
+                'descripcion' => 'Esto es una descripcion de ejemplo, modifícala desde tu perfil!',
             ]);
 
             return response()->json([

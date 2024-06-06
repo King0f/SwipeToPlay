@@ -175,14 +175,16 @@ export const usuarioStore = create((set) => ({
         // Puedes manejar el error de alguna manera específica si lo necesitas
       }
     },
-    actionSwipe: async (idUser, action) => {
+    actionSwipe: async (idUser, action,juego) => {
       const localhost = apiStore.getState().localhost;
       const token = localStorage.getItem('token');
           if (!token) throw new Error('No token found');
       if(action == 1){
         const payload = {
             idUser: idUser,
+            juego: juego
         };
+
         const headers = new Headers({
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -211,6 +213,27 @@ export const usuarioStore = create((set) => ({
         throw new Error('Elija una opcion valida.');
       }
       
+    },
+    actionSuperlike: async (idUser,juego) => {
+      const localhost = apiStore.getState().localhost;
+      const token = localStorage.getItem('token');
+          if (!token) throw new Error('No token found');
+        const payload = {
+            idUser: idUser,
+            juego: juego
+        };
+        const headers = new Headers({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        });
+        const response = await fetch(`${localhost}/api/handleSuperlike`, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(payload)
+        });
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        set({usuario: data}); 
     },
     swipesResetTimer: async () => {
       try {

@@ -161,10 +161,48 @@ class SwipeController extends Controller
                 $match = new Matches();
                 $match->id_user1 = $usuario->id;
                 $match->usuario_esperado = $userSwipe->id;
-                $match->id_juego = 1;
+                $match->id_juego = $request->juego;
                 $match->save();
             }
         }
+        return response()->json($usuario);
+    }
+    function handleSuperlike(Request $request){
+        $usuario = $request->user();
+        $usuario->superlikes = $usuario->superlikes - 1;
+        $usuario->save();
+        $userSwipe = User::where('id', $request->idUser)->first();
+        $userSwipe->likes = $userSwipe->likes + 1;
+        $userSwipe->save();
+        $match = new Matches();
+        $match->id_user1 = $usuario->id;
+        $match->id_user2 = $userSwipe->id;
+        $match->id_juego = $request->juego;
+        $match->save();
+        $fecha = new DateTime();
+        $meses = [
+        1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril',
+        5 => 'Mayo', 6 => 'Junio', 7 => 'Julio', 8 => 'Agosto',
+        9 => 'Septiembre', 10 => 'Octubre', 11 => 'Noviembre', 12 => 'Diciembre'
+        ];
+                $numeroMes = (int)$fecha->format('m');
+                $nombreMes = $meses[$numeroMes];
+                $formatoFecha = 'Día ' . $fecha->format('d') . ' de ' . $nombreMes . ' de ' . $fecha->format('Y');
+                if($match->id_juego == 1){
+                    $juego = 'League of Legends';
+                }else{
+                    $juego = 'Valorant';
+                }
+                $informacionAdicional = [
+                    'fecha' => $formatoFecha,
+                    'juego' => $juego,
+                ];
+        $chat = new Chat();
+        $chat->id_match = $match->id;
+        $chat->save();
+        /* $this->mandarWhatssap($usuario, $userSwipe); */
+        Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
+        Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
         return response()->json($usuario);
     }
 
