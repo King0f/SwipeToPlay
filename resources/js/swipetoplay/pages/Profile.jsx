@@ -46,7 +46,7 @@ const Profile = () => {
              onMouseLeave={() => setHovered(false)}>
           <img
             src={usuario.imagen || imagenUser}
-            className="rounded-full 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 border-2 border-white shadow-md shadow-gray"
+            className="rounded-full 2xl:w-80 2xl:h-80 md:w-64 md:h-64 tres:w-48 tres:h-48 border-2 border-white shadow-md shadow-gray bg-gray-100"
             onClick={handleEditPictureClick}
           />
           {hovered && (
