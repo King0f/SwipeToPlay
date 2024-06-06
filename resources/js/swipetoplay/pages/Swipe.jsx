@@ -115,13 +115,13 @@ const Swipe = () => {
 
   const MAX_LENGTH = 100;
 
-    const getDescripcionCortada = (text) => {
-        if (text.length > MAX_LENGTH) {
-            return text.substring(0, MAX_LENGTH) + '...';
-        }
-        return text;
-    };
-
+  const getDescripcionCortada = (text) => {
+    if (!text) return ''; // Verifica si el texto está definido
+    if (text.length > MAX_LENGTH) {
+        return text.substring(0, MAX_LENGTH) + '...';
+    }
+    return text;
+};
   if (swiped) {
     return null;
   }
