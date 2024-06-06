@@ -98,132 +98,131 @@ const Comprar = ({ product, precio }) => {
     <>
       <Header />
       <div className="min-h-screen flex justify-center items-center bg-gray-100">
-        <div className="bg-white shadow-md rounded-lg p-6 max-w-4xl w-full flex">
-          <div className="w-1/2 p-4">
-            <div className="border-b pb-2 mb-4">
-              <button
-                className="w-full text-left font-semibold text-lg"
-                onClick={() => setUserDetailsOpen(!userDetailsOpen)}
-              >
-                Datos del Usuario 🡣
-              </button>
+            <div className="bg-white shadow-md rounded-lg p-6 max-w-4xl w-full flex flex-col lg:flex-row mt-10 xl:mt-20 mb-10 xl:mb-20">
+                <div className="w-full lg:w-1/2 lg:order-2 p-4 border-l ml-4 tres:ml-0 lg:mb-4">
+                    <h2 className="text-2xl font-bold mb-4 text-center lg:text-left">Resumen de la Compra</h2>
+                    <div className="bg-gray-100 p-4 rounded shadow-md mb-4">
+                        <h3 className="text-lg font-semibold">Producto:</h3>
+                        <p>{"x1 " + product}</p>
+                        <h3 className="text-lg font-semibold">Precio:</h3>
+                        <p>{precio}</p>
+                    </div>
+                </div>
+                <div className="w-full lg:w-1/2 p-4">
+                    <div className="border-b pb-2 mb-4">
+                        <button
+                            className="w-full text-left font-semibold text-lg"
+                            onClick={() => setUserDetailsOpen(!userDetailsOpen)}
+                        >
+                            Datos del Usuario 🡣
+                        </button>
+                    </div>
+                    {userDetailsOpen && (
+                        <div className="space-y-4">
+                            <input
+                                type="text"
+                                name="username"
+                                placeholder="Nombre de Usuario"
+                                value={usuario.username}
+                                readOnly
+                                className="w-full border p-2 rounded"
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Correo Electrónico"
+                                value={usuario.email}
+                                readOnly
+                                className="w-full border p-2 rounded"
+                            />
+                            <input
+                                type="tel"
+                                name="phone"
+                                placeholder="Teléfono"
+                                value={usuario.phone}
+                                readOnly
+                                className="w-full border p-2 rounded"
+                            />
+                        </div>
+                    )}
+                    <div className="border-b pb-2 mt-4">
+                        <button
+                            className="w-full text-left font-semibold text-lg"
+                            onClick={() => setCreditCardOpen(!creditCardOpen)}
+                        >
+                            Tarjeta de Crédito 🡣
+                        </button>
+                    </div>
+                    {creditCardOpen && (
+                        <div className="space-y-4">
+                            <select
+                                className="w-full border p-2 rounded"
+                                value={selectedCard}
+                                onChange={(e) => setSelectedCard(e.target.value)}
+                            >
+                                <option value="">Selecciona una tarjeta</option>
+                                {tarjetas.map(tarjeta => (
+                                    <option key={tarjeta.id} value={tarjeta.n_tarjeta}>
+                                        {tarjeta.n_tarjeta}
+                                    </option>
+                                ))}
+                            </select>
+                            <input
+                                type="text"
+                                name="cardName"
+                                placeholder="Titular de la tarjeta"
+                                value={formData.cardName}
+                                onChange={handleInputChange}
+                                readOnly={isReadOnly}
+                                className="w-full border p-2 rounded"
+                            />
+                            <input
+                                type="text"
+                                name="cardNumber"
+                                placeholder="Número de Tarjeta"
+                                value={formData.cardNumber}
+                                onChange={handleInputChange}
+                                readOnly={isReadOnly}
+                                className="w-full border p-2 rounded"
+                            />
+                            <input
+                                type="text"
+                                name="cardExpiry"
+                                placeholder="Fecha de Expiración (MM/AA)"
+                                value={formData.cardExpiry}
+                                onChange={handleInputChange}
+                                readOnly={isReadOnly}
+                                className="w-full border p-2 rounded"
+                            />
+                            <input
+                                type="text"
+                                name="cardCVC"
+                                placeholder="CVC"
+                                value={formData.cardCVC}
+                                onChange={handleInputChange}
+                                readOnly={isReadOnly}
+                                className="w-full border p-2 rounded"
+                            />
+                            <button
+                                onClick={handleAddCard}
+                                className="w-full bg-red-600 hover:bg-red-800 text-white font-bold p-2 rounded"
+                                hidden={isReadOnly}
+                            >
+                                Añadir Tarjeta
+                            </button>
+                        </div>
+                    )}
+                    <div className="flex justify-center my-8">
+                        <button 
+                            className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                            onClick={handlePurchase}
+                        >
+                            Finalizar Compra
+                        </button>
+                    </div>
+                </div>
             </div>
-            {userDetailsOpen && (
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  name="username"
-                  placeholder="Nombre de Usuario"
-                  value={usuario.username}
-                  readOnly
-                  className="w-full border p-2 rounded"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Correo Electrónico"
-                  value={usuario.email}
-                  readOnly
-                  className="w-full border p-2 rounded"
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Teléfono"
-                  value={usuario.phone}
-                  readOnly
-                  className="w-full border p-2 rounded"
-                />
-              </div>
-            )}
-
-            <div className="border-b pb-2 mt-4">
-              <button
-                className="w-full text-left font-semibold text-lg"
-                onClick={() => setCreditCardOpen(!creditCardOpen)}
-              >
-                Tarjeta de Crédito 🡣
-              </button>
-            </div>
-            {creditCardOpen && (
-              <div className="space-y-4">
-                <select
-                  className="w-full border p-2 rounded"
-                  value={selectedCard}
-                  onChange={(e) => setSelectedCard(e.target.value)}
-                >
-                  <option value="">Selecciona una tarjeta</option>
-                  {tarjetas.map(tarjeta => (
-                    <option key={tarjeta.id} value={tarjeta.n_tarjeta}>
-                      {tarjeta.n_tarjeta}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="text"
-                  name="cardName"
-                  placeholder="Titular de la tarjeta"
-                  value={formData.cardName}
-                  onChange={handleInputChange}
-                  readOnly={isReadOnly}
-                  className="w-full border p-2 rounded"
-                />
-                <input
-                  type="text"
-                  name="cardNumber"
-                  placeholder="Número de Tarjeta"
-                  value={formData.cardNumber}
-                  onChange={handleInputChange}
-                  readOnly={isReadOnly}
-                  className="w-full border p-2 rounded"
-                />
-                <input
-                  type="text"
-                  name="cardExpiry"
-                  placeholder="Fecha de Expiración (MM/AA)"
-                  value={formData.cardExpiry}
-                  onChange={handleInputChange}
-                  readOnly={isReadOnly}
-                  className="w-full border p-2 rounded"
-                />
-                <input
-                  type="text"
-                  name="cardCVC"
-                  placeholder="CVC"
-                  value={formData.cardCVC}
-                  onChange={handleInputChange}
-                  readOnly={isReadOnly}
-                  className="w-full border p-2 rounded"
-                />
-                <button
-                  onClick={handleAddCard}
-                  className="w-full bg-blue-500 text-white p-2 rounded"
-                  hidden={isReadOnly}
-                >
-                  Añadir Tarjeta
-                </button>
-              </div>
-            )}
-            <div className="flex justify-center my-8">
-            <button 
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
-            onClick={handlePurchase}
-            >
-                Finalizar Compra
-            </button>
-      </div>
-          </div>
-          <div className="w-1/2 h-1/2 p-4 border-l ml-4">
-            <h2 className="text-2xl font-bold mb-4">Resumen de la Compra</h2>
-            <div className="bg-gray-100 p-4 rounded shadow-md mb-4">
-              <h3 className="text-lg font-semibold">Producto:</h3>
-              <p>{"x1 " + product}</p>
-              <h3 className="text-lg font-semibold">Precio:</h3>
-              <p>{precio}</p>
-            </div>
-          </div>
         </div>
-      </div>
       <Footer />
     </>
   );
