@@ -40,6 +40,7 @@ const Swipe = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [resetPosition, setResetPosition] = useState(false);
   const [loading, setLoading] = useState(false);
+  const fondoMovil = window.innerWidth <= 1025;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -119,7 +120,7 @@ const Swipe = () => {
           controls.set({ x: 0, opacity: 1 });
         }, 1500);
       } else {
-        controls.start({ x: 0, opacity: 1, transition: { duration: 0.3, ease: "easeOut" } });
+        controls.start({ x: 0, opacity: 1, transition: { duration: 0.2, ease: "easeOut" } });
       }
     };
 
@@ -164,8 +165,8 @@ const Swipe = () => {
   }, [currentIndex, resetPosition, controls]);
 
   return (
-    <div className='bg-gray-300' style={{
-      backgroundImage: `url(../storage/imagenes/prueba11.png)`
+    <div className='bg-gray-300 bg-contain bg-no-repeat tres:bg-none sm:bg-gray-300' style={{
+      backgroundImage: fondoMovil ? 'none' : `url(../storage/imagenes/prueba11.png)`
     }}>
       <div className="overflow-hidden select-none  xl:h-screen">
         <Header />

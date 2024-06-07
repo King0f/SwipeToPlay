@@ -123,9 +123,11 @@ class SwipeController extends Controller
                 'fecha' => $formatoFecha,
                 'juego' => $juego,
             ];
-            $this->mandarWhatssap($usuario, $userSwipe);
-            Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
-            Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
+            if ($usuario->lvl_premium == 2){
+                $this->mandarWhatssap($usuario, $userSwipe);
+                Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
+                Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
+            }
         }else{
             $match = Matches::where('id_user1', $userSwipe->id)->where('usuario_esperado', $usuario->id)->first();
             if ($match){
@@ -153,9 +155,12 @@ class SwipeController extends Controller
                     'fecha' => $formatoFecha,
                     'juego' => $juego,
                 ];
-                $this->mandarWhatssap($usuario, $userSwipe);
-                Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
-                Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
+
+                if ($usuario->lvl_premium == 2){
+                    $this->mandarWhatssap($usuario, $userSwipe);
+                    Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
+                    Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
+                }
 
             }else{
                 $match = new Matches();
@@ -200,9 +205,11 @@ class SwipeController extends Controller
         $chat = new Chat();
         $chat->id_match = $match->id;
         $chat->save();
-        /* $this->mandarWhatssap($usuario, $userSwipe); */
-        Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
-        Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
+        if ($usuario->lvl_premium == 2){
+            /* $this->mandarWhatssap($usuario, $userSwipe); */
+            Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
+            Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
+        }
         return response()->json($usuario);
     }
 

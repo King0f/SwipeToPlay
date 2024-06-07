@@ -63,10 +63,16 @@ class Controller extends BaseController
         $usuario = $request->user();
         if($request->input('action') == 1){
             $usuario->lvl_premium = 1;
+            $usuario->desplazamientos = 25;
+            $usuario->superlikes = 1;
+            $usuario->n_mensajes = 100;
             $usuario->save();
             return response()->json($usuario); 
         }elseif($request->input('action') == 2){
             $usuario->lvl_premium = 2;
+            $usuario->desplazamientos = 0;
+            $usuario->superlikes = 0;
+            $usuario->n_mensajes = 0;
             $usuario->save();
             return response()->json($usuario);
         }
