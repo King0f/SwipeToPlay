@@ -7,6 +7,7 @@ import { apiStore } from "../store/apiStore/apiStore";
 import 'boxicons'
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import {ToastContainer, Zoom, toast } from 'react-toastify'
 
 
 const Tarjetas = () => {
@@ -56,6 +57,11 @@ const Tarjetas = () => {
     };
     const handleSubmit = async (e) => {
       e.preventDefault();
+      if (tarjetas.length >= 4) {
+        toast.error("No se pueden tener más de 4 tarjetas de crédito guardadas. Borre alguna en su perfil si desea añadir una nueva.",
+        {position: 'top-left',theme:'light',transition:Zoom, autoClose:3000, })
+        return;
+    }
       const localhost = apiStore.getState().localhost;
       const tarjeta = {
           titular: cardName,
@@ -80,59 +86,59 @@ const Tarjetas = () => {
     <div className="min-h-[52.4vh]">
       <Header />
       <div className="bg-gray-200 flex flex-wrap justify-center gap-8 mr-20 ml-20 mb-20">
-      {tarjetas?.map((tarjeta) => (
-        <div key={tarjeta.id} className="w-96 h-56 bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 cursor-pointer"
-        onClick={() => handleCardClick(tarjeta.id)}>
-          <img className="object-cover w-full h-full rounded-xl" src="https://i.imgur.com/kGkSg1v.png" alt="tarjeta" />
-          <div className="w-full px-8 absolute top-8">
-            <div className="flex justify-between">
-              <div>
-                <h1 className="font-light">Nombre completo</h1>
-                <p className="font-medium tracking-widest">{tarjeta.titular}</p>
-              </div>
-              <img className="w-14 h-14" src="https://i.imgur.com/bbPHJVe.png" alt="logo" />
+  {tarjetas?.map((tarjeta) => (
+    <div key={tarjeta.id} className="w-96 h-56 bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 cursor-pointer"
+    onClick={() => handleCardClick(tarjeta.id)}>
+      <img className="object-cover w-full h-full rounded-xl" src="https://i.imgur.com/kGkSg1v.png" alt="tarjeta" />
+      <div className="w-full px-8 absolute top-8 z-20">
+        <div className="flex justify-between">
+          <div>
+            <h1 className="font-light">Nombre completo</h1>
+            <p className="font-medium tracking-widest">{tarjeta.titular}</p>
+          </div>
+          <img className="w-14 h-14" src="https://i.imgur.com/bbPHJVe.png" alt="logo" />
+        </div>
+        <div className="pt-1">
+          <h1 className="font-light">Número tarjeta</h1>
+          <p className="font-medium tracking-more-wider">{tarjeta.n_tarjeta}</p>
+        </div>
+        <div className="pt-6 pr-6">
+          <div className="flex justify-between">
+            <div>
+              <h1 className="font-light text-xs">Válido</h1>
+              <p className="font-medium tracking-wider text-sm">{tarjeta.f_caducidad}</p>
             </div>
-            <div className="pt-1">
-              <h1 className="font-light">Número tarjeta</h1>
-              <p className="font-medium tracking-more-wider">{tarjeta.n_tarjeta}</p>
-            </div>
-            <div className="pt-6 pr-6">
-              <div className="flex justify-between">
-                <div>
-                  <h1 className="font-light text-xs">Válido</h1>
-                  <p className="font-medium tracking-wider text-sm">{tarjeta.f_caducidad}</p>
-                </div>
-                <div>
-                  <h1 className="font-light text-xs">CVV</h1>
-                  <p className="font-bold tracking-more-wider text-sm">{tarjeta.CVV}</p>
-                </div>
-              </div>
+            <div>
+              <h1 className="font-light text-xs">CVV</h1>
+              <p className="font-bold tracking-more-wider text-sm">{tarjeta.CVV}</p>
             </div>
           </div>
         </div>
-      ))}
-      {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-          <div className="bg-white p-5 rounded shadow-lg text-center">
-            <p>¿Deseas eliminar esta tarjeta?</p>
-            <div className="mt-4 flex justify-center space-x-4">
-              <button
-                onClick={handleDelete}
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-500"
-              >
-                Sí
-              </button>
-              <button
-                onClick={handleCancel}
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-500"
-              >
-                No
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
+  ))}
+  {showPopup && (
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+      <div className="bg-white p-5 rounded shadow-lg text-center">
+        <p>¿Deseas eliminar esta tarjeta?</p>
+        <div className="mt-4 flex justify-center space-x-4">
+          <button
+            onClick={handleDelete}
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-500"
+          >
+            Sí
+          </button>
+          <button
+            onClick={handleCancel}
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-red-500"
+          >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  )}
+</div>
         <div className="mb-5">
         {!mostrarFormulario && (
           <div className="flex justify-center">
