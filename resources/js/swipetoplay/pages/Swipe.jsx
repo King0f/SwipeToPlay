@@ -164,8 +164,10 @@ const Swipe = () => {
   }, [currentIndex, resetPosition, controls]);
 
   return (
-    <div className='bg-gray-100'>
-      <div className="overflow-hidden select-none bg-gray-100 xl:h-screen">
+    <div className='bg-gray-300' style={{
+      backgroundImage: `url(../storage/imagenes/prueba11.png)`
+    }}>
+      <div className="overflow-hidden select-none  xl:h-screen">
         <Header />
         <div className='flex justify-between'>
           <div className='flex mx-auto mb-15 mt-8'>
