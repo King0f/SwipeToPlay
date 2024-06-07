@@ -48,7 +48,7 @@ function Chats() {
     }, [chats]);
 
     return (
-    <>
+    <div className="h-screen bg-black">
     <Header />
     <ToastContainer pauseOnFocusLoss={false} limit={3} />
     <div className="h-[93.05vh] sm:h-[90.05vh] tres:h-[90.4vh] 390:h-[92.4vh] cuatro:h-[92.9vh] 430:h-[93.1vh] 360:h-[91.4vh]  md:h-[93.75vh] lg:h-[95.3vh] xl:h-[93vh] w-full bg-black">
@@ -68,10 +68,13 @@ function Chats() {
                 <div className="mt-3">
                     {chats?.map((chat) => (
                         <div
-                            key={chat?.id}
-                            onClick={() => setSelectedChatId(chat?.id)}
-                            className={`flex items-center p-4 cursor-pointer ${selectedChatId === chat?.id ? 'bg-gray-700' : 'bg-gray-800 hover:bg-gray-700'}`}
-                        >
+                        key={chat?.id}
+                        onClick={() => {
+                            setSelectedChatId(chat?.id);
+                            setIsMenuOpen(!isMenuOpen);
+                        }}
+                        className={`flex items-center p-4 cursor-pointer ${selectedChatId === chat?.id ? 'bg-gray-700' : 'bg-gray-800 hover:bg-gray-700'}`}
+                    >
                             {userDetails[chat?.id] ? (
                                 <div className="flex items-center space-x-4">
                                     <img src={userDetails[chat?.id].imagePath || 'https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png'} alt={`${userDetails[chat.id].username}'s profile`} className="w-10 h-10 rounded-full bg-white"/>
@@ -80,7 +83,7 @@ function Chats() {
                             ) : "Loading..."}
                         </div>
                     ))}
-                    <div className="flex items-center p-4 bg-gray-800 hover:bg-gray-700">
+                    <div className="flex items-center p-4 bg-gray-800">
                         <div className="flex items-center space-x-4">
                             <p className="text-white text-lg"><b>Número de mensajes restantes: {usuario.lvl_premium === 2 ? '∞' : usuario.n_mensajes}</b></p>
                         </div>
@@ -97,7 +100,7 @@ function Chats() {
             </div>
         </div>
         </div>
-    </>
+    </div>
     );
 }
 

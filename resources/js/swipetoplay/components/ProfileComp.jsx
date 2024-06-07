@@ -25,7 +25,6 @@ export default function ProfileComp() {
                         </div>
                         <div className="profile-description">
                         <p className="user-title">{usuario.username }</p>
-                <p className="username">@{usuario.username }</p>
                         </div>
                     </div>
                     <div className="menu-bar">

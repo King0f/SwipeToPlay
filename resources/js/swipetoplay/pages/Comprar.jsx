@@ -83,6 +83,11 @@ const Comprar = ({ product, precio }) => {
 
   const handleAddCard = () => {
     const { cardName, cardNumber, cardExpiry, cardCVC } = formData;
+    if (cardName == '' || cardNumber == ''  || cardExpiry == '' || cardCVC == '' ) {
+      toast.error("Necesita ingresar todos los datos de la tarjeta para poder añadirla.",
+      {position: 'top-left',theme:'light',transition:Zoom, autoClose:3000, })
+      return;
+  }
     if (tarjetas.length >= 4) {
         toast.error("No se pueden tener más de 4 tarjetas de crédito guardadas. Borre alguna en su perfil si desea añadir una nueva.",
         {position: 'top-left',theme:'light',transition:Zoom, autoClose:3000, })

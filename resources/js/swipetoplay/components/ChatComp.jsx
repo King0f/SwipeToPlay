@@ -26,7 +26,7 @@ const ChatComp = ({ chatId, urlReceived}) => {
         fetchMessages();  // Carga inicial de mensajes
 
         // Configurar polling
-        let intervalId = setInterval(fetchMessages, 5000); // Polling cada 5 segundos
+        let intervalId = setInterval(fetchMessages, 2000); // Polling cada 5 segundos
 
         // Ajustar el polling según la visibilidad de la pestaña
         const handleVisibilityChange = () => {
@@ -34,7 +34,7 @@ const ChatComp = ({ chatId, urlReceived}) => {
                 clearInterval(intervalId); // Detener polling cuando la pestaña no es visible
             } else {
                 fetchMessages(); // Cargar mensajes al volver a la pestaña
-                intervalId = setInterval(fetchMessages, 5000); // Reanudar polling
+                intervalId = setInterval(fetchMessages, 2000); // Reanudar polling
             }
         };
         document.addEventListener('visibilitychange', handleVisibilityChange);
