@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 
 class SwipeController extends Controller
 {
-    private $token = 'EAAGHazWOFisBO0Ecbn2vTTee4nLNCaweJ8DeDY1gGaJiM9OJBuXIlklju0ByYTKsFsqMJG1V5trwzUEn8tLLZAUIJzSJ7WJ98IOkofV50ZB7DPhPZCdxFZCEmaxARJeUtVZB4CUqghxdUDcXworNDaxV5b1T9YqO4b5BXwL6ZAvUPtPgjZAgOM5qi5oRnegH4ZABFXotboSMR0UomMslcFimkf9DAFZABdgtGviwZD';
+    private $token = 'EAAGHazWOFisBO0ZAuZAxDhcfIQOZAd14V59lGp9sHTQUy5dKKEBYktuXOrjdMp0v3VXGja4qoFhxEH2q6w1Wq7bZB3tyCTvoJlqx4nNKoj0YpehlW83nQ5brO4WohxZADHMnhaM4NUMOJ3j4fvZA6vL3NlkZAaQogBVjsqtb4dIsXHIvHhBHIqcXUsnp81ji6KoLFbzXxZBCo6axiMMKddWoMKsRRb3eBYBQ94cZD';
     
     private $url = 'https://graph.facebook.com/v18.0/239082649298144/messages';
 
@@ -206,7 +206,7 @@ class SwipeController extends Controller
         $chat->id_match = $match->id;
         $chat->save();
         if ($usuario->lvl_premium == 2){
-            /* $this->mandarWhatssap($usuario, $userSwipe); */
+            $this->mandarWhatssap($usuario, $userSwipe);
             Mail::to($usuario->email)->send(new SwipeMail($userSwipe, $informacionAdicional));
             Mail::to($userSwipe->email)->send(new SwipeMail($usuario, $informacionAdicional));
         }
