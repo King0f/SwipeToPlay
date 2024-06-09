@@ -37,7 +37,7 @@ const Swipe = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [resetPosition, setResetPosition] = useState(false);
   const [loading, setLoading] = useState(false);
-  const fondoMovil = window.innerWidth <= 1025;
+  const fondoMovil = window.innerWidth <= 1650;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -179,12 +179,12 @@ const Swipe = () => {
     <div className='bg-gray-300 bg-contain bg-no-repeat tres:bg-none sm:bg-gray-300' style={{
       backgroundImage: fondoMovil ? 'none' : `url(../storage/imagenes/prueba11.png)`
     }}>
-      <div className="overflow-hidden select-none  xl:h-screen">
+      <div className="overflow-hidden select-none  xl:h-full">
         <Header />
         <div className='flex justify-between'>
           <div className='flex mx-auto mb-15 mt-8'>
             <div className='flex flex-col justify-around'>
-              <div className='justify-center mb-2 tres:hidden 2xl:hidden 390:flex md:mt-10 xl:mt-0'>
+              <div className='justify-center mb-2 tres:hidden xl:hidden 390:flex md:mt-0'>
                 <img src={flechaIzq} className='w-8 h-8 self-center mx-2' />
                 <p className='text-center text-3xl font-Swipe font-semibold text-red-600'>Swipe</p>
                 <img src={flechaDer} className='w-8 h-8 self-center mx-2' />
