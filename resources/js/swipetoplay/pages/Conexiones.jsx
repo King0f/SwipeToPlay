@@ -1,41 +1,35 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import Header from '../components/Header'
 import LateralNavP from '../components/LateralNavP'
-import {useNavigate } from "react-router-dom";
-import { apiStore } from "../store/apiStore/apiStore";
 import 'boxicons'
-import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const Conexiones = () => {
-    const navigate = useNavigate();
-    const path = apiStore.getState().basename;
     const [conexionLOL, setConexionLOL] = useState([]);
     const [conexionValorant, setConexionValorant] = useState([]);
-    const {usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant, borrarUsuario} = usuarioStore((state) => ({
-      usuario: state.usuario,
-      obtenerUsuario: state.obtenerUsuario,
-      obtenerConexionLOL: state.obtenerConexionLOL,
-      obtenerConexionValorant: state.obtenerConexionValorant,
-      borrarUsuario: state.borrarUsuario
+    const { usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant } = usuarioStore((state) => ({
+        usuario: state.usuario,
+        obtenerUsuario: state.obtenerUsuario,
+        obtenerConexionLOL: state.obtenerConexionLOL,
+        obtenerConexionValorant: state.obtenerConexionValorant,
     }))
     async function fetchData() {
-      try {
-        obtenerUsuario();
-        const conexionLOLData = await obtenerConexionLOL(usuario.id);
-        const conexionValorantData = await obtenerConexionValorant(usuario.id);
-        setConexionLOL(conexionLOLData);
-        setConexionValorant(conexionValorantData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+        try {
+            obtenerUsuario();
+            const conexionLOLData = await obtenerConexionLOL(usuario.id);
+            const conexionValorantData = await obtenerConexionValorant(usuario.id);
+            setConexionLOL(conexionLOLData);
+            setConexionValorant(conexionValorantData);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     }
     useEffect(() => {
-      fetchData();
+        fetchData();
     }, []);
-  return (
-    <div className="pt-20 bg-gray-200">
+    return (
+        <div className="pt-20 bg-gray-200">
             <Header />
             <div className="flex w-full justify-center">
                 <LateralNavP />
@@ -106,9 +100,9 @@ const Conexiones = () => {
                     </form>
                 </div>
             </div>
-            <Footer className="top-3/3"/>
+            <Footer className="top-3/3" />
         </div>
-  )
+    )
 }
 
 export default Conexiones

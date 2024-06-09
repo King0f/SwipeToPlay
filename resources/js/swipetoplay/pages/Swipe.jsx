@@ -4,9 +4,7 @@ import flechaIzq from '../components/f1.png';
 import flechaDer from '../components/f2.png';
 import { usuarioStore } from '../store/userStore/usuarioStore';
 import imagenUser from '../../../assets/profile.jpg';
-import Icon_actions_close_l from '../components/Icon_actions_close_l';
-import Icon_social_pleasures_xl from '../components/Icon_social_pleasures_xl';
-import {Zoom, toast } from 'react-toastify';
+import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from '../components/Footer';
 import { motion, useAnimation } from 'framer-motion';
@@ -26,11 +24,10 @@ const useIsMobile = () => {
 };
 
 const Swipe = () => {
-  const { usuario, usuariosSwipe, obtenerUsuariosSwipe, obtenerConexion, actionSwipe, actionSuperlike } = usuarioStore((state) => ({
+  const { usuario, usuariosSwipe,obtenerUsuariosSwipe, obtenerConexion, actionSwipe, actionSuperlike } = usuarioStore((state) => ({
     usuario: state.usuario,
     usuariosSwipe: state.usuariosSwipe,
     obtenerUsuariosSwipe: state.obtenerUsuariosSwipe,
-    setUsuariosSwipe: state.setUsuariosSwipe,
     obtenerConexion: state.obtenerConexion,
     actionSwipe: state.actionSwipe,
     actionSuperlike: state.actionSuperlike
@@ -52,9 +49,23 @@ const Swipe = () => {
         setConexion(data);
       }
     };
-
     fetchData();
   }, [currentIndex, obtenerConexion]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await obtenerUsuariosSwipe();
+    };
+    fetchData();
+  }, []);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await obtenerConexion(usuariosSwipe[currentIndex].id);
+      setConexion(data)
+    };
+    fetchData();
+  }, [usuariosSwipe]);
 
   const handleAction = async (action) => {
     let idJuego = 0;
@@ -69,8 +80,8 @@ const Swipe = () => {
         });
       } else {
         idJuego = conexion.juego === 'League of Legends' ? 1 : 2;
-        await actionSwipe(usuariosSwipe[currentIndex].id, action,idJuego);
-        setResetPosition(true);  
+        await actionSwipe(usuariosSwipe[currentIndex].id, action, idJuego);
+        setResetPosition(true);
         setCurrentIndex((prevIndex) => prevIndex + 1);
       }
     } catch (error) {
@@ -81,8 +92,8 @@ const Swipe = () => {
   const handleSuperlike = async () => {
     let idJuego = 0;
     try {
-      if (usuario.desplazamientos <= 0 && usuario.lvl_premium !== 2) {
-        toast.error("No tienes deslizamientos suficientes para realizar esta acción.", {
+      if (usuario.superlikes <= 0 && usuario.lvl_premium !== 2) {
+        toast.error("No tienes superlikes suficientes para realizar esta acción.", {
           position: 'top-right',
           className: 'foo-bar',
           theme: 'light',
@@ -90,21 +101,21 @@ const Swipe = () => {
           autoClose: 3000,
         });
       } else {
-        setLoading(true); // Mostrar el spinner y mensaje de carga
+        setLoading(true);
         idJuego = conexion.juego === 'League of Legends' ? 1 : 2;
         await actionSuperlike(usuariosSwipe[currentIndex].id, idJuego);
-        setLoading(false); // Ocultar el spinner y mensaje de carga
+        setLoading(false);
         toast.success("Super like realizado! Entre a sus chats y empiece a jugar.", {
           position: 'top-left',
           theme: 'light',
           transition: Zoom,
           autoClose: 3000,
         });
-        setResetPosition(true);  
+        setResetPosition(true);
         setCurrentIndex((prevIndex) => prevIndex + 1);
       }
     } catch (error) {
-      setLoading(false); // Asegurar que el spinner se oculte si hay un error
+      setLoading(false);
       console.error("Error handling action:", error);
     }
   }
@@ -173,7 +184,7 @@ const Swipe = () => {
         <div className='flex justify-between'>
           <div className='flex mx-auto mb-15 mt-8'>
             <div className='flex flex-col justify-around'>
-            <div className='justify-center mb-2 tres:hidden 2xl:hidden 390:flex md:mt-10 xl:mt-0'>
+              <div className='justify-center mb-2 tres:hidden 2xl:hidden 390:flex md:mt-10 xl:mt-0'>
                 <img src={flechaIzq} className='w-8 h-8 self-center mx-2' />
                 <p className='text-center text-3xl font-Swipe font-semibold text-red-600'>Swipe</p>
                 <img src={flechaDer} className='w-8 h-8 self-center mx-2' />
@@ -181,9 +192,9 @@ const Swipe = () => {
               <div className='flex '>
                 {currentIndex < usuariosSwipe.length && (
                   <motion.div className="flex flex-col md:w-[448px] tres:w-[350px] 390:pb-32 md:pb-32 pb-10 mx-auto text-white shadow-lg rounded-md overflow-hidden transform transition-transform cursor-pointer 390:bg-cover tres:bg-stretch bg-no-repeat bg-center 390:mt-3 xl:mt-0"
-                  style={{
-                    backgroundImage: `url(../storage/imagenes/${conexion.juego === 'Valorant' ? 'valorant3.png' : 'lol2.png'})`
-                  }}
+                    style={{
+                      backgroundImage: `url(../storage/imagenes/${conexion.juego === 'Valorant' ? 'valorant3.png' : 'lol2.png'})`
+                    }}
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     onDragEnd={handleDragEnd}
@@ -211,30 +222,30 @@ const Swipe = () => {
                 )}
               </div>
               <div className='flex justify-center space-x-12 390:mt-4 tres:mt-2'>
-              <div className='self-center rounded-full w-12 h-12'>
-                <button className="relative inline-flex items-center justify-center p-4 bg-white rounded-full text-red-600 shadow-lg transform transition duration-200 hover:text-red-700 hover:scale-105 focus:outline-none" onClick={() => handleAction(2)}>
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </button>
+                <div className='self-center rounded-full w-12 h-12'>
+                  <button className="relative inline-flex items-center justify-center p-4 bg-white rounded-full text-red-600 shadow-lg transform transition duration-200 hover:text-red-700 hover:scale-105 focus:outline-none" onClick={() => handleAction(2)}>
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+                <div className='mt-2'>
+                  <button className="relative inline-flex items-center justify-center p-4 bg-white rounded-full text-purple-600 shadow-lg transform transition duration-200 hover:text-purple-700 hover:scale-105 focus:outline-none" onClick={() => handleSuperlike()}>
+                    <svg className="w-9 h-9" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.344l1.172-1.172a4 4 0 115.656 5.656l-5.172 5.172a1 1 0 01-1.414 0L3.172 10.828a4 4 0 010-5.656z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+                <div className='self-center rounded-full w-12 h-12'>
+                  <button className="relative inline-flex items-center justify-center p-4 bg-white rounded-full text-green-600 shadow-lg transform transition duration-200 hover:text-green-700 hover:scale-105 focus:outline-none" onClick={() => handleAction(1)}>
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                    </svg>
+                  </button>
+                </div>
               </div>
-              <div className='mt-2'>
-                <button className="relative inline-flex items-center justify-center p-4 bg-white rounded-full text-purple-600 shadow-lg transform transition duration-200 hover:text-purple-700 hover:scale-105 focus:outline-none" onClick={() => handleSuperlike()}>
-                  <svg className="w-9 h-9" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.344l1.172-1.172a4 4 0 115.656 5.656l-5.172 5.172a1 1 0 01-1.414 0L3.172 10.828a4 4 0 010-5.656z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-              <div className='self-center rounded-full w-12 h-12'>
-              <button className="relative inline-flex items-center justify-center p-4 bg-white rounded-full text-green-600 shadow-lg transform transition duration-200 hover:text-green-700 hover:scale-105 focus:outline-none" onClick={() => handleAction(1)}>
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                </svg>
-              </button>
             </div>
-              </div>
-            </div>
-          </div> 
+          </div>
         </div>
       </div>
       {loading && (
@@ -249,7 +260,7 @@ const Swipe = () => {
         </div>
       )}
       <div className='mt-10'>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

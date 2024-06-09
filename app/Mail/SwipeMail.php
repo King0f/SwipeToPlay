@@ -61,6 +61,7 @@ class SwipeMail extends Mailable
             ->with([
                 'usuario' => $this->usuario,
                 'informacionAdicional' => $this->informacionAdicional, // Asegúrate de pasar la variable
-            ]);;  
+            ]);
+        ;
     }
 }

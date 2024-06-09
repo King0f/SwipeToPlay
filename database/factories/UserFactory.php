@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
-     /**
+    /**
      * Define the model's default state.
      *
      * @return array
@@ -20,7 +20,6 @@ class UserFactory extends Factory
     {
         $lvl_premium = $this->faker->randomElement([0, 1, 2]);
 
-        // Asignamos desplazamientos en base al nivel premium
         $desplazamientos = 0;
         $n_mensajes = 0;
         if ($lvl_premium == 0) {
@@ -37,19 +36,18 @@ class UserFactory extends Factory
             $superlikes = 0;
         }
 
-        // Lista de números de teléfono
         $phoneNumbers = ['+34606718811', '+34622903672', '+34636438666'];
 
         return [
             'email' => $this->faker->unique()->safeEmail(),
             'username' => $this->faker->userName(),
-            'password' => Hash::make('12345678'),  // Asegurarse que las contraseñas están hasheadas
+            'password' => Hash::make('12345678'), 
             'lvl_premium' => $lvl_premium,
             'desplazamientos' => $desplazamientos,
             'n_mensajes' => $n_mensajes,
             'imagen' => null,
-            'likes' => $this->faker->numberBetween(1, 999),  // Dejar el campo de imagen vacío
-            'phone' => $this->faker->randomElement($phoneNumbers),  // Teléfono aleatorio
+            'likes' => $this->faker->numberBetween(1, 999),
+            'phone' => $this->faker->randomElement($phoneNumbers), 
             'descripcion' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lectus tellus, viverra non cursus sit amet, pretium quis elit. Sed et risus nibh. Fusce ligula lectus.',
             'superlikes' => $superlikes,
         ];
@@ -60,7 +58,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }

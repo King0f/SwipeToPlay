@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { apiStore } from "../store/apiStore/apiStore";
+
 const RiotUser = () => {
-    const {localhost,path} = apiStore((state) => ({
+    const { localhost, path } = apiStore((state) => ({
         localhost: state.localhost,
         path: state.basename
     }))
@@ -23,7 +23,7 @@ const RiotUser = () => {
             alert("Debe aceptar los términos y condiciones para continuar.");
             return;
         }
-        const url = `${localhost}/api/riotUser`;  
+        const url = `${localhost}/api/riotUser`;
         const payload = {
             riotID: riotAccount,
             juego: juego,
@@ -42,11 +42,10 @@ const RiotUser = () => {
 
         fetch(url, options)
             .then(response => {
-                if (response.ok) { // Verifica si la respuesta del servidor es 200-299
-                    console.log("Respuesta del servidor: OK");
-                    navigate(path); // Redireccionar a la página principal o dashboard tras el éxito
+                if (response.ok) {
+                    navigate(path);
                 } else {
-                    throw new Error('Algo salió mal en la solicitud al servidor'); // Lanza un error si la respuesta no es satisfactoria
+                    throw new Error('Algo salió mal en la solicitud al servidor');
                 }
             })
             .catch(error => {
@@ -81,7 +80,7 @@ const RiotUser = () => {
                     </select>
 
                     {/* Dropdown for selecting rank */}
-                    { juego === "League of Legends" && (
+                    {juego === "League of Legends" && (
                         <select
                             value={rango}
                             onChange={(e) => setRango(e.target.value)}
@@ -102,7 +101,7 @@ const RiotUser = () => {
                         </select>
                     )}
 
-                    { juego === "Valorant" && (
+                    {juego === "Valorant" && (
                         <select
                             value={rango}
                             onChange={(e) => setRango(e.target.value)}
@@ -118,12 +117,12 @@ const RiotUser = () => {
                             <option value="Esmeralda">Esmeralda</option>
                             <option value="Diamante">Diamante</option>
                             <option value="Inmortal">Inmortal</option>
-                            <option value="Radiant">Radiant</option> 
+                            <option value="Radiant">Radiant</option>
                         </select>
                     )}
 
                     {/* Dropdown for selecting position */}
-                    { juego === "League of Legends" && (
+                    {juego === "League of Legends" && (
                         <select
                             value={posicion}
                             onChange={(e) => setPosicion(e.target.value)}
@@ -139,7 +138,7 @@ const RiotUser = () => {
                         </select>
                     )}
 
-                    { juego === "Valorant" && (
+                    {juego === "Valorant" && (
                         <select
                             value={posicion}
                             onChange={(e) => setPosicion(e.target.value)}

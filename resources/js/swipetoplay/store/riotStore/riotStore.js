@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const riotStore = create((set) => ({
     summoner: [],
-    obtenerDatosInvocador: async (nombreInvocador, region) =>{
+    obtenerDatosInvocador: async (nombreInvocador, region) => {
         const summonerUrl = `https://${region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${nombreInvocador}`;
         const params = {
             api_key: "RGAPI-d942330a-473a-458a-b63c-e1f313625559"

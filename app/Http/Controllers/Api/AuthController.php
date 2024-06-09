@@ -23,14 +23,16 @@ class AuthController extends Controller
     {
         try {
             //Validated
-            $validateUser = Validator::make($request->all(),
-            [
-                'username' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:8',
-            ]);
+            $validateUser = Validator::make(
+                $request->all(),
+                [
+                    'username' => 'required|string|max:255',
+                    'email' => 'required|string|email|max:255|unique:users',
+                    'password' => 'required|string|min:8',
+                ]
+            );
 
-            if($validateUser->fails()){
+            if ($validateUser->fails()) {
                 return response()->json([
                     'status' => false,
                     'message' => 'validation error',
@@ -74,9 +76,10 @@ class AuthController extends Controller
         $usuario->descripcion = $request->descripcion;
         $usuario->save();
 
-        return response("Usuario modificado con exito!",200);
+        return response("Usuario modificado con exito!", 200);
     }
-    public function subirImagen(Request $request){
+    public function subirImagen(Request $request)
+    {
         try {
             $user = $request->user();
             $oldImagePath = str_replace('../storage/', 'public/', $user->imagen);
@@ -108,13 +111,15 @@ class AuthController extends Controller
     public function loginUser(Request $request)
     {
         try {
-            $validateUser = Validator::make($request->all(),
-            [
-                'email' => 'required|email',
-                'password' => 'required'
-            ]);
+            $validateUser = Validator::make(
+                $request->all(),
+                [
+                    'email' => 'required|email',
+                    'password' => 'required'
+                ]
+            );
 
-            if($validateUser->fails()){
+            if ($validateUser->fails()) {
                 return response()->json([
                     'status' => false,
                     'message' => 'validation error',
@@ -122,7 +127,7 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            if(!Auth::attempt($request->only(['email', 'password']))){
+            if (!Auth::attempt($request->only(['email', 'password']))) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Email & Password does not match with our record.',
@@ -144,13 +149,15 @@ class AuthController extends Controller
             ], 500);
         }
     }
-    public function obtenerTarjetas(Request $request) {
+    public function obtenerTarjetas(Request $request)
+    {
         $usuario = $request->user();
         $tarjetas = $usuario->tarjeta;
 
         return response()->json($tarjetas);
     }
-    public function agregarTarjeta(Request $request) {
+    public function agregarTarjeta(Request $request)
+    {
         $usuario = $request->user();
         $tarjeta = Tarjeta::create([
             'titular' => $request->input("titular"),
@@ -163,7 +170,8 @@ class AuthController extends Controller
 
         return response()->json($tarjeta);
     }
-    public function eliminarTarjeta(Request $request) {
+    public function eliminarTarjeta(Request $request)
+    {
         $usuario = $request->user();
         $reserva = Tarjeta::where('id_cliente', $usuario->id)->where('id', $request->id)->first();
 

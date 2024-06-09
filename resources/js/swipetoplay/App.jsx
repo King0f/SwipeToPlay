@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Principal from './pages/Principal.jsx'
-import Testing from './pages/Testing.jsx'
 import './styles/App.css'
 import Register from './pages/Register.jsx';
 import Login from './pages/Login.jsx';
@@ -25,7 +23,6 @@ function App() {
     <ScrollToTop />
       <Routes>
         <Route path={path} element={<Principal />}></Route>
-        <Route path={path + '/Testing'} element={<Testing />}></Route>
         <Route path={path + '/Register'} element={<Register />}></Route>
         <Route path={path + '/Login'} element={<Login />}></Route>
         <Route path={path + '/Swipe'} element={<Swipe />}></Route>

@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { usuarioStore } from "../store/userStore/usuarioStore";
 import Header from '../components/Header'
 import LateralNavP from '../components/LateralNavP'
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { apiStore } from "../store/apiStore/apiStore";
 import 'boxicons'
-import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const Configuracion = () => {
@@ -14,86 +13,86 @@ const Configuracion = () => {
     const [conexionLOL, setConexionLOL] = useState([]);
     const [conexionValorant, setConexionValorant] = useState([]);
     const [user, setUsuario] = useState([]);
-    const {usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant, modificarUsuario} = usuarioStore((state) => ({
-      usuario: state.usuario,
-      obtenerUsuario: state.obtenerUsuario,
-      obtenerConexionLOL: state.obtenerConexionLOL,
-      obtenerConexionValorant: state.obtenerConexionValorant,
-      modificarUsuario: state.modificarUsuario
+    const { usuario, obtenerUsuario, obtenerConexionLOL, obtenerConexionValorant, modificarUsuario } = usuarioStore((state) => ({
+        usuario: state.usuario,
+        obtenerUsuario: state.obtenerUsuario,
+        obtenerConexionLOL: state.obtenerConexionLOL,
+        obtenerConexionValorant: state.obtenerConexionValorant,
+        modificarUsuario: state.modificarUsuario
     }))
     async function fetchData() {
-      try {
-        obtenerUsuario();
-        setUsuario(usuario);
-        const conexionLOLData = await obtenerConexionLOL(usuario.id);
-        const conexionValorantData = await obtenerConexionValorant(usuario.id);
-        setConexionLOL(conexionLOLData);
-        setConexionValorant(conexionValorantData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+        try {
+            obtenerUsuario();
+            setUsuario(usuario);
+            const conexionLOLData = await obtenerConexionLOL(usuario.id);
+            const conexionValorantData = await obtenerConexionValorant(usuario.id);
+            setConexionLOL(conexionLOLData);
+            setConexionValorant(conexionValorantData);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     }
     useEffect(() => {
-      fetchData();
+        fetchData();
     }, []);
     const handleChangeUsername = (event) => {
         setUsuario({
-          ...user,
-          username: event.target.value,
+            ...user,
+            username: event.target.value,
         });
     };
     const handleChangeEmail = (event) => {
         setUsuario({
-          ...user,
-          email: event.target.value,
+            ...user,
+            email: event.target.value,
         });
     };
     const handleChangePhone = (event) => {
         setUsuario({
-          ...user,
-          phone: event.target.value,
+            ...user,
+            phone: event.target.value,
         });
     };
     const handleChangeDescripcion = (event) => {
         setUsuario({
-          ...user,
-          descripcion: event.target.value,
+            ...user,
+            descripcion: event.target.value,
         });
     };
     const handleChangeValorant = (event) => {
         setConexionValorant({
-          ...conexionValorant,
-          rango: event.target.value,
+            ...conexionValorant,
+            rango: event.target.value,
         });
     };
     const handleChangePosValorant = (event) => {
         setConexionValorant({
-          ...conexionValorant,
-          posicion: event.target.value,
+            ...conexionValorant,
+            posicion: event.target.value,
         });
     };
     const handleChangeUserValorant = (event) => {
         setConexionValorant({
-          ...conexionValorant,
-          riotID: event.target.value,
+            ...conexionValorant,
+            riotID: event.target.value,
         });
     };
     const handleChangeLol = (event) => {
         setConexionLOL({
-          ...conexionLOL,
-          rango: event.target.value,
+            ...conexionLOL,
+            rango: event.target.value,
         });
     };
     const handleChangePosLol = (event) => {
         setConexionLOL({
-          ...conexionLOL,
-          posicion: event.target.value,
+            ...conexionLOL,
+            posicion: event.target.value,
         });
     };
     const handleChangeUserLol = (event) => {
         setConexionLOL({
-          ...conexionLOL,
-          riotID: event.target.value,
+            ...conexionLOL,
+            riotID: event.target.value,
         });
     };
     const handleSubmitLol = async (e) => {
@@ -128,11 +127,11 @@ const Configuracion = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        modificarUsuario(user.username,user.email,user.phone,user.descripcion)
+        modificarUsuario(user.username, user.email, user.phone, user.descripcion)
         navigate(path + "/Profile");
     };
-  return (
-    <div className="bg-gray-200 pt-20 overflow-x-hidden">
+    return (
+        <div className="bg-gray-200 pt-20 overflow-x-hidden">
             <Header />
             <div className="flex w-full justify-center">
                 <LateralNavP />
@@ -264,15 +263,15 @@ const Configuracion = () => {
                                 onChange={handleChangeDescripcion}
                                 value={user.descripcion}
                                 className="w-full px-3 py-2 text-gray-900 bg-gray-200 rounded h-32"
-                                />
+                            />
                         </div>
-                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50"  onClick={handleSubmit}>Modificar perfil</button>
+                        <button className="bg-gray-500 text-white p-2 rounded hover:bg-red-500 w-50" onClick={handleSubmit}>Modificar perfil</button>
                     </form>
                 </div>
             </div>
             <Footer />
         </div>
-  )
+    )
 }
 
 export default Configuracion

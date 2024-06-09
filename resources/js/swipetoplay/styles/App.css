@@ -13,7 +13,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 a {
@@ -32,16 +32,11 @@ a {
 @font-face {
   font-family: "AvenirNextW10-Bold";
   src: url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.eot");
-  src: url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.eot?#iefix")
-      format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.woff2")
-      format("woff2"),
-    url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.woff")
-      format("woff"),
-    url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.ttf")
-      format("truetype"),
-    url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.svg#AvenirNextW10-Bold")
-      format("svg");
+  src: url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/e5c490a944bc2b2746f0c851501e46c7.svg#AvenirNextW10-Bold") format("svg");
 }
 
 .Avenir {
@@ -79,16 +74,19 @@ a {
 
 
 .clearNav {
-    backdrop-filter: saturate(180%) blur(5px) !important;
-    background-color: rgb(255, 255, 255) !important;
-    box-shadow: 0px 2px 5px 0px rgb(148, 148, 148);
-  }
+  backdrop-filter: saturate(180%) blur(5px) !important;
+  background-color: rgb(255, 255, 255) !important;
+  box-shadow: 0px 2px 5px 0px rgb(148, 148, 148);
+}
 
-  .nav-link:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Cambia el color de fondo al pasar el mouse sobre el enlace */
-    border-radius: 8px; /* AÃ±ade bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el enlace */
-  }
+.nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  /* Cambia el color de fondo al pasar el mouse sobre el enlace */
+  border-radius: 8px;
+  /* AÃ±ade bordes redondeados */
+  cursor: pointer;
+  /* Cambia el cursor al pasar el mouse sobre el enlace */
+}
 
 
 .fsac4 {
@@ -114,7 +112,7 @@ a {
 }
 
 /* ProfileComp */
-.username-container{
+.username-container {
   background-color: #16161a;
   width: auto;
   display: flex;
@@ -123,14 +121,14 @@ a {
   justify-content: space-between;
 }
 
-.profile-container{
+.profile-container {
   display: flex;
   gap: 0.5em;
   justify-content: space-between;
   align-items: center;
 }
 
-.profile-description{
+.profile-description {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -143,13 +141,13 @@ a {
   overflow: hidden;
 }
 
-.profile-img img{
+.profile-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.user-title{
+.user-title {
   color: white;
   font-weight: bold;
   font-size: 1.2em;
@@ -159,68 +157,72 @@ a {
   color: #adadaf;
 }
 
-.menu-bar{
+.menu-bar {
   display: flex;
   align-items: center;
 }
 
-.menu-bar i{
+.menu-bar i {
   font-size: 25px;
   color: white;
 }
 
-.menu-bar i:hover{
+.menu-bar i:hover {
   cursor: pointer;
 }
 
-.contenttt{
-    transition: transform 0.5s;
+.contenttt {
+  transition: transform 0.5s;
 }
 
 .filters-container {
-    width: 100%;
+  width: 100%;
+}
+
+.filters-wrapper {
+  transition: width 0.3s;
+  /* Añade una transición para que el cambio de tamaño sea suave */
+}
+
+.filters-wrapper:hover {
+  width: 30%;
+  /* Cuando se hace hover, cambia el ancho al 30% */
+}
+
+.background-image {
+  background-image: url('../../../assets/tarjetta.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes swipe-left {
+  0% {
+    transform: rotate(0);
   }
 
-  .filters-wrapper {
-    transition: width 0.3s; /* Añade una transición para que el cambio de tamaño sea suave */
+  100% {
+    transform: rotate(-20deg) translateX(-100vw);
+  }
+}
+
+@keyframes swipe-right {
+  0% {
+    transform: rotate(0);
   }
 
-  .filters-wrapper:hover {
-    width: 30%; /* Cuando se hace hover, cambia el ancho al 30% */
+  100% {
+    transform: rotate(20deg) translateX(100vw);
   }
+}
 
-  .background-image {
-    background-image: url('../../../assets/tarjetta.jpg');
-    background-size: cover;
-    background-position: center;
-  }
+.swipe {
+  transition: transform 0.1s ease-in-out;
+}
 
-  @keyframes swipe-left {
-    0% {
-      transform: rotate(0);
-    }
-    100% {
-      transform: rotate(-20deg) translateX(-100vw);
-    }
-  }
-  
-  @keyframes swipe-right {
-    0% {
-      transform: rotate(0);
-    }
-    100% {
-      transform: rotate(20deg) translateX(100vw);
-    }
-  }
-  
-  .swipe {
-    transition: transform 0.1s ease-in-out;
-  }
-  
-  .swipe-left {
-    animation: swipe-left 0.3s forwards;
-  }
-  
-  .swipe-right {
-    animation: swipe-right 0.3s forwards;
-  }
+.swipe-left {
+  animation: swipe-left 0.3s forwards;
+}
+
+.swipe-right {
+  animation: swipe-right 0.3s forwards;
+}
